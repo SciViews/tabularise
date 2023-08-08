@@ -1,4 +1,4 @@
-# tabularise - Create Tabular Outputs from R (using flextable) <a href="https://www.sciviews.org/chart"><img src="man/figures/logo.png" alt="tabularise website" align="right" height="139"/></a>
+# tabularise - Create tabular outputs from R (using flextable) <a href="https://www.sciviews.org/chart"><img src="man/figures/logo.png" alt="tabularise website" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -41,4 +41,3 @@ For further instructions, please, refer to the help pages at <https://www.scivie
 ## Code of Conduct
 
 Please note that the {tabularise} package is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
-
