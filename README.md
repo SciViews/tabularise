@@ -3,6 +3,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/SciViews/tabularise/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SciViews/tabularise/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/SciViews/tabularise/branch/main/graph/badge.svg)](https://app.codecov.io/gh/SciViews/tabularise?branch=main)
 <!-- badges: end -->
 
 The goal of tabularise is to ...
