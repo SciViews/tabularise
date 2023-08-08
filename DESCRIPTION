@@ -1,0 +1,32 @@
+Package: tabularise
+Version: 0.0.0.9000
+Title: Create Tabular Outputs from R (using `flextable`)
+Description: Create rich-formatted tabular ouytputs from R that can be
+  incorporated into R Markdown/Quarto documenbts with correct output at least in
+  HTML, LaTeX/PDF, Word and PowerPoint for various R objects.
+Authors@R: c(
+  person("Philippe", "Grosjean", role = c("aut", "cre"),
+    email = "phgrosjean@sciviews.org",
+    comment = c(ORCID = "0000-0002-2694-9471")),
+  person("Guyliann", "Engels", role = "aut",
+    email = "guyliann.engels@umons.ac.be")
+  )
+Maintainer: Philippe Grosjean <phgrosjean@sciviews.org>
+Depends:
+    R (>= 4.2.0)
+Imports:
+    flextable (>= 0.9.2)
+Suggests: 
+    knitr,
+    rmarkdown,
+    spelling,
+    testthat (>= 3.0.0)
+License: MIT + file LICENSE
+URL: https://github.com/SciViews/tabularise, https://www.sciviews.org/tabularise/
+BugReports: https://github.com/SciViews/tabularise/issues
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+Encoding: UTF-8
+Language: en-US
