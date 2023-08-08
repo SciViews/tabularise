@@ -2,6 +2,7 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/SciViews/tabularise/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SciViews/tabularise/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of tabularise is to ...

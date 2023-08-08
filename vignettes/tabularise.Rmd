@@ -1,10 +1,13 @@
 ---
-title: "tabularise"
+title: "Create rich-formatted tables with tabularise"
+author: "Philippe Grosjean & Guyliann Engels"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{tabularise}
+  %\VignetteIndexEntry{Create rich-formatted tables with tabularise}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  \usepackage[utf8]{inputenc}
 ---
 
 ```{r, include = FALSE}
@@ -17,3 +20,5 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(tabularise)
 ```
+
+TODO...
