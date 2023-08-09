@@ -4,9 +4,11 @@
 \name{tabularise-package}
 \alias{tabularise}
 \alias{tabularise-package}
-\title{tabularise: Create Tabular Outputs from R (using `flextable`)}
+\title{tabularise: Create Tabular Outputs from R (using "flextable")}
 \description{
-Create rich-formatted tabular ouytputs from R that can be incorporated into R Markdown/Quarto documenbts with correct output at least in HTML, LaTeX/PDF, Word and PowerPoint for various R objects.
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+Create rich-formatted tabular outputs from R that can be incorporated into R Markdown/Quarto documents with correct output at least in HTML, LaTeX/PDF, Word and PowerPoint for various R objects.
 }
 \seealso{
 Useful links:
