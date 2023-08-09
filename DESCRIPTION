@@ -1,6 +1,6 @@
 Package: tabularise
 Version: 0.0.0.9000
-Title: Create Tabular Outputs from R (using "flextable")
+Title: Create Tabular Outputs from R (using "Flextable")
 Description: Create rich-formatted tabular outputs from R that can be
   incorporated into R Markdown/Quarto documents with correct output at least in
   HTML, LaTeX/PDF, Word and PowerPoint for various R objects.
@@ -20,13 +20,16 @@ Imports:
     rlang (>= 1.1.1),
     cli (>= 3.6.1),
     svMisc (>= 1.3.1),
+    data.io,
+    utils
 Suggests: 
     knitr,
     rmarkdown,
     spelling,
     testthat (>= 3.0.0)
 Remotes:
-  SciViews/svMisc
+  SciViews/svMisc,
+  SciViews/data.io
 License: MIT + file LICENSE
 URL: https://github.com/SciViews/tabularise, https://www.sciviews.org/tabularise/
 BugReports: https://github.com/SciViews/tabularise/issues

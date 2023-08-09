@@ -4,7 +4,7 @@
 \name{tabularise-package}
 \alias{tabularise}
 \alias{tabularise-package}
-\title{tabularise: Create Tabular Outputs from R (using "flextable")}
+\title{tabularise: Create Tabular Outputs from R (using "Flextable")}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
