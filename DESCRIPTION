@@ -25,6 +25,8 @@ Suggests:
     rmarkdown,
     spelling,
     testthat (>= 3.0.0)
+Remotes:
+  SciViews/svMisc
 License: MIT + file LICENSE
 URL: https://github.com/SciViews/tabularise, https://www.sciviews.org/tabularise/
 BugReports: https://github.com/SciViews/tabularise/issues
