@@ -1,33 +1,128 @@
-#' Tabularise set of function (mainly from {flextable})
+# .hyperlink_type <- {
+#   if (is_interactive() && cli::ansi_has_hyperlink_support()) {
+#     types <- cli::ansi_hyperlink_types()
+#     if (isTRUE(types$help)) {
+#       "help"
+#     } else if (isTRUE(types$href)) {
+#       "href"
+#     } else {
+#       "none"
+#     }
+#   } else {
+#     "none"
+#   }
+# }
+
+
+# aka <- function(...) {
+#   res <- svMisc::aka(...)
+#   if (is.function(res))
+#     class(res) <- c("aka", "function")
+#   res
+# }
+
+# print.aka <- function(x, hyperlink_type = .hyperlink_type, ...) {
+#   src <- attr(comment(x), "src")
+#   link <- switch(hyperlink_type,
+#     help = {
+#       # src must be package::helpage
+#       pkg_page <- strsplit(src, "::", fixed = TRUE)[[1]]
+#       # Assume package = base if not provided
+#       if (length(pkg_page) == 1L)
+#         pkg_page <- c("base", pkg_page)
+#       cli::style_hyperlink(src, "ide:help",
+#         params = c(package = pkg_page[1], topic = pkg_page[2]))
+#     },
+#     href = src, # TODO: use an https:// URL here
+#     src)
+#
+#   cat(cli::col_blue("\b = ", link, "()"))
+#   invisible(x)
+# }
+#
+# str.aka <- function(object, ...) {
+#   cat("aka ", attr(comment(object), "src"), "()\n", sep = "")
+# }
+
+# section <- function(x, title) {
+#   structure(function() get_section(x, title),
+#     title = title, class = c("section", "function"))
+# }
+#
+# print.section <- function(x, ...) {
+#   title <- attr(x, "title")
+#   # This is for RStudio. In terminal, use: cat("XXXXXXXXXXX\n\033[1A\033[KY\n")
+#   back <- rep("\b", nchar(title) + 7L)
+#   cat(back, cli::col_red("o  ", title, "   "), sep = "")
+#   invisible(x)
+# }
+#
+# str.section <- function(object, ...) {
+#   cat("section\n")
+# }
+#
+# get_section <- function(x, title) {
+#   stopifnot(is.list(x), is.character(title), length(title) == 1L)
+#
+#   # We need tp rework title, so that it matches a section name
+#   # Section title -> o__SECTION_TITLE__
+#   title <- toupper(title)
+#   title <- gsub(" ", "_", title, fixed = TRUE)
+#   title <- paste0("o__", title, "__")
+#
+#   # Search the section in the list
+#   names <- names(x)
+#   l <- length(names)
+#   start <- which(names == title)
+#   if (!length(start)) # The section title is not found -> return an empty list
+#       return(list())
+#   end <- which(startsWith(names[(start + 1):l], "o__"))
+#   if (length(end)) {
+#     end <- end[1] + start - 1
+#   } else {
+#     end <- l
+#   }
+#   # Truncate the list
+#   sel <- start:end
+#   x[sel]
+# }
+
+#' Tabularise collection of function (mainly from {flextable})
 #'
-#' This set provides all the functions you can use to manipulate `tabularise()`
-#' tables. They mostly contain the {flextable} API, with some functions renamed
-#' for a more coherent naming conventions. You are supposed to use it like
-#' `tb_$verb(....)` where `verb` is one of the objects contained in the set. Use
-#' `tb_` to list all objects in the set.
+#' This collection provides all the functions you can use to manipulate
+#' `tabularise()` tables. They mostly contain the {flextable} API, with some
+#' functions renamed for a more coherent naming conventions. You are supposed to
+#' use it like `tb_$verb(....)` where `verb` is one of the objects contained in
+#' the collection. Use `tb_` to list all objects in the collection.
 #'
 #' @return When printing `tb_` alone, a list of all verbs and other objects
-#' provided in
-#' the set are returned.
+#' provided in the collection are returned.
 #' @export
-#' @importFrom svMisc aka
+#' @importFrom svMisc aka section
 #' @importFrom flextable flextable as_flextable as_chunk
 #' @importFrom officer fp_border fp_text fp_par fp_cell
 #'
 #' @examples
 #' # TODO...
-tb_ <- structure(list(
+tb_ <- #structure(
+  list(
 
-  "- Format general"        = function() print(tb_, "- Format general"),
-  get_flextable_defaults    = aka(flextable::get_flextable_defaults),
-  set_flextable_defaults    = aka(flextable::set_flextable_defaults),
-  init_flextable_defaults   = aka(flextable::init_flextable_defaults),
-  set_table_properties      = aka(flextable::set_table_properties),
-  set_style                 = aka(flextable::style),
-  before                    = aka(flextable::before),
+  "o__FORMAT_GENERAL__"     = section(tb_, "FORMAT GENERAL"),
+  get_flextable_defaults    = aka(flextable::get_flextable_defaults,
+    url = "https://davidgohel.github.io/flextable/reference/get_flextable_defaults.html"),
+  set_flextable_defaults    = aka(flextable::set_flextable_defaults,
+    url = "https://davidgohel.github.io/flextable/reference/set_flextable_defaults.html"),
+  init_flextable_defaults   = aka(flextable::init_flextable_defaults,
+    url = "https://davidgohel.github.io/flextable/reference/set_flextable_defaults.html"),
+  set_table_properties      = aka(flextable::set_table_properties,
+    url = "https://davidgohel.github.io/flextable/reference/set_table_properties.html"),
+  set_style                 = aka(flextable::style,
+    url = "https://davidgohel.github.io/flextable/reference/style.html"),
+  before                    = aka(flextable::before,
+    url = "https://davidgohel.github.io/flextable/reference/before.html"),
   #as_grouped_data           = aka(flextable::as_grouped_data), # does not create a flextable!
 
-  "- Formatting properties" = function() print(tb_, "- Formatting properties"),
+  "o__FORMATTING_PROPERTIES__" = section(tb_, "FORMATTING PROPERTIES"),
   fp_text                   = aka(officer::fp_text),
   fp_text_default           = aka(flextable::fp_text_default),
   fp_border                 = aka(officer::fp_border),
@@ -35,7 +130,7 @@ tb_ <- structure(list(
   fp_par                    = aka(officer::fp_par),
   fp_cell                   = aka(officer::fp_cell),
 
-  "- Format text"           = function() print(tb_, "- Format text"),
+  "o__FORMAT_TEXT__"        = section(tb_, "FORMAT TEXT"),
   set_font                  = aka(flextable::font),
   set_fontsize              = aka(flextable::fontsize),
   set_italic                = aka(flextable::italic),
@@ -44,7 +139,7 @@ tb_ <- structure(list(
   highlight_text            = aka(flextable::highlight),
   rotate_text               = aka(flextable::rotate),
 
-  "- Format cell"           = function() print(tb_, "- Format cell"),
+  "o__FORMAT_CELL__"        = section(tb_, "FORMAT CELL"),
   align_h                   = aka(flextable::align),
   align_v                   = aka(flextable::valign),
   align_text_col            = aka(flextable::align_text_col),
@@ -53,7 +148,7 @@ tb_ <- structure(list(
   set_bg                    = aka(flextable::bg),
   set_line_spacing          = aka(flextable::line_spacing),
 
-  "- Format border"         = function() print(tb_, "- Format border"),
+  "o__FORMAT_BORDER__"      = section(tb_, "FORMAT BORDER"),
   border_outer              = aka(flextable::border_outer),
   border_outer_t            = aka(flextable::hline_top),
   border_outer_b            = aka(flextable::hline_bottom),
@@ -68,7 +163,7 @@ tb_ <- structure(list(
   border_around             = aka(flextable::surround),
   border_none               = aka(flextable::border_remove),
 
-  "- Flexthemes"            = function() print(tb_, "- Flexthemes"),
+  "o__FLEXTHEMES__"         = section(tb_, "FLEXTHEMES"),
   # TODO: add a SciViews theme
   flextheme_alafoli         = aka(flextable::theme_alafoli),
   flextheme_apa             = aka(flextable::theme_apa),
@@ -80,7 +175,7 @@ tb_ <- structure(list(
   flextheme_vanilla         = aka(flextable::theme_vanilla),
   flextheme_zebra           = aka(flextable::theme_zebra),
 
-  "- Body, header & footer" = function() print(tb_, "- Body, header & footer"),
+  "o__BODY_HEADER_FOOTER__" = section(tb_, "BODY HEADER FOOTER"),
   add_body                  = aka(flextable::add_body),
   add_body_row              = aka(flextable::add_body_row),
   add_header                = aka(flextable::add_header),
@@ -95,7 +190,7 @@ tb_ <- structure(list(
   set_footer_df             = aka(flextable::set_footer_df),
   delete_part               = aka(flextable::delete_part),
 
-  "- Cell merging"          = function() print(tb_, "- Cell merging"),
+  "o__CELL_MERGING__"       = section(tb_, "CELL MERGING"),
   merge_at                  = aka(flextable::merge_at),
   merge_h                   = aka(flextable::merge_h),
   merge_h_range             = aka(flextable::merge_h_range),
@@ -103,11 +198,11 @@ tb_ <- structure(list(
   merge_none                = aka(flextable::merge_none),
   fix_border_issues         = aka(flextable::fix_border_issues),
 
-  "- Captions & footnotes"  = function() print(tb_, "- Captions & footnotes"),
+  "o__CAPTIONS_FOOTNOTES__" = section(tb_, "CAPTIONS FOOTNOTES"),
   set_caption               = aka(flextable::set_caption),
   set_footnote              = aka(flextable::footnote),
 
-  "- Table size"            = function() print(tb_, "- Table size"),
+  "o__TABLE_SIZE__"         = section(tb_, "TABLE SIZE"),
   ncol_keys                 = aka(flextable::ncol_keys),
   nrow_part                 = aka(flextable::nrow_part),
   flextable_dim             = aka(flextable::flextable_dim),
@@ -121,7 +216,7 @@ tb_ <- structure(list(
   set_height_all            = aka(flextable::height_all),
   hrule                     = aka(flextable::hrule),
 
-  "- Cell content format"   = function() print(tb_, "- Cell content format"),
+  "o__CELL_CONTENT_FORMAT__" = section(tb_, "CELL CONTENT FORMAT"),
   colformat_chr             = aka(flextable::colformat_char),
   colformat_date            = aka(flextable::colformat_date),
   colformat_datetime        = aka(flextable::colformat_datetime),
@@ -134,7 +229,7 @@ tb_ <- structure(list(
   set_col_labels            = aka(flextable::labelizor),
   set_col_blank             = aka(flextable::void),
 
-  "- Cell multiformat"      = function() print(tb_, "- Cell multiformat"),
+  "o__CELL_MULTIFORMAT__"   = section(tb_, "CELL MULTIFORMAT"),
   compose_chunks            = aka(flextable::compose), # Also mk_par
   append_chunks             = aka(flextable::append_chunks),
   prepend_chunks            = aka(flextable::prepend_chunks),
@@ -160,7 +255,7 @@ tb_ <- structure(list(
   gg_chunk                  = aka(flextable::gg_chunk),
   grid_chunk                = aka(flextable::grid_chunk),
 
-  "- Chunk formatters"      = function() print(tb_, "- Chunk formatters"),
+  "o__CHUNK_FOMATTERS__"    = section(tb_, "CHUNK FOMATTERS"),
   chkformat_int             = aka(flextable::fmt_int),
   chkformat_dbl             = aka(flextable::fmt_dbl),
   chkformat_percent         = aka(flextable::fmt_pct),
@@ -169,7 +264,7 @@ tb_ <- structure(list(
   chkformat_stats           = aka(flextable::fmt_2stats), #Same as fmt_summarizor?
   chkformat_header_n        = aka(flextable::fmt_header_n),
 
-  "- Rendering"             = function() print(tb_, "- Rendering"),
+  "o__RENDERING__"          = section(tb_, "RENDERING"),
   # Also print(ft, preview = "...")
   save_as_html              = aka(flextable::save_as_html), # Should be in write()?
   save_as_docx              = aka(flextable::save_as_docx), # Should be in write()?
@@ -184,7 +279,7 @@ tb_ <- structure(list(
   add_latex_dep             = aka(flextable::add_latex_dep),
   flextable_html_dependency = aka(flextable::flextable_html_dependency)
 
-  #"- Rendering office"      = function() print(tb_, "- Rendering office"), (rename office_... to indicate specific use?)
+  #"o__RENDERING_OFFICE__"   = fsection(tb_, "RENDERING OFFICE"), (rename office_... to indicate specific use?)
   #body_add_flextable        = aka(flextable::body_add_flextable),
   #body_replace_flextable_at_bkm = aka(flextable::body_replace_flextable_at_bkm),
   #headers_flextable_at_bkm  = aka(flextable::headers_flextable_at_bkm),
@@ -192,62 +287,68 @@ tb_ <- structure(list(
   #as_word_field             = aka(flextable::as_word_field),
   #keep_with_next            = aka(flextable::keep_with_next),
   #paginate                  = aka(flextable::paginate),
-), set = "tb_", class = c("collection", "list"))
+) #, set = "tb_", class = c("collection", "list"))
 
-#' @export
-#' @rdname tb_
-#' @param x A tb_ object
-#' @param section Print only a section in the collection
-#' @param ... Further arguments (not used yet)
-#' @method print collection
-print.collection <- function(x, section = NULL, ...) {
-  names <- names(x)
+# TODO: not needed any more!
+# @export
+# @rdname tb_
+# @param x A tb_ object
+# @param section Print only a section in the collection
+# @param ... Further arguments (not used yet)
+# @method print collection
+# print.collection <- function(x, section = NULL, ...) {
+#   names <- names(x)
+#
+#   # Possibly restrict to a given section
+#   l <- length(names)
+#   sel <- 1:l # Select everything by default
+#   if (!is.null(section)) {
+#     section <- paste0("o__", toupper(section), "__")
+#     start <- which(names == section)
+#     if (!length(start)) {
+#       warning("Section not found, displaying everything")
+#     } else {
+#       end <- which(startsWith(names[(start + 1):l], "o__"))
+#       if (length(end)) {
+#         end <- end[1] - 1
+#       } else {
+#         end <- l
+#       }
+#       sel <- start:end
+#     }
+#   }
+#   items <- names <- names[sel]
+#
+#   # For titles
+#   is_title <- sapply(names, startsWith, prefix = "o__")
+#
+#   # Format titles
+#   items[is_title] <- cli::col_red(items[is_title])
+#
+#   # Format items
+#   items[!is_title] <- paste0("  $", names[!is_title])
+#   # When the item or src is a function, append () to make it clear
+#   is_fun <- sapply(x[sel], is.function)
+#   items[is_fun & !is_title] <- paste0(items[is_fun & !is_title], "()")
+#
+#   # Reformat titles
+#   items[is_title] <- gsub("_", " ", items[is_title], fixed = TRUE)
+#
+#   srcs <- sapply(x[sel], function(obj) attr(comment(obj), "src") %||% "")
+#   # Default sources is the same function as the name
+#   srcs[srcs == "" & !is_title] <- names[srcs == "" & !is_title]
+#
+#   # Add a link to items
+#   for (i in 1:sum(!is_title))
+#     items[!is_title][i] <- paste0(items[!is_title][i], cli::col_blue(" = ",
+#     .peek_help_link(srcs[!is_title][i])))
+#
+#   cat(items, sep = "\n")
+#
+#   invisible(x)
+# }
 
-  # Possibly restrict to a given section
-  l <- length(names)
-  sel <- 1:l # Select everything by default
-  if (!is.null(section)) {
-    start <- which(names == section)
-    if (!length(start)) {
-      warning("Section not found, displaying everything")
-    } else {
-      end <- which(startsWith(names[(start + 1):l], "- "))
-      if (length(end)) {
-        end <- end[1] - 1
-      } else {
-        end <- l
-      }
-      sel <- start:end
-    }
-  }
-  items <- names <- names[sel]
-
-  # For titles
-  is_title <- sapply(names, startsWith, prefix = "- ")
-
-  # Format titles
-  items[is_title] <- cli::col_red(items[is_title])
-
-  # Format items
-  items[!is_title] <- paste0("  $", names[!is_title])
-  # When the item or src is a function, append () to make it clear
-  is_fun <- sapply(x[sel], is.function)
-  items[is_fun] <- paste0(items[is_fun], "()")
-
-  srcs <- sapply(x[sel], function(obj) attr(comment(obj), "src") %||% "")
-  # Default sources is the same function as the name
-  srcs[srcs == "" & !is_title] <- names[srcs == ""]
-
-  # Add a link to items
-  for (i in 1:sum(!is_title))
-    items[!is_title][i] <- paste0(items[!is_title][i], cli::col_blue(" = ",
-    .peek_help_link(srcs[!is_title][i])))
-
-  cat(items, sep = "\n")
-
-  invisible(x)
-}
-
+# TODO: not needed any more!
 # @export
 # @rdname tb_
 # @method .DollarNames subsettable_tb

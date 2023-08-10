@@ -14,7 +14,7 @@
 #' @name tabularise-package
 
 ## usethis namespace: start
-#' @importFrom svMisc aka
+#' @importFrom svMisc aka section
 #' @importFrom rlang %||% is_interactive
 #' @importFrom utils apropos head tail
 ## usethis namespace: end

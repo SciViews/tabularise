@@ -3,34 +3,23 @@
 \docType{data}
 \name{tb_}
 \alias{tb_}
-\alias{print.collection}
-\title{Tabularise set of function (mainly from {flextable})}
+\title{Tabularise collection of function (mainly from {flextable})}
 \format{
-An object of class \code{collection} (inherits from \code{list}) of length 147.
+An object of class \code{list} of length 147.
 }
 \usage{
 tb_
-
-\method{print}{collection}(x, section = NULL, ...)
-}
-\arguments{
-\item{x}{A tb_ object}
-
-\item{section}{Print only a section in the collection}
-
-\item{...}{Further arguments (not used yet)}
 }
 \value{
 When printing \code{tb_} alone, a list of all verbs and other objects
-provided in
-the set are returned.
+provided in the collection are returned.
 }
 \description{
-This set provides all the functions you can use to manipulate \code{tabularise()}
-tables. They mostly contain the {flextable} API, with some functions renamed
-for a more coherent naming conventions. You are supposed to use it like
-\code{tb_$verb(....)} where \code{verb} is one of the objects contained in the set. Use
-\code{tb_} to list all objects in the set.
+This collection provides all the functions you can use to manipulate
+\code{tabularise()} tables. They mostly contain the {flextable} API, with some
+functions renamed for a more coherent naming conventions. You are supposed to
+use it like \code{tb_$verb(....)} where \code{verb} is one of the objects contained in
+the collection. Use \code{tb_} to list all objects in the collection.
 }
 \examples{
 # TODO...
