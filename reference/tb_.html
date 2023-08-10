@@ -79,7 +79,7 @@ tb_ to list all objects in the set."><meta property="og:image" content="https://
     </div>
 
     <div class="ref-description section level2">
-    <p>This set provides all the functions you can use to manipulate <code><a href="https://www.sciviews.org/chart/reference/tabularise-package.html">tabularise()</a></code>
+    <p>This set provides all the functions you can use to manipulate <code><a href="tabularise.html">tabularise()</a></code>
 tables. They mostly contain the flextable API, with some functions renamed
 for a more coherent naming conventions. You are supposed to use it like
 <code>tb_$verb(....)</code> where <code>verb</code> is one of the objects contained in the set. Use
@@ -90,18 +90,22 @@ for a more coherent naming conventions. You are supposed to use it like
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="va">tb_</span></span>
 <span></span>
-<span><span class="co"># S3 method for fun_set</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># S3 method for collection</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, section <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
-    <p>An object of class <code>fun_set</code> (inherits from <code>list</code>) of length 147.</p>
+    <p>An object of class <code>collection</code> (inherits from <code>list</code>) of length 147.</p>
     </div>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
 <dd><p>A tb_ object</p></dd>
+
+
+<dt>section</dt>
+<dd><p>Print only a section in the collection</p></dd>
 
 
 <dt>...</dt>
