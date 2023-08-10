@@ -2,30 +2,18 @@
 % Please edit documentation in R/tabularise-package.R
 \docType{package}
 \name{tabularise-package}
-\alias{tabularise}
 \alias{tabularise-package}
-\title{tabularise: Create Tabular Outputs from R (using "Flextable")}
+\title{Create Tabular Outputs from R (using "Flextable")}
 \description{
-\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
-
-Create rich-formatted tabular outputs from R that can be incorporated into R Markdown/Quarto documents with correct output at least in HTML, LaTeX/PDF, Word and PowerPoint for various R objects.
+Create rich-formatted tabular outputs from R that can be
+incorporated into R Markdown/Quarto documents with correct output at least in
+HTML, LaTeX/PDF, Word and PowerPoint for various R objects.
 }
-\seealso{
-Useful links:
+\section{Important functions}{
+
 \itemize{
-  \item \url{https://github.com/SciViews/tabularise}
-  \item \url{https://www.sciviews.org/tabularise/}
-  \item Report bugs at \url{https://github.com/SciViews/tabularise/issues}
+\item \code{\link[=tabularise]{tabularise()}} constructs a \strong{flextable} object.
+\item \link{tb_} a collection of functions to manipulate and format a table.
+}
 }
 
-}
-\author{
-\strong{Maintainer}: Philippe Grosjean \email{phgrosjean@sciviews.org} (\href{https://orcid.org/0000-0002-2694-9471}{ORCID})
-
-Authors:
-\itemize{
-  \item Guyliann Engels \email{guyliann.engels@umons.ac.be}
-}
-
-}
-\keyword{internal}

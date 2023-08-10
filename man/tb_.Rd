@@ -3,18 +3,20 @@
 \docType{data}
 \name{tb_}
 \alias{tb_}
-\alias{print.fun_set}
+\alias{print.collection}
 \title{Tabularise set of function (mainly from {flextable})}
 \format{
-An object of class \code{fun_set} (inherits from \code{list}) of length 147.
+An object of class \code{collection} (inherits from \code{list}) of length 147.
 }
 \usage{
 tb_
 
-\method{print}{fun_set}(x, ...)
+\method{print}{collection}(x, section = NULL, ...)
 }
 \arguments{
 \item{x}{A tb_ object}
+
+\item{section}{Print only a section in the collection}
 
 \item{...}{Further arguments (not used yet)}
 }
