@@ -17,5 +17,6 @@
 #' @importFrom svMisc aka section
 #' @importFrom rlang %||% is_interactive
 #' @importFrom utils apropos head tail
+#' @importFrom stats terms
 ## usethis namespace: end
 NULL

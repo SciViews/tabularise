@@ -11,7 +11,7 @@
 # To satisfy verb + avoid name clash, place set_ before the name (set_bold).
 #
 # 2) There is a confusion between theme_xxx in ggplot and flextable. This is
-# ennoying when autocompleting themes -> flextheme_xxx as synonyms.
+# annoying when autocompleting themes -> flextheme_xxx as synonyms.
 #
 # 3) There is a possible clash between fmt_xxx and gt::fmt_xxx -> chkformat_xxx
 # are synonyms to fmt_xxx in tabularise (reminiscent to colformat_). Also
