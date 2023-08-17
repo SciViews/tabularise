@@ -15,7 +15,7 @@
 
 ## usethis namespace: start
 #' @importFrom svMisc aka section
-#' @importFrom rlang %||% is_interactive get_expr new_function pairlist2 quo
+#' @importFrom rlang %||% is_interactive f_rhs get_expr new_function pairlist2 quo
 #' @importFrom utils apropos head tail
 #' @importFrom stats terms
 ## usethis namespace: end

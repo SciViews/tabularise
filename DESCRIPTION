@@ -21,7 +21,8 @@ Imports:
     svMisc (>= 1.4.0),
     data.io,
     utils,
-    stats
+    stats,
+    commonmark
 Suggests: 
     knitr,
     rmarkdown,
