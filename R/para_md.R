@@ -325,7 +325,7 @@ unstack_state <- function(state) {
 # #flextable(head(iris)) |> add_footer_lines(ftExtra::as_paragraph_md(md5)) # This also produces an error
 # flextable(head(iris)) |> add_footer_lines(ftExtra::as_paragraph_md(md6)) # as well as this one
 #bench::mark(check = FALSE,
-#  tabularize = flextable(head(iris)) |> add_footer_lines(c_md(md1)),
+#  tabularize = flextable(head(iris)) |> tb_$add_footer_lines(c_md(md1)),
 #  ftExtra = flextable(head(iris)) |> add_footer_lines(ftExtra::as_paragraph_md(md1))
 #) # My version is 3x faster than ftExtra on this one
 #bench::mark(check = FALSE,
