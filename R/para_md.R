@@ -300,7 +300,7 @@ unstack_state <- function(state) {
 # md1 <- c("Ceci *est* un **~~texte~~** _av^ec^_ `mono`, super^scri\\ pt^ et sub~script~ and [url](https://me.org/test/).", "Second \\\\ line.")
 # Bug:
 # - Equations are not inline in html version. Use of a patched {equatags} 0.2.1 that solves the problem.
-# md2 <- " Second  _~~paragraph\\^x\\^~~_ with x \\< \\$10 \\> y and \\~y\\~  **text** with $$\\hat{x_1} + \\beta_x$$ and ![une image](github.png){15}."
+# md2 <- " Second  _~~paragraph\\^x\\^~~_ with x \\< \\$10 \\> y and \\~y\\~  **text** with $\\hat{x_1} + \\beta_x$..." # and ![une image](github.png){15}."
 # md3 <- c("# Heading **1**\n## Heading **2**\n### Heading **3**\n#### Heading **4**\n##### Heading **5**\n###### Heading **6**", "* List 1\n  1. List 1a\n  2. List 1b\n* List 2\n<br />\nSome text with ~~special color~~{+#F50490}")
 # md4 <- "Text\n> Some quote\ntext\n>> Subquote text\n\n```\n1+1 # Some code\nMore code\n# A comment not interpretted as h1\n```\nText after code bloc\n< Text after \\<\n\\< Text after escaped < (also >, &, ' or \" and @)\n\nText interpeted as h2\n----\nMore text."
 # md5 <- "## Heading 2 [url](https://www.sciviews.org) and ~~strike~~{+green} $$\\chi^2$$ inside\n### Heading ~~3~~{-} *here* with mailto:phgrosjean@sciviews.org\nStrike~~through **with** [url3](mailto:phgrosjean@sciviews.org) inside it~~ back to normal, 'with' \"smart\" --, ---, and ... punctuations, or \\\" and \\'."
@@ -308,7 +308,7 @@ unstack_state <- function(state) {
 # c_md(md1, md2)
 # c_md(md1, md2, debug = TRUE)
 # c_md(md3, debug = TRUE)[[1]]
-# flextable(head(iris)) |> add_footer_lines(c_md(md1, md2))
+# tabularise(head(iris)) |> tb_$add_footer_lines(para_md(md1, md2))
 # flextable(head(iris)) |> add_footer_lines(c_md(md3))
 # flextable(head(iris)) |> add_footer_lines(c_md(md3, h.fonts = rep(c("Arial Black", "Times New Roman"), 3L)))
 # flextable(head(iris)) |> add_footer_lines(c_md(md4))
@@ -411,9 +411,13 @@ unstack_state <- function(state) {
   html <- gsub("\\^([^^ \t]+)\\^", "<sup>\\1</sup>", html)
 
   # Replace $$...$$ by <eq>...</eq>
+  # TODO: still need to differentiate inline and display equations in flextable
   # (only inline eq for now but we use double $$ to maximally avoid clashes)
   # Note that $ is not allowed anyway in equations by katex
-  html <- gsub("\\$\\$([^$]+)\\$\\$", "<eq>\\1</eq>", html)
+  #html <- gsub("\\$\\$([^$]+)\\$\\$", "<eq>\\1</eq>", html)
+
+  # Replace $...$ by <eq>...</eq>
+  html <- gsub("\\$([^$]+)\\$", "<eq>\\1</eq>", html)
 
   # Eliminate all single tags, like <br /> that we don't use
   html <- gsub("<[a-z][a-z0-9]+ ?/>", "", html)
