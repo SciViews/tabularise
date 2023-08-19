@@ -31,10 +31,16 @@
     <loc>https://www.sciviews.org/chart/news/index.html</loc>
   </url>
   <url>
+    <loc>https://www.sciviews.org/chart/reference/colformat_md.html</loc>
+  </url>
+  <url>
     <loc>https://www.sciviews.org/chart/reference/colformat_sci.html</loc>
   </url>
   <url>
     <loc>https://www.sciviews.org/chart/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://www.sciviews.org/chart/reference/para_md.html</loc>
   </url>
   <url>
     <loc>https://www.sciviews.org/chart/reference/tabularise-package.html</loc>
