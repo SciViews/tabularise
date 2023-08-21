@@ -1,6 +1,6 @@
 # {flextable} API - more consistent function names ------------------------
 
-# For now, these functions are not exported and only accessible via the tb_ set.
+# For now, these functions are not exported and only accessible via the Stb set.
 
 # 54 synonym functions for tabularise over flextable
 # Explanation for adding these synonyms:

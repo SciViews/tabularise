@@ -308,7 +308,7 @@ unstack_state <- function(state) {
 # c_md(md1, md2)
 # c_md(md1, md2, debug = TRUE)
 # c_md(md3, debug = TRUE)[[1]]
-# tabularise(head(iris)) |> tb_$add_footer_lines(para_md(md1, md2))
+# tabularise(head(iris)) |> Stb$add_footer_lines(para_md(md1, md2))
 # flextable(head(iris)) |> add_footer_lines(c_md(md3))
 # flextable(head(iris)) |> add_footer_lines(c_md(md3, h.fonts = rep(c("Arial Black", "Times New Roman"), 3L)))
 # flextable(head(iris)) |> add_footer_lines(c_md(md4))
@@ -325,7 +325,7 @@ unstack_state <- function(state) {
 # #flextable(head(iris)) |> add_footer_lines(ftExtra::as_paragraph_md(md5)) # This also produces an error
 # flextable(head(iris)) |> add_footer_lines(ftExtra::as_paragraph_md(md6)) # as well as this one
 #bench::mark(check = FALSE,
-#  tabularize = flextable(head(iris)) |> tb_$add_footer_lines(c_md(md1)),
+#  tabularize = flextable(head(iris)) |> Stb$add_footer_lines(c_md(md1)),
 #  ftExtra = flextable(head(iris)) |> add_footer_lines(ftExtra::as_paragraph_md(md1))
 #) # My version is 3x faster than ftExtra on this one
 #bench::mark(check = FALSE,

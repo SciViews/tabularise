@@ -16,7 +16,7 @@
 #' need to change the default).
 #'
 #' @return A **flextable** object you can print in different form or rearrange
-#' with the {flextable} functions from set tb_$verb().
+#' with the {flextable} functions from set Stb$verb().
 #' @export
 #'
 #' @examples
