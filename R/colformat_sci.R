@@ -39,7 +39,7 @@
 #' summ <- summary(lm(Volume ~ Girth + Height, data = trees))
 #' tabularise(as.data.frame(summ$coefficients)) |>
 #'   colformat_sci() |>
-#'   tb_$autofit_size()
+#'   Stb$autofit()
 colformat_sci <- function(x, i = NULL, j = NULL, digits = 3, scipen = 0,
   fancy = TRUE, op = c("\U00B7", "\U00D7", "*", "x")) {
 

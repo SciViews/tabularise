@@ -60,6 +60,6 @@ dat <- data.frame(
   factor = factor(c("*setosa*", "`virginica`", "**versicolor**"))
 )
 tabularise(dat)
-tabularise(dat) |> colformat_md() |> tb_$autofit_size()
-tabularise(dat) |> colformat_md(i = 2:3, j = 'names') |> tb_$autofit_size()
+tabularise(dat) |> colformat_md() |> Stb$autofit()
+tabularise(dat) |> colformat_md(i = 2:3, j = 'names') |> Stb$autofit()
 }

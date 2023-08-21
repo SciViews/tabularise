@@ -11,9 +11,9 @@
 \alias{tabularise_headtail.data.frame}
 \title{Tabularise an object (arrange or enter in tabular form)}
 \usage{
-tabularise(data, n = 6, ..., type = "default", env = parent.frame())
+tabularise(data, ..., type = "default", env = parent.frame())
 
-tabularize(data, n = 6, ..., type = "default", env = parent.frame())
+tabularize(data, ..., type = "default", env = parent.frame())
 
 tabularise_default(data, ..., env = env)
 
@@ -41,8 +41,6 @@ tabularise_headtail(data, n = 10, ..., env = env)
 \arguments{
 \item{data}{An object}
 
-\item{n}{The number of lines to tabularise}
-
 \item{...}{Further arguments (depending on the object class and on \verb{type=}).}
 
 \item{type}{The type of table to produce.}
@@ -63,6 +61,8 @@ need to change the default).}
 \item{max.cols}{The maximum number of columns to display in the table}
 
 \item{auto.labs}{Are labels automatically used for names of table columns?}
+
+\item{n}{The number of lines to display in the (truncated) table.}
 }
 \value{
 A \strong{flextable} object you can print in different form or rearrange

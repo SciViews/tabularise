@@ -99,7 +99,7 @@
 #' md2 <- paste0("* List 1\n  1. List 1a\n  2. List 1b\n* List 2\n<br />\n",
 #'   "*Some text* with super^script^, sub~script~ and ~~color~~{+#F50490}")
 #' tabularise(head(iris)) |>
-#'   tb_$add_footer_lines(para_md(md1, md2))
+#'   Stb$add_footer_lines(para_md(md1, md2))
 para_md <- function(...,
   h.fonts = rep(flextable::get_flextable_defaults()$font.family, 6),
   h.sizes = c(15, 13, 9), h.colors = c("black", "darkgray"),

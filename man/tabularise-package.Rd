@@ -13,7 +13,7 @@ HTML, LaTeX/PDF, Word and PowerPoint for various R objects.
 
 \itemize{
 \item \code{\link[=tabularise]{tabularise()}} constructs a \strong{flextable} object.
-\item \link{tb_} a collection of functions to manipulate and format a table.
+\item \link{Stb} a collection of functions to manipulate and format a table.
 }
 }
 

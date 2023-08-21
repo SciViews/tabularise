@@ -8,7 +8,7 @@
 #'
 #'- [tabularise()] constructs a **flextable** object.
 #'
-#'- [tb_] a collection of functions to manipulate and format a table.
+#'- [Stb] a collection of functions to manipulate and format a table.
 #'
 #' @docType package
 #' @name tabularise-package

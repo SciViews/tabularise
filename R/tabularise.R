@@ -9,8 +9,8 @@
 #' Tabularise an object (arrange or enter in tabular form)
 #'
 #' @param data An object
-#' @param n The number of lines to tabularise
 #' @param ... Further arguments (depending on the object class and on `type=`).
+#' @param n The number of lines to display in the (truncated) table.
 #' @param type The type of table to produce.
 #' @param env The environment where to evaluate formulas (you probably do not
 #' need to change the default).
@@ -23,8 +23,8 @@
 #' tabularise(iris)
 #' tabularise$headtail(iris)
 tabularise <- structure(
-  function(data, n = 6, ..., type = "default", env = parent.frame()) {
-    get_type("tabularise", type = type)(data, n = n, ...)
+  function(data, ..., type = "default", env = parent.frame()) {
+    get_type("tabularise", type = type)(data, ...)
   }, class = c("function", "subsettable_type", "tabularise"))
 
 # Synonyms
@@ -115,8 +115,8 @@ tabularise_default.data.frame <- function(data, formula = NULL,
       add_footer_lines(as_paragraph(as_i(note)))
   }
   if (isTRUE(auto.labs)) {
-    align_h(res, align = "center", part = "header") |>
-      align_v(valign = "bottom", part = "header")
+    align(res, align = "center", part = "header") |>
+      valign(valign = "bottom", part = "header")
   } else {
     res
   }
@@ -136,7 +136,7 @@ tabularise_headtail.default <- function(data, n = 10, ..., env = env) {
 }
 
 #' @export
-#' @importFrom flextable add_footer_lines colformat_num
+#' @importFrom flextable add_footer_lines align valign colformat_char colformat_num
 #' @rdname tabularise
 #' @method tabularise_headtail data.frame
 tabularise_headtail.data.frame <- function(data, n = 10,  auto.labs = TRUE,
@@ -165,7 +165,7 @@ tabularise_headtail.data.frame <- function(data, n = 10,  auto.labs = TRUE,
       add_footer_lines(paste0("First and last ", n, " rows of a total of ",
         nrow(data))) |>
       # TODO: this symbol needs xelatex
-      colformat_chr(i = n + 1, na_str = "\U22EE", nan_str = "\U22EE") |>
+      colformat_char(i = n + 1, na_str = "\U22EE", nan_str = "\U22EE") |>
       colformat_num(i = n + 1, na_str = "\U22EE", nan_str = "\U22EE")
   }
 }

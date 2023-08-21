@@ -41,5 +41,5 @@ Scientific format for columns in flextable
 summ <- summary(lm(Volume ~ Girth + Height, data = trees))
 tabularise(as.data.frame(summ$coefficients)) |>
   colformat_sci() |>
-  tb_$autofit_size()
+  Stb$autofit()
 }

@@ -37,8 +37,8 @@
 #'   factor = factor(c("*setosa*", "`virginica`", "**versicolor**"))
 #' )
 #' tabularise(dat)
-#' tabularise(dat) |> colformat_md() |> tb_$autofit_size()
-#' tabularise(dat) |> colformat_md(i = 2:3, j = 'names') |> tb_$autofit_size()
+#' tabularise(dat) |> colformat_md() |> Stb$autofit()
+#' tabularise(dat) |> colformat_md(i = 2:3, j = 'names') |> Stb$autofit()
 colformat_md <- function(x, i = NULL, j = NULL,
   h.sizes = c(15, 13, 9), h.colors = c("black", "darkgray"),
   strike = list(color = h.colors[2], underlined = FALSE), bullet = "\U00b7",
