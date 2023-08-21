@@ -31,6 +31,9 @@
     <loc>https://www.sciviews.org/chart/news/index.html</loc>
   </url>
   <url>
+    <loc>https://www.sciviews.org/chart/reference/Stb.html</loc>
+  </url>
+  <url>
     <loc>https://www.sciviews.org/chart/reference/colformat_md.html</loc>
   </url>
   <url>
@@ -47,8 +50,5 @@
   </url>
   <url>
     <loc>https://www.sciviews.org/chart/reference/tabularise.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/tb_.html</loc>
   </url>
 </urlset>
