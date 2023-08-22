@@ -3,58 +3,11 @@
 \name{tabularise}
 \alias{tabularise}
 \alias{tabularize}
-\alias{tabularise_default}
-\alias{tabularise_default.default}
-\alias{tabularise_default.data.frame}
-\alias{tabularise_headtail}
-\alias{tabularise_headtail.default}
-\alias{tabularise_headtail.data.frame}
-\alias{tabularise_coef}
-\alias{tabularise_coef.default}
-\alias{tabularise_tidy}
-\alias{tabularise_tidy.default}
-\alias{tabularise_glance}
-\alias{tabularise_glance.default}
 \title{Tabularise an object (arrange or enter in tabular form)}
 \usage{
 tabularise(data, ..., type = "default", env = parent.frame())
 
 tabularize(data, ..., type = "default", env = parent.frame())
-
-tabularise_default(data, ..., env = env)
-
-\method{tabularise_default}{default}(data, ..., type = NULL, env = parent.frame())
-
-\method{tabularise_default}{data.frame}(
-  data,
-  formula = NULL,
-  col_keys = names(data),
-  cwidth = 0.75,
-  cheight = 0.25,
-  max.rows = 50,
-  max.cols = 15,
-  auto.labs = TRUE,
-  ...,
-  env = parent.frame()
-)
-
-tabularise_headtail(data, n = 10, ..., env = env)
-
-\method{tabularise_headtail}{default}(data, n = 10, ..., env = env)
-
-\method{tabularise_headtail}{data.frame}(data, n = 10, auto.labs = TRUE, ..., env = env)
-
-tabularise_coef(data, ..., env = env)
-
-\method{tabularise_coef}{default}(data, ..., env = env)
-
-tabularise_tidy(data, ..., env = env)
-
-\method{tabularise_tidy}{default}(data, ..., env = env)
-
-tabularise_glance(data, ..., env = env)
-
-\method{tabularise_glance}{default}(data, ..., env = env)
 }
 \arguments{
 \item{data}{An object}
@@ -65,22 +18,6 @@ tabularise_glance(data, ..., env = env)
 
 \item{env}{The environment where to evaluate formulas (you probably do not
 need to change the default).}
-
-\item{formula}{A formula to create a table using the {tables} syntax}
-
-\item{col_keys}{The names/keys to use for the table columns}
-
-\item{cwidth}{Initial width for cell sizes in inches}
-
-\item{cheight}{Initial height for cell sizes in inches}
-
-\item{max.rows}{The maximum number of rows to display in the table}
-
-\item{max.cols}{The maximum number of columns to display in the table}
-
-\item{auto.labs}{Are labels automatically used for names of table columns?}
-
-\item{n}{The number of lines to display in the (truncated) table.}
 }
 \value{
 A \strong{flextable} object you can print in different form or rearrange
@@ -91,5 +28,8 @@ Tabularise an object (arrange or enter in tabular form)
 }
 \examples{
 tabularise(iris)
-tabularise$headtail(iris)
+}
+\seealso{
+\code{\link[=tabularise_default]{tabularise_default()}}, \code{\link[=tabularise_headtail]{tabularise_headtail()}}, \code{\link[=tabularise_coef]{tabularise_coef()}},
+\code{\link[=tabularise_tidy]{tabularise_tidy()}}, \code{\link[=tabularise_glance]{tabularise_glance()}}
 }

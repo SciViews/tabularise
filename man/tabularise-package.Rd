@@ -5,15 +5,27 @@
 \alias{tabularise-package}
 \title{Create Tabular Outputs from R (using "Flextable")}
 \description{
-Create rich-formatted tabular outputs from R that can be
+Create rich-formatted tabular outputs from various R objects that can be
 incorporated into R Markdown/Quarto documents with correct output at least in
 HTML, LaTeX/PDF, Word and PowerPoint for various R objects.
+}
+\details{
+For an object class, there is a "default" method that creates the most
+obvious tabular form for this object, but there might be also other types
+provided with different tabular views of the same object. All types are
+accessible from the \code{\link[=tabularise]{tabularise()}} function that accepts \verb{type=} argument,
+or better, by using the compact and easier to read \code{tabularise$type()} form.
 }
 \section{Important functions}{
 
 \itemize{
 \item \code{\link[=tabularise]{tabularise()}} constructs a \strong{flextable} object.
-\item \link{Stb} a collection of functions to manipulate and format a table.
+\item \link{Stb} a collection of functions to manipulate and format a table (mostly
+functions from the {flextable} package.
+\item \code{\link[=colformat_sci]{colformat_sci()}} and \code{\link[=colformat_md]{colformat_md()}} are additional columns formatters for
+\strong{flextable} objects, respectively, scientific and markdown formats.
+\item \code{\link[=para_md]{para_md()}} creates {flextable} paragraphs with rich-formatting by
+converting Markdown strings into such {flextable} paragraphs.
 }
 }
 

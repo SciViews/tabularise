@@ -22,7 +22,8 @@ Imports:
     data.io,
     utils,
     stats,
-    commonmark
+    commonmark,
+    generics
 Suggests: 
     knitr,
     rmarkdown,
