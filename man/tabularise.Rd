@@ -9,6 +9,12 @@
 \alias{tabularise_headtail}
 \alias{tabularise_headtail.default}
 \alias{tabularise_headtail.data.frame}
+\alias{tabularise_coef}
+\alias{tabularise_coef.default}
+\alias{tabularise_tidy}
+\alias{tabularise_tidy.default}
+\alias{tabularise_glance}
+\alias{tabularise_glance.default}
 \title{Tabularise an object (arrange or enter in tabular form)}
 \usage{
 tabularise(data, ..., type = "default", env = parent.frame())
@@ -37,6 +43,18 @@ tabularise_headtail(data, n = 10, ..., env = env)
 \method{tabularise_headtail}{default}(data, n = 10, ..., env = env)
 
 \method{tabularise_headtail}{data.frame}(data, n = 10, auto.labs = TRUE, ..., env = env)
+
+tabularise_coef(data, ..., env = env)
+
+\method{tabularise_coef}{default}(data, ..., env = env)
+
+tabularise_tidy(data, ..., env = env)
+
+\method{tabularise_tidy}{default}(data, ..., env = env)
+
+tabularise_glance(data, ..., env = env)
+
+\method{tabularise_glance}{default}(data, ..., env = env)
 }
 \arguments{
 \item{data}{An object}
@@ -66,7 +84,7 @@ need to change the default).}
 }
 \value{
 A \strong{flextable} object you can print in different form or rearrange
-with the {flextable} functions from set tb_$verb().
+with the {flextable} functions from set Stb$verb().
 }
 \description{
 Tabularise an object (arrange or enter in tabular form)

@@ -169,3 +169,43 @@ tabularise_headtail.data.frame <- function(data, n = 10,  auto.labs = TRUE,
       colformat_num(i = n + 1, na_str = "\U22EE", nan_str = "\U22EE")
   }
 }
+
+#' @export
+#' @rdname tabularise
+tabularise_coef <- function(data, ..., env = env) {
+  UseMethod("tabularise_coef")
+}
+
+#' @export
+#' @rdname tabularise
+#' @method tabularise_coef default
+tabularise_coef.default <- function(data, ..., env = env) {
+  stop("No method for tabularise_coef() for this object")
+}
+
+#' @export
+#' @rdname tabularise
+tabularise_tidy <- function(data, ..., env = env) {
+  UseMethod("tabularise_tidy")
+}
+
+#' @export
+#' @rdname tabularise
+#' @method tabularise_tidy default
+tabularise_tidy.default <- function(data, ..., env = env) {
+  stop("No method for tabularise_tidy() for this object")
+}
+
+#' @export
+#' @rdname tabularise
+tabularise_glance <- function(data, ..., env = env) {
+  UseMethod("tabularise_glance")
+}
+
+#' @export
+#' @rdname tabularise
+#' @method tabularise_glance default
+tabularise_glance.default <- function(data, ..., env = env) {
+  stop("No method for tabularise_glance() for this object")
+}
+
