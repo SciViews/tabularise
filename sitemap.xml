@@ -51,4 +51,19 @@
   <url>
     <loc>https://www.sciviews.org/chart/reference/tabularise.html</loc>
   </url>
+  <url>
+    <loc>https://www.sciviews.org/chart/reference/tabularise_coef.html</loc>
+  </url>
+  <url>
+    <loc>https://www.sciviews.org/chart/reference/tabularise_default.html</loc>
+  </url>
+  <url>
+    <loc>https://www.sciviews.org/chart/reference/tabularise_glance.html</loc>
+  </url>
+  <url>
+    <loc>https://www.sciviews.org/chart/reference/tabularise_headtail.html</loc>
+  </url>
+  <url>
+    <loc>https://www.sciviews.org/chart/reference/tabularise_tidy.html</loc>
+  </url>
 </urlset>
