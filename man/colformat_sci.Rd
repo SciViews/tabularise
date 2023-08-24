@@ -10,6 +10,7 @@ colformat_sci(
   j = NULL,
   digits = 3,
   scipen = 0,
+  zero = 0,
   fancy = TRUE,
   op = c("·", "×", "*", "x")
 )
@@ -26,6 +27,8 @@ colformat_sci(
 \item{scipen}{penalty to use to decide if numbers are presented in decimal
 or scientific notation (generally use 0 or -1)}
 
+\item{zero}{value or string to display in case the value is strictly 0}
+
 \item{fancy}{use a perfect scientific notation (\code{TRUE}) or a simplified one
 like 1.34e-5 (\code{FALSE}).}
 
@@ -40,6 +43,6 @@ Scientific format for columns in flextable
 \examples{
 summ <- summary(lm(Volume ~ Girth + Height, data = trees))
 tabularise(as.data.frame(summ$coefficients)) |>
-  colformat_sci() |>
+  colformat_sci(zero = "<2e-16") |>
   Stb$autofit()
 }

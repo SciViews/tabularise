@@ -1,10 +1,11 @@
 # Note: getOptions("digits") = 7 by default -> too high
 # getOption("scipen") = 0 is OK, or a bit too large (sci lower than 10-5)
-.format_sci <- function(x, digits = 3, scipen = 0, fancy = TRUE,
+.format_sci <- function(x, digits = 3, scipen = 0, zero = 0, fancy = TRUE,
   op = c("\U00B7", "\U00D7", "*", "x")) {# Both middle dot and cross OK with default LaTeX engine
   out <- format(x, scientific = scipen, digits = digits)
   na_str <- flextable::get_flextable_defaults()$na_str
   nan_str <- flextable::get_flextable_defaults()$nan_str
+  out[x == 0] <- zero
   out[is.nan(x)] <- nan_str
   out[is.na(x)] <- na_str
   if (isTRUE(fancy)) {
@@ -28,6 +29,7 @@
 #' @param digits number of digits to display
 #' @param scipen penalty to use to decide if numbers are presented in decimal
 #'   or scientific notation (generally use 0 or -1)
+#' @param zero value or string to display in case the value is strictly 0
 #' @param fancy use a perfect scientific notation (`TRUE`) or a simplified one
 #'   like 1.34e-5 (`FALSE`).
 #' @param op the operator character to use in fancy scientific notation
@@ -38,17 +40,17 @@
 #' @examples
 #' summ <- summary(lm(Volume ~ Girth + Height, data = trees))
 #' tabularise(as.data.frame(summ$coefficients)) |>
-#'   colformat_sci() |>
+#'   colformat_sci(zero = "<2e-16") |>
 #'   Stb$autofit()
 colformat_sci <- function(x, i = NULL, j = NULL, digits = 3, scipen = 0,
-  fancy = TRUE, op = c("\U00B7", "\U00D7", "*", "x")) {
+zero = 0, fancy = TRUE, op = c("\U00B7", "\U00D7", "*", "x")) {
 
   stopifnot(inherits(x, "flextable"))
 
-  quo_fun <- quo(.format_sci(x, digits = digits, scipen = scipen, fancy = fancy,
-    op = op))
+  quo_fun <- quo(.format_sci(x, digits = digits, scipen = scipen, zero = zero,
+    fancy = fancy, op = op))
   fun_ <- new_function(pairlist2(x = , digits = digits, scipen = scipen,
-    fancy = fancy, op = op), get_expr(quo_fun))
+    zero = zero, fancy = fancy, op = op), get_expr(quo_fun))
 
   col_keys <- .filter_col_keys(x, j, function(x) is.double(x) &&
       !inherits(x, "POSIXt") && !inherits(x, "Date"))
