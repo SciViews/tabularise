@@ -10,7 +10,8 @@ colformat_sci(
   j = NULL,
   digits = 3,
   scipen = 0,
-  zero = 0,
+  lod = NULL,
+  lod_str = paste("<", lod),
   fancy = TRUE,
   op = c("·", "×", "*", "x")
 )
@@ -27,7 +28,11 @@ colformat_sci(
 \item{scipen}{penalty to use to decide if numbers are presented in decimal
 or scientific notation (generally use 0 or -1)}
 
-\item{zero}{value or string to display in case the value is strictly 0}
+\item{lod}{value indicating the limit of detection, for which we should
+display something like '< lod_value' instead of the actual value; useful
+for p values (R often uses 2e-16 in that case), chemical measurements, ...}
+
+\item{lod_str}{the string to use, by default, it is \verb{< lod_value}.}
 
 \item{fancy}{use a perfect scientific notation (\code{TRUE}) or a simplified one
 like 1.34e-5 (\code{FALSE}).}
@@ -43,6 +48,7 @@ Scientific format for columns in flextable
 \examples{
 summ <- summary(lm(Volume ~ Girth + Height, data = trees))
 tabularise(as.data.frame(summ$coefficients)) |>
-  colformat_sci(zero = "< 2e-16") |>
+  colformat_sci() |>
+  colformat_sci(j = 'Pr(>|t|)', lod = 2e-16) |>
   Stb$autofit()
 }
