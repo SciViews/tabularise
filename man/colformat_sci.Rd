@@ -43,6 +43,6 @@ Scientific format for columns in flextable
 \examples{
 summ <- summary(lm(Volume ~ Girth + Height, data = trees))
 tabularise(as.data.frame(summ$coefficients)) |>
-  colformat_sci(zero = "<2e-16") |>
+  colformat_sci(zero = "< 2e-16") |>
   Stb$autofit()
 }

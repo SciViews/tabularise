@@ -40,7 +40,7 @@
 #' @examples
 #' summ <- summary(lm(Volume ~ Girth + Height, data = trees))
 #' tabularise(as.data.frame(summ$coefficients)) |>
-#'   colformat_sci(zero = "<2e-16") |>
+#'   colformat_sci(zero = "< 2e-16") |>
 #'   Stb$autofit()
 colformat_sci <- function(x, i = NULL, j = NULL, digits = 3, scipen = 0,
 zero = 0, fancy = TRUE, op = c("\U00B7", "\U00D7", "*", "x")) {
