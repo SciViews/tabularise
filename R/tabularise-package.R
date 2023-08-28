@@ -33,3 +33,8 @@
 #' @importFrom stats terms coef
 ## usethis namespace: end
 NULL
+
+.onLoad <- function(libname, pkgname){
+  flextable::set_flextable_defaults(big.mark = "\u00a0",
+    font.family = "Arial", font.size = 12)
+}

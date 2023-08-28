@@ -30,7 +30,8 @@ tabularise_headtail.default <- function(data, n = 10, ..., env = env) {
 }
 
 #' @export
-#' @importFrom flextable add_footer_lines align valign colformat_char colformat_num
+#' @importFrom flextable add_footer_lines autofit align valign colformat_char
+#'   colformat_num
 #' @rdname tabularise_headtail
 #' @param auto.labs Are labels automatically used for names of table columns?
 #' @method tabularise_headtail data.frame
@@ -61,6 +62,11 @@ tabularise_headtail.data.frame <- function(data, n = 10,  auto.labs = TRUE,
         nrow(data))) |>
       # TODO: this symbol needs xelatex
       colformat_char(i = n + 1, na_str = "\U22EE", nan_str = "\U22EE") |>
-      colformat_num(i = n + 1, na_str = "\U22EE", nan_str = "\U22EE")
+      colformat_num(i = n + 1, na_str = "\U22EE", nan_str = "\U22EE") |>
+      autofit() -> res
+    caption <- knitr::opts_current$get('tbl-cap')
+    if (!is.null(caption))
+      res <- set_caption(res, caption)
+    res
   }
 }

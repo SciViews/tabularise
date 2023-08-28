@@ -36,7 +36,8 @@ tabularise_default.default <- function(data, ..., env = parent.frame()) {
 }
 
 #' @export
-#' @importFrom flextable add_footer_lines as_paragraph as_i
+#' @importFrom flextable add_footer_lines as_paragraph as_i autofit set_caption
+#' @importFrom knitr opts_current
 #' @rdname tabularise_default
 #' @param formula A formula to create a table using the {tables} syntax
 #' @param col_keys The names/keys to use for the table columns
@@ -96,6 +97,10 @@ tabularise_default.data.frame <- function(data, formula = NULL,
     res <- flextable(data, col_keys = col_keys, cwidth = cwidth,
       cheight = cheight) |>
       add_footer_lines(as_paragraph(as_i(note)))
+    res <- autofit(res)
+    caption <- knitr::opts_current$get('tbl-cap')
+    if (!is.null(caption))
+    res <- set_caption(res, caption)
   }
   if (isTRUE(auto.labs)) {
     align(res, align = "center", part = "header") |>
