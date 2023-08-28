@@ -97,15 +97,15 @@ tabularise_default.data.frame <- function(data, formula = NULL,
     res <- flextable(data, col_keys = col_keys, cwidth = cwidth,
       cheight = cheight) |>
       add_footer_lines(as_paragraph(as_i(note)))
-    res <- autofit(res)
     caption <- knitr::opts_current$get('tbl-cap')
     if (!is.null(caption))
     res <- set_caption(res, caption)
   }
   if (isTRUE(auto.labs)) {
     align(res, align = "center", part = "header") |>
-      valign(valign = "bottom", part = "header")
+      valign(valign = "bottom", part = "header") |>
+      autofit()
   } else {
-    res
+    autofit(res)
   }
 }
