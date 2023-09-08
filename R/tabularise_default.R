@@ -114,6 +114,8 @@ tabularise_default.data.frame <- function(data, formula = NULL,
 #' @method tabularise_default matrix
 tabularise_default.matrix <- function(data, col_keys = colnames(data),
 rownames = " ", cwidth = 0.75, cheight = 0.25, ..., env = parent.frame()) {
+  # TODO: allow using labels... except that column labels are not defined for
+  # matrix object !?
   df <- as.data.frame(data)
   if (!isFALSE(rownames)) {# Add row names as first column
     rn <- rownames(data)
@@ -131,3 +133,106 @@ rownames = " ", cwidth = 0.75, cheight = 0.25, ..., env = parent.frame()) {
     colformat_sci() |>
     autofit()
 }
+
+#' @export
+#' @rdname tabularise_default
+#' @importFrom flextable add_footer_lines add_header_lines align
+#' @param header do we add a header?
+#' @param title do we add a title?
+#' @param footer do we add a footer?
+#' @param lang the natural language to use. The default value can be set with,
+#'   e.g., `options(data.io_lang = "fr")` for French.
+#' @method tabularise_default Correlation
+tabularise_default.Correlation <- function(data, col_keys = colnames(data),
+rownames = " ", header = TRUE, title = header, footer = TRUE,
+cwidth = 0.75, cheight = 0.25, lang = getOption("data.io_lang", "en"),  ...,
+env = parent.frame()) {
+  # TODO: allow using labels with origdata= here?
+  # row names should be the same as col_keys
+  rownames(data) <- col_keys
+  ft <- tabularise(unclass(data))
+
+  # Add header and footer
+  if (isTRUE(header)) {
+    if (isTRUE(title)) {
+      method <- .infos_lang.tb(lang)[["method"]]
+      method <- method[attr(data, "method")]
+      # In case the method is not known
+      if (is.na(method))
+        method <- attr(data, "method")
+      if (!is.null(method)) {
+        ft <- add_header_lines(ft, values = para_md(method))
+        ft <- align(ft, i = 1, align = "right", part = "header")
+      }
+    }
+  }
+
+  if (isTRUE(footer)) {
+    na_method <- .infos_lang.tb(lang)[["na_method"]]
+    na_method <- na_method[attr(data, "na.method")]
+    if (!is.null(na_method) && !is.na(na_method))
+      ft <- add_footer_lines(ft, values = para_md(paste0("*", na_method, "*")))
+  }
+  ft
+}
+
+# Internal function : Choose the lang and the infos_lang ----
+.infos_lang.tb <- function(lang = getOption("data.io_lang", "en")) {
+  lang <- tolower(lang)
+  if (lang != "fr") lang <- "en" # Only en or fr for now
+  if (lang == "fr") {
+    .infos_fr.tb
+  } else {
+    .infos_en.tb
+  }
+}
+
+.infos_en.tb <- list(
+  method = c(
+    "Pearson's product-moment correlation" =
+      "Matrix of Pearson's product-moment correlation *r*",
+    "Kendall's rank correlation tau" =
+      "Matrix of Kendall's rank correlation $\\tau$",
+    "Spearman's rank correlation rho" =
+      "Matrix of Spearman's rank correlation $\\rho$",
+    "PCA variables and components correlation" =
+      "PCA variables and components correlation"
+  ),
+  na_method = c(
+    "all.obs" = NULL, # Generates an error if there are NAs
+    "complete.obs" =
+      "Only complete observations for all vars are used.",
+    "pairwise.complete.obs" =
+      "Missing data are pairwise deleted.",
+    "everything" = NULL, # NAs propagate, nothing eliminated
+    "na.or.complete" =
+      "Only complete observations for all vars are used."
+    # Note: this last one is identical to complete.obs, but produces NA if
+    # there are no complete case, while complete.obs produces an error
+  )
+)
+
+.infos_fr.tb <- list(
+  method = c(
+    "Pearson's product-moment correlation" =
+      "Matrice de coefficients de corr\u00e9lation de Pearson *r*",
+    "Kendall's rank correlation tau" =
+      "Matrice de coefficients de corr\u00e9lation des rangs de Kendall $\\tau$",
+    "Spearman's rank correlation rho" =
+      "Matrice de coefficients de corr\u00e9lation des rangs de Spearman $\\rho$",
+    "PCA variables and components correlation" =
+      "Corr\u00e9lation entre variables et composantes de l'ACP"
+  ),
+  na_method = c(
+    "all.obs" = NULL, # Generates an error if there are NAs
+    "complete.obs" =
+      "Seules les observations compl\u00e8tes pour toutes les variables sont utilis\u00e9es.",
+    "pairwise.complete.obs" =
+      "Les donn\u00e9es manquantes ont \u00e9t\u00e9 \u00e9limin\u00e9es par paires.",
+    "everything" = NULL, # NAs propagate, nothing eliminated
+    "na.or.complete" =
+      "Seules les observations compl\u00e8tes pour toutes les variables sont utilis\u00e9es."
+    # Note: this last one is identical to complete.obs, but produces NA if
+    # there are no complete case, while complete.obs produces an error
+  )
+)

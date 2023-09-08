@@ -5,6 +5,7 @@
 \alias{tabularise_default.default}
 \alias{tabularise_default.data.frame}
 \alias{tabularise_default.matrix}
+\alias{tabularise_default.Correlation}
 \title{Default type tabularise generic (tabularise$default)}
 \usage{
 tabularise_default(data, ..., env = parent.frame())
@@ -30,6 +31,20 @@ tabularise_default(data, ..., env = parent.frame())
   rownames = " ",
   cwidth = 0.75,
   cheight = 0.25,
+  ...,
+  env = parent.frame()
+)
+
+\method{tabularise_default}{Correlation}(
+  data,
+  col_keys = colnames(data),
+  rownames = " ",
+  header = TRUE,
+  title = header,
+  footer = TRUE,
+  cwidth = 0.75,
+  cheight = 0.25,
+  lang = getOption("data.io_lang", "en"),
   ...,
   env = parent.frame()
 )
@@ -59,6 +74,15 @@ need to change the default).}
 \item{rownames}{col_keys to use for row names. If \code{FALSE}, do not add
 row names. If a string, a first column is added in the table with that string
 as label}
+
+\item{header}{do we add a header?}
+
+\item{title}{do we add a title?}
+
+\item{footer}{do we add a footer?}
+
+\item{lang}{the natural language to use. The default value can be set with,
+e.g., \code{options(data.io_lang = "fr")} for French.}
 }
 \value{
 A \strong{flextable} object you can print in different form or rearrange
