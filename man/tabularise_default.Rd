@@ -4,9 +4,10 @@
 \alias{tabularise_default}
 \alias{tabularise_default.default}
 \alias{tabularise_default.data.frame}
+\alias{tabularise_default.matrix}
 \title{Default type tabularise generic (tabularise$default)}
 \usage{
-tabularise_default(data, ..., env = env)
+tabularise_default(data, ..., env = parent.frame())
 
 \method{tabularise_default}{default}(data, ..., env = parent.frame())
 
@@ -19,6 +20,16 @@ tabularise_default(data, ..., env = env)
   max.rows = 50,
   max.cols = 15,
   auto.labs = TRUE,
+  ...,
+  env = parent.frame()
+)
+
+\method{tabularise_default}{matrix}(
+  data,
+  col_keys = colnames(data),
+  rownames = " ",
+  cwidth = 0.75,
+  cheight = 0.25,
   ...,
   env = parent.frame()
 )
@@ -44,6 +55,10 @@ need to change the default).}
 \item{max.cols}{The maximum number of columns to display in the table}
 
 \item{auto.labs}{Are labels automatically used for names of table columns?}
+
+\item{rownames}{col_keys to use for row names. If \code{FALSE}, do not add
+row names. If a string, a first column is added in the table with that string
+as label}
 }
 \value{
 A \strong{flextable} object you can print in different form or rearrange

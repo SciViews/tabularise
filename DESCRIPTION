@@ -1,5 +1,6 @@
 Package: tabularise
-Version: 0.1.0
+Type: Package
+Version: 0.2.0
 Title: Create Tabular Outputs from R (using "Flextable")
 Description: Create rich-formatted tabular outputs from R that can be
   incorporated into R Markdown/Quarto documents with correct output at least in

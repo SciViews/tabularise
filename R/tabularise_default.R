@@ -20,7 +20,7 @@
 #' tabularise$default(iris)
 #' # Same as simply:
 #' tabularise(iris)
-tabularise_default <- function(data, ..., env = env) {
+tabularise_default <- function(data, ..., env = parent.frame()) {
   UseMethod("tabularise_default")
 }
 
@@ -36,8 +36,7 @@ tabularise_default.default <- function(data, ..., env = parent.frame()) {
 }
 
 #' @export
-#' @importFrom flextable add_footer_lines as_paragraph as_i autofit set_caption
-#' @importFrom knitr opts_current
+#' @importFrom flextable add_footer_lines as_paragraph as_i autofit
 #' @rdname tabularise_default
 #' @param formula A formula to create a table using the {tables} syntax
 #' @param col_keys The names/keys to use for the table columns
@@ -97,9 +96,6 @@ tabularise_default.data.frame <- function(data, formula = NULL,
     res <- flextable(data, col_keys = col_keys, cwidth = cwidth,
       cheight = cheight) |>
       add_footer_lines(as_paragraph(as_i(note)))
-    caption <- knitr::opts_current$get('tbl-cap')
-    if (!is.null(caption))
-    res <- set_caption(res, caption)
   }
   if (isTRUE(auto.labs)) {
     align(res, align = "center", part = "header") |>
@@ -108,4 +104,30 @@ tabularise_default.data.frame <- function(data, formula = NULL,
   } else {
     autofit(res)
   }
+}
+
+#' @export
+#' @rdname tabularise_default
+#' @param rownames col_keys to use for row names. If `FALSE`, do not add
+#' row names. If a string, a first column is added in the table with that string
+#' as label
+#' @method tabularise_default matrix
+tabularise_default.matrix <- function(data, col_keys = colnames(data),
+rownames = " ", cwidth = 0.75, cheight = 0.25, ..., env = parent.frame()) {
+  df <- as.data.frame(data)
+  if (!isFALSE(rownames)) {# Add row names as first column
+    rn <- rownames(data)
+    if (is.null(rn))
+      rn <- seq_len(NROW(data))
+    df <- data.frame(rn, df)
+    rownames <- as.character(rownames)[1]
+    names(df)[1] <- rownames
+    if (!is.null(col_keys))
+      col_keys <- c(rownames, col_keys)
+  }
+  if (is.null(col_keys))
+    col_keys <- names(df)
+  flextable(df, col_keys = col_keys, cwidth = cwidth, cheight = cheight) |>
+    colformat_sci() |>
+    autofit()
 }

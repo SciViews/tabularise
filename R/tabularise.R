@@ -17,6 +17,8 @@
 #' @return A **flextable** object you can print in different form or rearrange
 #' with the {flextable} functions from set Stb$verb().
 #' @export
+#' @importFrom flextable set_caption
+#' @importFrom knitr opts_current
 #' @seealso [tabularise_default()], [tabularise_headtail()], [tabularise_coef()],
 #'   [tabularise_tidy()], [tabularise_glance()]
 #'
@@ -24,7 +26,13 @@
 #' tabularise(iris)
 tabularise <- structure(
   function(data, ..., type = "default", env = parent.frame()) {
-    get_type("tabularise", type = type)(data, ...)
+    tb <- get_type("tabularise", type = type)(data, ..., env = env)
+    # Make sure caption is correct both with R Markdown and quarto, both using
+    # tbl-cap chunk option
+    caption <- knitr::opts_current$get('tbl-cap')
+    if (!is.null(caption))
+      tb <- set_caption(tb, caption) # This is for R Markdown documents
+    tb
   }, class = c("function", "subsettable_type", "tabularise"))
 
 # Synonyms
