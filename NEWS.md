@@ -1,10 +1,14 @@
+# tabularise 0.3.0
+
+-   `equation()` and `equation.default()` added to extract equations from several objects.
+
 # tabularise 0.2.0
 
-- The trick to use tab-cap chunk parameter both in R Markdown and in Quarto that was tested in `tabularise_default.data.frame()` is now moved up to `tabularise()`; meaning it works for all tables created by `tabularise()`.
+-   The trick to use tab-cap chunk parameter both in R Markdown and in Quarto that was tested in `tabularise_default.data.frame()` is now moved up to `tabularise()`; meaning it works for all tables created by `tabularise()`.
 
-- A `tabularise_default.matrix()` method is added.
+-   A `tabularise_default.matrix()` method is added.
 
-- A `tabularise_default.Correlation()` method is added.
+-   A `tabularise_default.Correlation()` method is added.
 
 # tabularise 0.1.0
 
