@@ -1,6 +1,12 @@
 # tabularise 0.3.0
 
--   `equation()` and `equation.default()` added to extract equations from several objects.
+-   `equation()`, `equation.default()` and `equation_character()` added to extract equations from several objects.
+
+-   `eq_()` and `eq__()` added to ease the inclusion of R-computed equations into R Markdown and Quarto documents.
+
+-   `print.paragraph()` nicely displays a preview of the Markdown paragraph (in the Viewer panel if in RStudio).
+
+-   A bug in `para_md()` allowed to interpret sometimes the content of LaTeX equations as Markdown text, which led to strange results. Now, LaTeX equations between `$...$` are protected by quadruple back ticks and triple dollars on each side, and thus, viewed as code chunks by the Markdown interpreter, and consequently, left intact.
 
 # tabularise 0.2.0
 

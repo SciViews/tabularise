@@ -126,7 +126,7 @@ para_md <- function(...,
   # Preprocess the Markdown text (replace sensible escaped characters)
   md <- .escape_chars(md)
   # Convert into HTML
-  if (isTRUE(autolink)) {# Note strikethrough ext. conflicts with sub~script~
+  if (isTRUE(autolink)) {# Note strike through ext. conflicts with sub~script~
     md_extensions <- "autolink"
   } else {
     md_extensions <- FALSE
@@ -296,6 +296,22 @@ unstack_state <- function(state) {
   }
 }
 
+#' @rdname para_md
+#' @export
+#' @importFrom flextable flextable delete_part add_header_lines theme_alafoli border_outer
+#' @importFrom officer fp_border
+#' @param x A **paragraph** object
+#' @method print paragraph
+print.paragraph <- function(x, ...) {
+  flextable(data.frame(x = strrep("\u00a0", 120L))) |>
+    delete_part("header") |>
+    add_header_lines(x) |>
+    theme_alafoli() |>
+    border_outer(border = officer::fp_border(width = 0)) |>
+    print()
+  invisible(x)
+}
+
 # Test:
 # md1 <- c("Ceci *est* un **~~texte~~** _av^ec^_ `mono`, super^scri\\ pt^ et sub~script~ and [url](https://me.org/test/).", "Second \\\\ line.")
 # Bug:
@@ -371,9 +387,15 @@ unstack_state <- function(state) {
   txt <- gsub('\\<', '\U0002', txt, fixed = TRUE)  # Use Start of text
   txt <- gsub('\\>', '\U0003', txt, fixed = TRUE)  # Use End of text
   txt <- gsub('\\~', '\U0004', txt, fixed = TRUE)  # Use End of transmission
-  txt <- gsub('\\^', '\U0005', txt, fixed = TRUE)  # Use Enquiry
+  txt <- gsub('\\^', '\U0005', txt, fixed = TRUE)  # Use Inquiry
   txt <- gsub('\\$', '\U0006', txt, fixed = TRUE)  # Use Acknowledge
-  gsub('\\ ', '\U000E', txt, fixed = TRUE)  # Use Shift out
+  txt <- gsub('\\ ', '\U000E', txt, fixed = TRUE)  # Use Shift out
+  # We still have to protect LaTeX equations inside $...$ from any markdown
+  # interpretation. Since we know code between `...` is never interpreted, but
+  # we may have still single, or double back ticks inside the equation, we use
+  # ````$$$...$$$```` as a temporary replacement of $...$ before transforming the
+  # whole text in HTML. We will restore $...$ later on in the process.
+  gsub('\\$([^$]+)\\$', '````$$$\\1$$$````', txt)
 }
 
 # Reverse .escape_chars, but without the leading backslash \ (see above)
@@ -384,15 +406,17 @@ unstack_state <- function(state) {
 }
 
 # Postprocess HTML <Markdown: super-, subscript, equations, strikethrough, etc.
-.html_postprocess <- function(html, bullet = "\U2022") {# TODO: this symbol needs xelatex
-  # commonmark does not deal with super-, subscripts and equations,
-  # so, we replace them with <sup></sup>, <sub></sub> and <eq></eq> respectively
+.html_postprocess <- function(html, bullet = "\U00B7") {
+                                   #bullet = "\U2022") {# TODO: this symbol
+  # needs xelatex, so we use de dot multiplication sign instead for now...
+  # commonmark does not deal with super, subscripts and equations, so, we
+  # replace them with <sup></sup>, <sub></sub> and <eq></eq> respectively
   # test with md <- 'Super^script^, no super^scr ipt^, sub~script~, no
-  #   sub~scr ipt~, $$x_2 + \\beta^3$$, $x^2$ and ~~strikethrough~~ text.'
+  #   sub~scr ipt~, $$x_2 + \\beta^3$$, $x^2$ and ~~strike through~~ text.'
   # then transform into html with code above
-  # We also deal with ~~strikethrough~~ (double ~) for underline ourselve
+  # We also deal with ~~strike through~~ (double ~) for underline ourselves
   # Replace ~~...~~ by <del>...</del> and allow some extra args inside {}
-  # like ~~striked~~{+red} or ~~more stricked~~{#0505F4} with argument inside {}
+  # like ~~striked~~{+red} or ~~more striked~~{#0505F4} with argument inside {}
   # starts optionally with '+' or '-' to force underline on or off (otherwise,
   # it is determined by strike.underline=) and possibly defining the color of
   # the text as name or #RRGGBB form.
@@ -410,14 +434,12 @@ unstack_state <- function(state) {
   # Replace ^...^ by <sup>...</sup> for superscript (no space allowed inside)
   html <- gsub("\\^([^^ \t]+)\\^", "<sup>\\1</sup>", html)
 
-  # Replace $$...$$ by <eq>...</eq>
+  # Replace $<code>$...$</code>$ by <eq>...</eq>
   # TODO: still need to differentiate inline and display equations in flextable
   # (only inline eq for now but we use double $$ to maximally avoid clashes)
   # Note that $ is not allowed anyway in equations by katex
-  #html <- gsub("\\$\\$([^$]+)\\$\\$", "<eq>\\1</eq>", html)
-
-  # Replace $...$ by <eq>...</eq>
-  html <- gsub("\\$([^$]+)\\$", "<eq>\\1</eq>", html)
+  # Replace <code>$$$...$$$<\code> by <eq>...</eq>
+  html <- gsub("<code>\\$\\$\\$(.+)\\$\\$\\$</code>", "<eq>\\1</eq>", html)
 
   # Eliminate all single tags, like <br /> that we don't use
   html <- gsub("<[a-z][a-z0-9]+ ?/>", "", html)

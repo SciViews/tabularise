@@ -2,6 +2,7 @@
 % Please edit documentation in R/para_md.R
 \name{para_md}
 \alias{para_md}
+\alias{print.paragraph}
 \title{Create a rich-formatted paragraph using markdown notation for flextable objects}
 \usage{
 para_md(
@@ -20,6 +21,8 @@ para_md(
   smart = TRUE,
   debug = FALSE
 )
+
+\method{print}{paragraph}(x, ...)
 }
 \arguments{
 \item{...}{the character strings with markdown formatting}
@@ -49,6 +52,8 @@ para_md(
 \item{smart}{is smart punctuation detected and replaced?}
 
 \item{debug}{switch in debug mode}
+
+\item{x}{A \strong{paragraph} object}
 }
 \value{
 a flextable paragraph object with its content formatted according to markdown tags

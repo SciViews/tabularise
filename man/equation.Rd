@@ -3,17 +3,39 @@
 \name{equation}
 \alias{equation}
 \alias{equation.default}
+\alias{equation.character}
+\alias{eq__}
+\alias{eq_}
+\alias{print.formatted_equation}
+\alias{print.inline_equation}
 \title{Get a LaTeX equation from a model}
 \usage{
 equation(object, ...)
 
 \method{equation}{default}(object, ...)
+
+\method{equation}{character}(object, ...)
+
+eq__(object, ...)
+
+eq_(object, ...)
+
+\method{print}{formatted_equation}(x, ...)
+
+\method{print}{inline_equation}(x, ...)
 }
 \arguments{
-\item{object}{An object with a model whole the equation is constructed.}
+\item{object}{An object with a model whose the equation is constructed. If a
+\strong{character} object is provided, it is concatenated into a single
+character string and the \strong{equation} class, otherwise non transformed (it
+is supposed to be a valid LaTeX equation). Remember that backslashes must be
+doubled in regular R strings, or use the \code{r"(...)"} notation, which may be
+more comfortable here, see examples.}
 
 \item{...}{Further parameters passed to \code{\link[equatiomatic:extract_eq]{equatiomatic::extract_eq()}} (see its
 man page).}
+
+\item{x}{A \strong{formatted_equation} or \strong{inline_equation} object.}
 }
 \value{
 An object of class \code{c("equation", "character")}.
@@ -21,10 +43,41 @@ An object of class \code{c("equation", "character")}.
 \description{
 Extract or create a LaTeX equation to describe a model. All objects supported
 by \code{\link[equatiomatic:extract_eq]{equatiomatic::extract_eq()}} are supported by the default method
-description
+description.
+}
+\details{
+There are slight differences between \code{equation()}, \code{eq_()} and \code{eq__()}:
+\itemize{
+\item \code{equation()} returns a string with LaTeX code and prints LaTeX code at the
+R console.
+\item \code{eq_()} returns the LaTeX code surrounded by a dollar sign \verb{$...$} and is
+suitable to build inline equations in R Markdown/Quarto documents by using
+inline R code. It prints the rendered inline equation in the RStudio
+Viewer or in the browser
+\item \code{eq__()} returns the LaTeX code \emph{not} surrounded by dollar signs, and it
+also prints a rendered version in the Viewer pane of RStudio or in the
+browser. It should be used in an R inline chunk inside a \verb{$$...$$}
+construct in a Markdown text. The result is a display equation that can
+also be cross referenced in Quarto in the usual way if you label it, e.g.,
+you use \verb{$$...$$ \{#eq-label\}}.
+}
 }
 \examples{
 iris_lm <- lm(data = iris, Petal.Length ~ Sepal.Length + Species)
 summary(iris_lm)
 equation(iris_lm)
+# Providing directly the LaTeX code of the equation (variance of a sample)
+equation("S^2_y = \\\\sum_{i=1}^{n-1} \\\\frac{(y_i - \\\\bar{Y})^2}{n}")
+# Easier to write like this (avoiding the double backslashes):
+eq1 <- equation(r"(S^2_y = \sum_{i=1}^{n-1} \frac{(y_i - \bar{Y})^2}{n})")
+# Print raw text:
+eq1
+# Get a preview of the equation
+eq__(eq1)
+# The same function can be used inside a `$$...$$ {#eq-label}` construct in
+# R Markdown or Quarto to calcule a display equation that is also recognized
+# by the cross referencing system of Quarto.
+# Get a string suitable for inclusion inline in R Markdown with `r eq_(eq1)`
+# (inside Markdown text and without the dollar signs around it)
+eq_(eq1)
 }
