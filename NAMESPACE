@@ -2,7 +2,6 @@
 
 S3method(equation,character)
 S3method(equation,default)
-S3method(print,formatted_equation)
 S3method(print,inline_equation)
 S3method(print,paragraph)
 S3method(tabularise_coef,default)

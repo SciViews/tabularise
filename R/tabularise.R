@@ -27,11 +27,27 @@
 tabularise <- structure(
   function(data, ..., type = "default", env = parent.frame()) {
     tb <- get_type("tabularise", type = type)(data, ..., env = env)
+    # Solve different problems related to table captions in R Markdown or Quarto
+    opts_current <- knitr::opts_current
+    lbl <- opts_current$get('label')
+    cap <- opts_current$get('tbl-cap')
+
+    # If no caption is defined in the chunk that generates this table,
+    # we fake one if the label exists and does not start with `tbl-`
+    # since it means we do not want a caption (and a cross reference)
+    # to this table anyway. Otherwise, Quarto produces an error.
+    if (!is.null(lbl) && substring(lbl, 1L, 4L) != "tbl-" && is.null(cap)) {
+      # We fake one, so Quarto does not complains any more for missing caption
+      opts_current$set(`tbl-cap` = "")
+      # Note: caption does not change outside the chunk, that is, it is not
+      # modified outside this code and the table has NO caption, but at least
+      # no error is generated in Quarto
+    }
+
     # Make sure caption is correct both with R Markdown and quarto, both using
     # tbl-cap chunk option
-    caption <- knitr::opts_current$get('tbl-cap')
-    if (!is.null(caption))
-      tb <- set_caption(tb, caption) # This is for R Markdown documents
+    if (!is.null(cap))
+      tb <- set_caption(tb, cap) # This is for R Markdown documents
     tb
   }, class = c("function", "subsettable_type", "tabularise"))
 
