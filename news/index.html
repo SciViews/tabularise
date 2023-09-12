@@ -75,8 +75,10 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="tabularise-030">tabularise 0.3.0<a class="anchor" aria-label="anchor" href="#tabularise-030"></a></h2>
-<ul><li>
-<code><a href="../reference/equation.html">equation()</a></code> and <code><a href="../reference/equation.html">equation.default()</a></code> added to extract equations from several objects.</li>
+<ul><li><p><code><a href="../reference/equation.html">equation()</a></code>, <code><a href="../reference/equation.html">equation.default()</a></code> and <code>equation_character()</code> added to extract equations from several objects.</p></li>
+<li><p><code><a href="../reference/equation.html">eq_()</a></code> and <code><a href="../reference/equation.html">eq__()</a></code> added to ease the inclusion of R-computed equations into R Markdown and Quarto documents.</p></li>
+<li><p><code><a href="../reference/para_md.html">print.paragraph()</a></code> nicely displays a preview of the Markdown paragraph (in the Viewer panel if in RStudio).</p></li>
+<li><p>A bug in <code><a href="../reference/para_md.html">para_md()</a></code> allowed to interpret sometimes the content of LaTeX equations as Markdown text, which led to strange results. Now, LaTeX equations between <code>$...$</code> are protected by quadruple back ticks and triple dollars on each side, and thus, viewed as code chunks by the Markdown interpreter, and consequently, left intact.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="tabularise-020">tabularise 0.2.0<a class="anchor" aria-label="anchor" href="#tabularise-020"></a></h2>
