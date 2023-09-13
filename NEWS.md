@@ -1,8 +1,10 @@
-# tabularise 0.3.0
+# tabularise 0.4.0
 
 -   `equation()`, `equation.default()` and `equation_character()` added to extract equations from several objects.
 
 -   `eq_()` and `eq__()` added to ease the inclusion of R-computed equations into R Markdown and Quarto documents. `eq_()` also allows to preview the equation in the RStudio viewer pane, or in a web browser.
+
+# tabularise 0.3.0
 
 -   `print.paragraph()` nicely displays a preview of the Markdown paragraph (in the Viewer panel if in RStudio).
 
