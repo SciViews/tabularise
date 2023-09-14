@@ -60,7 +60,7 @@ description."><meta property="og:image" content="https://www.sciviews.org/chart/
   </a>
 </li>
       </ul><div class="navbar-title">
-        <a class="navbar-brand" href="../index.html"><p class="h2">tabularise <small>v0.4.0</small></p></a>
+        <a class="navbar-brand" href="../index.html"><p class="h2">tabularise <small>v0.5.0</small></p></a>
       </div>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -87,7 +87,14 @@ description.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">equation</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for default</span></span>
-<span><span class="fu">equation</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="fu">equation</span><span class="op">(</span></span>
+<span>  <span class="va">object</span>,</span>
+<span>  auto.labs <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  origdata <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  labs <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  swap_var_names <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for character</span></span>
 <span><span class="fu">equation</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span>
@@ -114,6 +121,29 @@ more comfortable here, see examples.</p></dd>
 <dt>...</dt>
 <dd><p>Further parameters passed to <code><a href="https://datalorax.github.io/equatiomatic/reference/extract_eq.html" class="external-link">equatiomatic::extract_eq()</a></code> (see its
 man page).</p></dd>
+
+
+<dt>auto.labs</dt>
+<dd><p>If <code>TRUE</code> (by default), use labels (and units) automatically
+from data or <code>origdata=</code>.</p></dd>
+
+
+<dt>origdata</dt>
+<dd><p>The original data set this model was fitted to. By default it
+is <code>NULL</code> and no label is used.</p></dd>
+
+
+<dt>labs</dt>
+<dd><p>Labels to change the names of elements in the <code>term</code> column of
+the table. By default it is <code>NULL</code> and no term is changed.</p></dd>
+
+
+<dt>swap_var_names</dt>
+<dd><p>Change the variable names for these values, regardless
+of the values in <code>auto.labs=</code> or <code>labs=</code> that are ignored if this argument
+is used. Provide a named character string with name being the variables and
+strings the new names. You can use <code>^</code> ou <code>_</code> to indicate next character,
+or next integer should be super) or subscript in the equation.</p></dd>
 
 
 <dt>x</dt>
