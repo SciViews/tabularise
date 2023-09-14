@@ -58,8 +58,62 @@ equation <- function(object, ...) {
 #' @rdname equation
 #' @export
 #' @method equation default
-equation.default <- function(object, ...) {
-  equatiomatic::extract_eq(model = object, ...)
+#' @param auto.labs If `TRUE` (by default), use labels (and units) automatically
+#'   from data or `origdata=`.
+#' @param origdata The original data set this model was fitted to. By default it
+#'   is `NULL` and no label is used.
+#' @param labs Labels to change the names of elements in the `term` column of
+#'   the table. By default it is `NULL` and no term is changed.
+#' @param swap_var_names Change the variable names for these values, regardless
+#'   of the values in `auto.labs=` or `labs=` that are ignored if this argument
+#'   is used. Provide a named character string with name being the variables and
+#'   strings the new names. You can use `^` ou `_` to indicate next character,
+#'   or next integer should be super) or subscript in the equation.
+equation.default <- function(object, auto.labs = TRUE, origdata = NULL,
+labs = NULL, swap_var_names = NULL, ...) {
+  # Extract labels off data or origdata
+  if (missing(swap_var_names)) {
+    if (isTRUE(auto.labs)) {
+      labs <- try(.labels2(x = object, origdata = origdata, labs = labs),
+        silent = TRUE)
+      if (inherits(labs, "try-error")) {
+        #warning("Cannot extract labels from the object")
+        labs <- NULL
+      }
+    } else {
+      labs <- .labels2(x = NULL, labs = labs)
+    }
+    if (!is.null(labs)) {
+      res <- equatiomatic::extract_eq(model = object,
+        swap_var_names =  labs, ...)
+    } else {
+      res <- equatiomatic::extract_eq(model = object, ...)
+    }
+  } else {# swap_var_names provided
+    res <- equatiomatic::extract_eq(model = object,
+      swap_var_names =  swap_var_names, ...)
+  }
+
+  # In case we use ^ or _, we mean "put next character in super or subscript"
+  # but equatiomatic tries hard to preserve the character in LaTeX
+  # -> make the correction now
+  # Restore ^ for superscript
+  res <- gsub("\\texttt{\\^{}}", "^", res, fixed = TRUE)
+  res <- gsub("\\texttt{^}", "^", res, fixed = TRUE)
+  # Transform the result from ~ into _ (LaTeX subscript)
+  res <- gsub("\\_", "_", res, fixed = TRUE)
+  # Make sure all digits (and leading minus sign are super- or subscript)
+  res <- gsub("([\\^_])(-?[0-9]+)", "\\1{\\2}", res)
+
+  # If it appears there is a beta_1 term, but no beta_0 or beta_2 terms, just-
+  # rename it beta
+  if (grepl("\\beta_{1}", res, fixed = TRUE) &&
+    !grepl("\\beta_{0}", res, fixed = TRUE) &&
+    !grepl("\\beta_{2}", res, fixed = TRUE)) {
+    res <- gsub("\\beta_{1}", "\\beta_{}", res, fixed = TRUE)
+  }
+
+  res
 }
 
 #' @rdname equation
@@ -98,4 +152,49 @@ print.inline_equation <- function(x, ...) {
   eq <- as_equation(eq)
   print(as_paragraph(eq))
   invisible(x)
+}
+
+# TODO: this is duplicated in modelit -> export from here and reuse there!
+# Extract labels and units
+.labels <- function(x, units = TRUE, ...) {
+  labels <- sapply(x, data.io::label, units = units)
+
+  if (any(labels != "")) {
+    # Use a \n before labels and the units
+    if (isTRUE(units))
+      labels <- sub(" +\\[([^]]+)\\]$", "\n [\\1]", labels)
+    # set names if empty
+    labels[labels == ""] <- names(x)[labels == ""]
+    # Specific case for I() using in a formula
+    labels[grepl("^I\\(.*\\)$", names(labels))] <- names(labels)[grepl("^I\\(.*\\)$", names(labels))]
+  }
+
+  if (all(labels == ""))
+    labels <- NULL
+
+  labels
+}
+
+.labels2 <- function(x, origdata = NULL, labs = NULL) {
+
+  #labs_auto <- NULL
+  if (is.null(origdata)) {
+    labs_auto <- .labels(x$model)
+  } else {
+    labs_auto <- .labels(origdata)
+  }
+
+  if (!is.null(labs)) {
+    if (!is.character(labs))
+      stop("labs is not character vector")
+    if (is.null(names(labs)))
+      stop("labs must be named character vector")
+    if (any(names(labs) %in% ""))
+      stop("all element must be named")
+    labs_res <- c(labs, labs_auto[!names(labs_auto) %in% names(labs)])
+  } else {
+    labs_res <- labs_auto
+  }
+
+  labs_res
 }

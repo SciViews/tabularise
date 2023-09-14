@@ -1,3 +1,13 @@
+# tabularise 0.5.0
+
+-   Now, `equation.default()` swaps variables labels like `tabularise()` does.
+
+-   `equation.default()` now allows for super- or subscripts in labels using ^ or _, and the change affects next character, or if it is a integer (possibly with leading minus sign), the whole integer.
+
+-   If a there is a beta_1 term, but no beta_0 or beta_2 term i, `equation.default()`, then, the term is just renamed beta.
+
+-   An error was thrown when `tabularise$headtail()` is applied to a **data.table** with a **Date** column (and probably other "exotic" objects). Solved.
+
 # tabularise 0.4.0
 
 -   `equation()`, `equation.default()` and `equation_character()` added to extract equations from several objects.

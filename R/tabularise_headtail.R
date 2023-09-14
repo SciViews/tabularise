@@ -46,6 +46,8 @@ tabularise_headtail.data.frame <- function(data, n = 10,  auto.labs = TRUE,
       warning("I don't tabularise with less than 4 rows")
       n <- 2
     }
+    # Produces an error with data.tables, so, make sure we have a data.frame
+    data <- as.data.frame(data)
     x <- rbind(head(data, n = n), data[n + 1, ] == NA, tail(data, n = n))
 
     # Use labels and units in the header, if available
