@@ -22,9 +22,7 @@
 <!--<link rel="stylesheet" href="style.css?nocache=123">--><!-- bootstrat v4.1.1, required CSS from more recent version --><link rel="stylesheet" href="bootstrap.more.css?nocache=123">
 <link href="style.css?nocache=123" rel="stylesheet">
 <!-- end of addition for svPkgdown --><meta property="og:title" content="Create Tabular Outputs from R (using " flextable>
-<meta property="og:description" content="Create rich-formatted tabular outputs from R that can be
-  incorporated into R Markdown/Quarto documents with correct output at least in
-  HTML, LaTeX/PDF, Word and PowerPoint for various R objects.">
+<meta property="og:description" content="Create rich-formatted tabular outputs from R that can be incorporated into R Markdown/Quarto documents with correct output at least in HTML, LaTeX/PDF, Word and PowerPoint for various R objects.">
 <meta property="og:image" content="https://www.sciviews.org/chart/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- Mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js" async integrity="sha256-nlrDrBTHxJJlDDX22AS33xYI1OJHnGMDhiYMSe2U0e0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/config/TeX-AMS-MML_HTMLorMML.js" async integrity="sha256-4zys9A4hMQmtq2EUL+JRoXc0NZi8jVJMzb8onewOaSQ=" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics --><!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-462421-8"></script>
@@ -114,25 +112,44 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of {tabularise} from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<p>You can install the development version of {tabularise} from the <a href="https://sciviews.r-universe.dev" class="external-link">r-universe/sciviews</a> or <a href="https://github.com/" class="external-link">GitHub</a></p>
+<ul>
+<li><a href="https://sciviews.r-universe.dev" class="external-link">r-universe/sciviews</a></li>
+</ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"tabularise"</span>, repos <span class="op">=</span> <span class="st">"https://sciviews.r-universe.dev"</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li><a href="https://github.com/" class="external-link">GitHub</a></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"SciViews/tabularise"</span><span class="op">)</span></span></code></pre></div>
-<p>R should install all required dependencies automatically, and then it should compile and install {tabularise}.</p>
 </div>
 <div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+<h2 id="short-example">Short example<a class="anchor" aria-label="anchor" href="#short-example"></a>
 </h2>
-<p>A table can be generated from a data frame using:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/SciViews/tabularise" class="external-link">tabularise</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/tabularise.html">tabularise</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></code></pre></div>
-<p>Get help about this package:</p>
+<p>Let’s take the well-known iris dataframe, to which we add labels and units.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span>help <span class="op">=</span> <span class="st">"tabularise"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/help.html" class="external-link">help</a></span><span class="op">(</span><span class="st">"tabularise-package"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"tabularise"</span><span class="op">)</span> <span class="co"># Not installed with install_github()</span></span></code></pre></div>
-<p>For further instructions, please, refer to the help pages at <a href="https://www.sciviews.org/tabularise/" class="external-link uri">https://www.sciviews.org/tabularise/</a>.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># add labels and units</span></span>
+<span><span class="va">iris</span> <span class="op">&lt;-</span> <span class="fu">data.io</span><span class="fu">::</span><span class="fu"><a href="https://www.sciviews.org/data.io/reference/labelise.html" class="external-link">labelise</a></span><span class="op">(</span><span class="va">iris</span>,</span>
+<span>  label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    Sepal.Length <span class="op">=</span> <span class="st">"Length of the sepals"</span>, Sepal.Width <span class="op">=</span> <span class="st">"Width of the sepals"</span>,</span>
+<span>    Petal.Length  <span class="op">=</span> <span class="st">"Length of the petals"</span>, Petal.Width <span class="op">=</span> <span class="st">"Width of the petals"</span>, </span>
+<span>    Species  <span class="op">=</span> <span class="st">"Iris species"</span><span class="op">)</span>,</span>
+<span>  units <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    Sepal.Length <span class="op">=</span> <span class="st">"cm"</span>, Sepal.Width <span class="op">=</span> <span class="st">"cm"</span>, </span>
+<span>    Petal.Length  <span class="op">=</span> <span class="st">"cm"</span>, Petal.Width <span class="op">=</span> <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Once the labels and units have been added to our initial data, tabularise will use them to display publication-ready (rich-formatted) tabular output.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/SciViews/tabularise" class="external-link">tabularise</a></span><span class="op">)</span></span>
+<span><span class="va">tabularise</span><span class="op">$</span><span class="fu">headtail</span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="co"># or tabularise(iris, type = "headtail")</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
+<p>{tabularise} is a central package on which several other packages in the SciViews universe. Numerous methods are available for {tabularise} and they are further enhanced by other packages, such as {<a href="https://www.sciviews.org/modelit/" class="external-link">modelit</a>}.</p>
+<ul>
+<li><a href="https://www.sciviews.org/modelit/" class="external-link">modelit</a></li>
+</ul>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
