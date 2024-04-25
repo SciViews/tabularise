@@ -13,12 +13,66 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
 )
 ```
 
-```{r setup}
-library(tabularise)
+## Installation
+
+You can install the {tabularise} from the [r-universe/sciviews](https://sciviews.r-universe.dev) or [GitHub](https://github.com/)
+
+-   [r-universe/sciviews](https://sciviews.r-universe.dev)
+
+```{r, eval=FALSE}
+install.packages("tabularise", repos = "https://sciviews.r-universe.dev")
 ```
 
-TODO...
+-   [GitHub](https://github.com/)
+
+```{r, eval=FALSE}
+# install.packages("remotes")
+remotes::install_github("SciViews/tabularise")
+```
+
+This package is not yet on CRAN because it is under development and likely to evolve in a way that is not compatible with CRAN. They will be proposed to CRAN when they are stabilised.
+
+## Usage
+
+Let's use the toothgrowth dataset for this example
+
+```{r}
+data("ToothGrowth", package = "datasets")
+# Add labels and units
+ToothGrowth <- data.io::labelise(ToothGrowth,
+  label = list(len = "Tooth growth", supp = "Supplement", dose = "Vitamin C dose"),
+  units = list(len = "mm", dose = "mg/d"))
+```
+
+The data frame is a central object in R that is widely used when processing data. Numerous functions allow you to study it, such as skim() of {skimr}, or to view part of it with head(), for example.
+
+```{r}
+head(ToothGrowth)
+```
+
+If the aim is to offer a rich rendering, these functions are not the most appropriate. They are more suited to being used in an R script, in a notebook, but not in a report. Several packages deal with this problem in order to create tables for reporting and publications, such as {[flextable](https://davidgohel.github.io/flextable/index.html)} or the package {[gt](https://gt.rstudio.com/)}.
+
+{tabularise} uses and enhances the excellent {flextable} package to build these tables and allow to output them in HTML, LaTeX/PDF, Word or PowerPoint. The function {tabularise} automatically recognises the labels of variables if they are present in the object through a “label” attribute. It also considers the units if a “units” attribute is defined.
+
+```{r}
+library(tabularise)
+tabularise$headtail(ToothGrowth) 
+# '$<type>' is a variant of tabularise(ToothGrowth, type = headtail)
+```
+
+{tabularise} are fully customisable using the functions offered by {flextable}.
+
+```{r}
+tabularise$headtail(ToothGrowth) |> flextable::add_header_lines(
+  values = "Effect of Vitamin C on Tooth Growth in Guinea Pigs")
+```
+
+Methods are proposed to tabularise() in order to propose well-formatted tables with several object types such as lm, glm or nls. These methods can be found in various packages in the SciViews suite. For example,
+
+-   [modelit](https://www.sciviews.org/modelit/) includes a set of practical functions for creating models
