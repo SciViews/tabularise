@@ -67,7 +67,7 @@ equation <- function(object, ...) {
 #' @param swap_var_names Change the variable names for these values, regardless
 #'   of the values in `auto.labs=` or `labs=` that are ignored if this argument
 #'   is used. Provide a named character string with name being the variables and
-#'   strings the new names. You can use `^` ou `_` to indicate next character,
+#'   strings the new names. You can use `^` or `_` to indicate next character,
 #'   or next integer should be super) or subscript in the equation.
 equation.default <- function(object, auto.labs = TRUE, origdata = NULL,
 labs = NULL, swap_var_names = NULL, ...) {

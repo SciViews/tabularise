@@ -1,3 +1,7 @@
+# tabularise 0.6.0
+
+-   Add {tinytable} table generation for {tabularise} tables as an alternative to {flextable}.
+
 # tabularise 0.5.1
 
 -   Vignette and README file enhanced.

@@ -35,6 +35,8 @@
 NULL
 
 .onLoad <- function(libname, pkgname){
+  # Define default themes for tables
+  options(tinytable_tt_theme = theme_tt_sciviews)
   flextable::set_flextable_defaults(big.mark = "\u00a0",
     font.family = "Arial", font.size = 12)
 }

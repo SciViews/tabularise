@@ -53,7 +53,7 @@ library(tabularise)
 tabularise$headtail(ToothGrowth) 
 ```
 
-Of couse, as the output of `tabularise()` is a **flextable** object, you can further customize it using the functions provided by {flextable}.
+Of course, as the output of `tabularise()` is a **flextable** object, you can further customize it using the functions provided by {flextable}.
 
 ```{r}
 tabularise$headtail(ToothGrowth) |>
@@ -61,7 +61,7 @@ tabularise$headtail(ToothGrowth) |>
     values = "Effect of Vitamin C on Tooth Growth in Guinea Pigs")
 ```
 
-There are a couple of tables provided in {tabularise} for **data.frame**, **matrix**, oand **Correlation** objects. However, it coverage is intentionally low. Many other tables are provided in packages that depend or import {tabularise}, like:
+There are a couple of tables provided in {tabularise} for **data.frame**, **matrix**, and **Correlation** objects. However, its coverage is intentionally low. Many other tables are provided in packages that depend or import {tabularise}, like:
 
 -   [inferit](https://www.sciviews.org/inferit/) formats tables produced for **htest** objects from the {stats} package
 

@@ -79,7 +79,7 @@ tabularise$headtail(iris) # or tabularise(iris, type = "headtail")
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
 {tabularise} is a central package used by several other packages in the
-SciViews universe to format its tabular outputs. Variuous methods are
+SciViews universe to format its tabular outputs. Various methods are
 available for `tabularise()` and they are further enhanced by other
 packages, such as [{inferit}](https://www.sciviews.org/inferit/) and
 [{modelit}](https://www.sciviews.org/modelit/).

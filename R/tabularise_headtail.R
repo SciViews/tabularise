@@ -10,6 +10,8 @@
 #' @param ... Further arguments (depending on the object class).
 #' @param env The environment where to evaluate formulas (you probably do not
 #' need to change the default).
+#' @param kind The kind of table to produce: "tt" for tinytable, "ft" for
+#' flextable, or "gt" for gt.
 #'
 #' @return A **flextable** object you can print in different form or rearrange
 #' with the {flextable} functions from set Stb$verb().
@@ -18,7 +20,7 @@
 #'
 #' @examples
 #' tabularise$headtail(iris)
-tabularise_headtail <- function(data, n = 10, ..., env = env) {
+tabularise_headtail <- function(data, n = 10, ..., env = env, kind = "ft") {
   UseMethod("tabularise_headtail")
 }
 
@@ -26,13 +28,14 @@ tabularise_headtail <- function(data, n = 10, ..., env = env) {
 #' @rdname tabularise_headtail
 #' @method tabularise_headtail default
 tabularise_headtail.default <- function(data, n = 10, ...,
-  env = env) {
+  env = env, kind = "ft") {
   stop("No method for tabularise_headtail() for this object")
 }
 
 #' @export
 #' @importFrom flextable add_footer_lines autofit align valign colformat_char
 #'   colformat_num
+#' @importFrom tinytable tt format_tt
 #' @rdname tabularise_headtail
 #' @param auto.labs Are labels automatically used for names of table columns?
 #' @param sep The separator between the first and last lines of a table. By
@@ -42,10 +45,15 @@ tabularise_headtail.default <- function(data, n = 10, ...,
 #' @method tabularise_headtail data.frame
 tabularise_headtail.data.frame <- function(data, n = 10,
   auto.labs = TRUE, sep = "\U22EE", ...,lang = getOption("data.io_lang", "en"),
-  env = env) {
+  env = env, kind = "ft") {
   # TODO: allow using labels and units + restrict rows and cols
   if (nrow(data) <= 1.5 * n) {
-    flextable(data, ...)
+    switch(kind,
+      tt = tt(data, ...),
+      ft = flextable(data, ...),
+      gt = ,
+      stop("Not implemented yet")
+    )
   } else {# Display only first and last n rows + footer
     n <- n %/% 2
     if (n < 2) {
@@ -67,18 +75,27 @@ tabularise_headtail.data.frame <- function(data, n = 10,
 
     footer <- .infos_lang.ht(lang = lang)
 
-    x |>
-      flextable(...) |>
-      add_footer_lines(paste0(footer[1], n, footer[2],
-        nrow(data))) |>
-      # TODO: this symbol needs xelatex
-      colformat_char(i = n + 1, na_str = sep, nan_str = sep) |>
-      colformat_num(i = n + 1, na_str = sep, nan_str = sep) |>
-      autofit() -> res
-    caption <- knitr::opts_current$get('tbl-cap')
-    if (!is.null(caption))
-      res <- set_caption(res, caption)
-    res
+    switch(kind,
+      tt = {
+        tt(x, caption = knitr::opts_current$get('tbl-cap'),
+          notes = paste0(footer[1], n, footer[2], nrow(data))) |>
+          format_tt(i = n + 1, replace = sep)
+      },
+      ft = {
+        flextable(x, ...) |>
+          add_footer_lines(paste0(footer[1], n, footer[2], nrow(data))) |>
+          # TODO: this symbol needs xelatex
+          colformat_char(i = n + 1, na_str = sep, nan_str = sep) |>
+          colformat_num(i = n + 1, na_str = sep, nan_str = sep) |>
+          autofit() -> res
+          caption <- knitr::opts_current$get('tbl-cap')
+          if (!is.null(caption))
+            res <- set_caption(res, caption)
+          res
+      },
+      gt = ,
+      stop("Not implemented yet")
+    )
   }
 }
 

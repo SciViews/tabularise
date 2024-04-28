@@ -60,7 +60,7 @@ library(tabularise)
 tabularise$headtail(iris) # or tabularise(iris, type = "headtail")
 ```
 
-{tabularise} is a central package used by several other packages in the SciViews universe to format its tabular outputs. Variuous methods are available for `tabularise()` and they are further enhanced by other packages, such as [{inferit}](https://www.sciviews.org/inferit/) and [{modelit}](https://www.sciviews.org/modelit/).
+{tabularise} is a central package used by several other packages in the SciViews universe to format its tabular outputs. Various methods are available for `tabularise()` and they are further enhanced by other packages, such as [{inferit}](https://www.sciviews.org/inferit/) and [{modelit}](https://www.sciviews.org/modelit/).
 
 ## Code of Conduct
 
