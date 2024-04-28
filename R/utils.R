@@ -177,7 +177,7 @@ args_type <- function(fun, method = NULL, type) {
 #  function(...) x(type = name, ...)
 #
 # Now, it is a little bit more complex because we try first to call a function
-# with name .<generic>$type()
+# with name.<generic>$type()
 `$.subsettable_type` <- function(x, name) {
   cl <- class(x)
   generic <- cl[length(cl)] # Last item
@@ -236,5 +236,5 @@ args_type <- function(fun, method = NULL, type) {
 # 1. Type head2$ and you got the list of available types
 # 2. Select "default" then hit <tab>, you got the list of args for default
 # 3. Do the same but select "fun", now you got the arguments for the fun type
-# 4. Just write a new `.head2$<type>` function and <type> is automatically
+# 4. Just write a new `.head2_<type>` function and <type> is automatically
 #    integrated!

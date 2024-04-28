@@ -11,12 +11,8 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  warning = FALSE,
-  message = FALSE
-)
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>",
+  warning = FALSE, message = FALSE)
 ```
 
 ## Installation
@@ -32,21 +28,21 @@ install.packages("tabularise", repos = "https://sciviews.r-universe.dev")
 -   [GitHub](https://github.com/)
 
 ```{r, eval=FALSE}
-# install.packages("remotes")
+#install.packages("remotes")
 remotes::install_github("SciViews/tabularise")
 ```
 
-This package is not yet on CRAN because it is under development and likely to evolve in a way that is not compatible with CRAN. They will be proposed to CRAN when they are stabilised.
+This package is not yet on CRAN because it is under development and likely to evolve in a way that is not compatible with CRAN. It will be submitted to CRAN when its API stabilises.
 
 ## Usage
 
-Let's use the toothgrowth dataset for this example
+Let's use the `ToothGrowth` from {datasets} for this example
 
 ```{r}
 data("ToothGrowth", package = "datasets")
 # Add labels and units
 ToothGrowth <- data.io::labelise(ToothGrowth,
-  label = list(len = "Tooth growth", supp = "Supplement", dose = "Vitamin C dose"),
+  label = list(len = "Tooth growth", supp = "Supplement", dose = "Vitamin C"),
   units = list(len = "mm", dose = "mg/d"))
 ```
 

@@ -1,3 +1,7 @@
+# tabularise 0.5.1
+
+-   Vignette and README file enhanced.
+
 # tabularise 0.5.0
 
 -   Now, `equation.default()` swaps variables labels like `tabularise()` does.
