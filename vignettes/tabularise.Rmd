@@ -1,5 +1,5 @@
 ---
-title: "Create rich-formatted tables with tabularise"
+title: "Create rich-formatted tables with {tabularise}"
 author: "Philippe Grosjean & Guyliann Engels"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -17,26 +17,18 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>",
 
 ## Installation
 
-You can install the {tabularise} from the [r-universe/sciviews](https://sciviews.r-universe.dev) or [GitHub](https://github.com/)
-
--   [r-universe/sciviews](https://sciviews.r-universe.dev)
+You will need {tabularise}, {equatags} and {data.io} packages from the SciViews R-Universe:
 
 ```{r, eval=FALSE}
-install.packages("tabularise", repos = "https://sciviews.r-universe.dev")
+install.packages(c('tabularise', 'equatags', 'data.io'),
+  repos = c('https://sciviews.r-universe.dev', 'https://cloud.r-project.org'))
 ```
 
--   [GitHub](https://github.com/)
-
-```{r, eval=FALSE}
-#install.packages("remotes")
-remotes::install_github("SciViews/tabularise")
-```
-
-This package is not yet on CRAN because it is under development and likely to evolve in a way that is not compatible with CRAN. It will be submitted to CRAN when its API stabilises.
+The {tabularise} package is not yet on CRAN because it is under development and likely to evolve in a way that is not compatible with CRAN. It will be submitted to CRAN when its API becomes more stable.
 
 ## Usage
 
-Let's use the `ToothGrowth` from {datasets} for this example
+Let's use the `ToothGrowth` from {datasets} for this example. You can directly add labels and units, or use `data.io::labellise()` (optional step):
 
 ```{r}
 data("ToothGrowth", package = "datasets")
@@ -46,29 +38,64 @@ ToothGrowth <- data.io::labelise(ToothGrowth,
   units = list(len = "mm", dose = "mg/d"))
 ```
 
-The data frame is a central object in R that is widely used when processing data. Numerous functions allow you to study it, such as skim() of {skimr}, or to view part of it with head(), for example.
+The usual output of a data frame in R (here, a short version with only the first 6 lines) is quite basic in terms of formatting:
 
 ```{r}
 head(ToothGrowth)
 ```
 
-If the aim is to offer a rich rendering, these functions are not the most appropriate. They are more suited to being used in an R script, in a notebook, but not in a report. Several packages deal with this problem in order to create tables for reporting and publications, such as {[flextable](https://davidgohel.github.io/flextable/index.html)} or the package {[gt](https://gt.rstudio.com/)}.
+These outputs are acceptable in an R script, or may be in a notebook, but not in a more polished document (report, presentation, paper, book...) Several packages provide functions to better format such outputs for reporting and publications, such as {[flextable](https://davidgohel.github.io/flextable/index.html)}, {[gt](https://gt.rstudio.com/)} or {[tinytable](https://vincentarelbundock.github.io/tinytable/man/tt.html)} among others.
 
-{tabularise} uses and enhances the excellent {flextable} package to build these tables and allow to output them in HTML, LaTeX/PDF, Word or PowerPoint. The function {tabularise} automatically recognises the labels of variables if they are present in the object through a “label” attribute. It also considers the units if a “units” attribute is defined.
+{tabularise} uses and enhances {flextable} to nicely format various tables and allow to output them in HTML, LaTeX/PDF, Word or PowerPoint. The `tabularise()` function automatically uses the labels and units of variables if they are present in the data frame (note that `tabularise$<type>(....)` is a variant of `tabularise(...., type = headtail)`).
 
 ```{r}
 library(tabularise)
 tabularise$headtail(ToothGrowth) 
-# '$<type>' is a variant of tabularise(ToothGrowth, type = headtail)
 ```
 
-{tabularise} are fully customisable using the functions offered by {flextable}.
+Of couse, as the output of `tabularise()` is a **flextable** object, you can further customize it using the functions provided by {flextable}.
 
 ```{r}
-tabularise$headtail(ToothGrowth) |> flextable::add_header_lines(
-  values = "Effect of Vitamin C on Tooth Growth in Guinea Pigs")
+tabularise$headtail(ToothGrowth) |>
+  flextable::add_header_lines(
+    values = "Effect of Vitamin C on Tooth Growth in Guinea Pigs")
 ```
 
-Methods are proposed to tabularise() in order to propose well-formatted tables with several object types such as lm, glm or nls. These methods can be found in various packages in the SciViews suite. For example,
+There are a couple of tables provided in {tabularise} for **data.frame**, **matrix**, oand **Correlation** objects. However, it coverage is intentionally low. Many other tables are provided in packages that depend or import {tabularise}, like:
 
--   [modelit](https://www.sciviews.org/modelit/) includes a set of practical functions for creating models
+-   [inferit](https://www.sciviews.org/inferit/) formats tables produced for **htest** objects from the {stats} package
+
+-   [modelit](https://www.sciviews.org/modelit/) includes a set of practical functions for formatting tables of various models in **lm**, **glm**, **nls**, **anova**; **aov** objects from the {stats} package.
+
+-   [exploreit](https://www.sciviews.org/exploreit/) (coming soon...)
+
+-   and more to come...
+
+You should explore these packages to see what they can do for you. For other examples of use, you can browse the [biological data science course](https://wp.sciviews.org) inline (in French).
+
+## Equations
+
+For several tables (like those for models in the {modelit} package), LaTeX equations are created and displayed in the table. {tabularise} provides the `equation()` generic function to create that LaTeX code. One can also provide directly a LaTeX instruction to `equation()`:
+
+```{r}
+eq <- equation("y = \\alpha + \\beta_1 \\cdot x + \\beta_2 \\cdot x^2")
+eq
+```
+
+Of course, the function is more useful when a,n equation is constructed for a model (using the {equatiomatic} package).
+
+```{r}
+tg_lm <- lm(len ~ dose * supp, data = ToothGrowth)
+tg_eq <- equation(tg_lm, terms_per_line = 3, wrap = TRUE)
+tg_eq
+```
+
+Note that `equation()` also automatically uses labels and units, but that can be turned off by the argument `auto.labs = FALSE`. See `?tabularise::equation` and `?equatiomatic::extract_eq` for the various arguments.
+
+{tabularise} also provides `eq_()` and `eq__()` functions to ease the inclusion of such equations in R Markdown or Quarto documents. The `eq_()` function, when used at the R console in RStudio outputs a formatted version of the equation in the Viewer pane. This is useful to preview the final version of the equation from R. It is also useful to produce equations in inline R chunks like `r eq_(tg_lm, auto.labs = FALSE)`.
+
+The `eq__()` function is used in R Markdown or Quarto documents to produce the LaTeX code of the equation to be integrated in an equation display markdown tag like this:
+
+$$`r eq__(tg_lm, terms_per_line = 3, wrap = TRUE)`$$
+
+These functions can be used independently of `tabularise()` to manage your model equations in various documents.
