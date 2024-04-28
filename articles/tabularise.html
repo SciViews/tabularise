@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Create rich-formatted tables with tabularise • tabularise</title>
+<title>Create rich-formatted tables with {tabularise} • tabularise</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -21,7 +21,7 @@
 <script src="../pkgdown.js"></script><!-- svPkgdown --><script src="../script.js"></script><!-- themify icon --><link rel="stylesheet" href="../themify-icons.css?nocache=123">
 <!--<link rel="stylesheet" href="../style.css?nocache=123">--><!-- bootstrat v4.1.1, required CSS from more recent version --><link rel="stylesheet" href="../bootstrap.more.css?nocache=123">
 <link href="../style.css?nocache=123" rel="stylesheet">
-<!-- end of addition for svPkgdown --><meta property="og:title" content="Create rich-formatted tables with tabularise">
+<!-- end of addition for svPkgdown --><meta property="og:title" content="Create rich-formatted tables with {tabularise}">
 <meta property="og:description" content="tabularise">
 <meta property="og:image" content="https://www.sciviews.org/chart/logo.png">
 <meta name="twitter:card" content="summary">
@@ -90,7 +90,7 @@
 </li>
       </ul>
 <div class="navbar-title">
-        <a class="navbar-brand" href="../index.html"><p class="h2">tabularise <small>v0.5.0</small></p></a>
+        <a class="navbar-brand" href="../index.html"><p class="h2">tabularise <small>v0.5.1</small></p></a>
       </div>
     </div>
 <!--/.nav-collapse -->
@@ -108,7 +108,7 @@
 <link href="tabularise_files/tabwid-1.1.3/tabwid.css" rel="stylesheet">
 <script src="tabularise_files/tabwid-1.1.3/tabwid.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Create rich-formatted tables with tabularise</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Create rich-formatted tables with {tabularise}</h1>
                         <h4 data-toc-skip class="author">Philippe
 Grosjean &amp; Guyliann Engels</h4>
             
@@ -123,38 +123,30 @@ Grosjean &amp; Guyliann Engels</h4>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the {tabularise} from the <a href="https://sciviews.r-universe.dev" class="external-link">r-universe/sciviews</a> or <a href="https://github.com/" class="external-link">GitHub</a></p>
-<ul>
-<li><a href="https://sciviews.r-universe.dev" class="external-link">r-universe/sciviews</a></li>
-</ul>
+<p>You will need {tabularise}, {equatags} and {data.io} packages from
+the SciViews R-Universe:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"tabularise"</span>, repos <span class="op">=</span> <span class="st">"https://sciviews.r-universe.dev"</span><span class="op">)</span></span></code></pre></div>
-<ul>
-<li><a href="https://github.com/" class="external-link">GitHub</a></li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"SciViews/tabularise"</span><span class="op">)</span></span></code></pre></div>
-<p>This package is not yet on CRAN because it is under development and
-likely to evolve in a way that is not compatible with CRAN. They will be
-proposed to CRAN when they are stabilised.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'tabularise'</span>, <span class="st">'equatags'</span>, <span class="st">'data.io'</span><span class="op">)</span>,</span>
+<span>  repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'https://sciviews.r-universe.dev'</span>, <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>The {tabularise} package is not yet on CRAN because it is under
+development and likely to evolve in a way that is not compatible with
+CRAN. It will be submitted to CRAN when its API becomes more stable.</p>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<p>Let’s use the ToothGrowth dataset for this example. You can directly
-add labels and units, or utilize the data.io::labellise() function from
-the {data.io} package, which is part of the SciViews universe.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<p>Let’s use the <code>ToothGrowth</code> from {datasets} for this
+example. You can directly add labels and units, or use
+<code>data.io::labellise()</code> (optional step):</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"ToothGrowth"</span>, package <span class="op">=</span> <span class="st">"datasets"</span><span class="op">)</span></span>
 <span><span class="co"># Add labels and units</span></span>
 <span><span class="va">ToothGrowth</span> <span class="op">&lt;-</span> <span class="fu">data.io</span><span class="fu">::</span><span class="fu"><a href="https://www.sciviews.org/data.io/reference/labelise.html" class="external-link">labelise</a></span><span class="op">(</span><span class="va">ToothGrowth</span>,</span>
-<span>  label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>len <span class="op">=</span> <span class="st">"Tooth growth"</span>, supp <span class="op">=</span> <span class="st">"Supplement"</span>, dose <span class="op">=</span> <span class="st">"Vitamin C dose"</span><span class="op">)</span>,</span>
+<span>  label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>len <span class="op">=</span> <span class="st">"Tooth growth"</span>, supp <span class="op">=</span> <span class="st">"Supplement"</span>, dose <span class="op">=</span> <span class="st">"Vitamin C"</span><span class="op">)</span>,</span>
 <span>  units <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>len <span class="op">=</span> <span class="st">"mm"</span>, dose <span class="op">=</span> <span class="st">"mg/d"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>The data frame is a central object in R that is widely used when
-processing data. Numerous functions allow you to study it, such as
-skim() of {skimr}, or to view part of it with head(), for example.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<p>The usual output of a data frame in R (here, a short version with
+only the first 6 lines) is quite basic in terms of formatting:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">ToothGrowth</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    len supp dose</span></span>
 <span><span class="co">#&gt; 1  4.2   VC  0.5</span></span>
@@ -163,175 +155,251 @@ skim() of {skimr}, or to view part of it with head(), for example.</p>
 <span><span class="co">#&gt; 4  5.8   VC  0.5</span></span>
 <span><span class="co">#&gt; 5  6.4   VC  0.5</span></span>
 <span><span class="co">#&gt; 6 10.0   VC  0.5</span></span></code></pre></div>
-<p>If the aim is to offer a rich rendering, these functions are not the
-most appropriate. They are more suited to being used in an R script, in
-a notebook, but not in a report. Several packages deal with this problem
-in order to create tables for reporting and publications, such as {<a href="https://davidgohel.github.io/flextable/index.html" class="external-link">flextable</a>}
-or the package {<a href="https://gt.rstudio.com/" class="external-link">gt</a>}.</p>
-<p>{tabularise} uses and enhances the excellent {flextable} package to
-build these tables and allow to output them in HTML, LaTeX/PDF, Word or
-PowerPoint. The function {tabularise} automatically recognises the
-labels of variables if they are present in the object through a “label”
-attribute. It also considers the units if a “units” attribute is
-defined.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<p>These outputs are acceptable in an R script, or may be in a notebook,
+but not in a more polished document (report, presentation, paper, book…)
+Several packages provide functions to better format such outputs for
+reporting and publications, such as {<a href="https://davidgohel.github.io/flextable/index.html" class="external-link">flextable</a>},
+{<a href="https://gt.rstudio.com/" class="external-link">gt</a>} or {<a href="https://vincentarelbundock.github.io/tinytable/man/tt.html" class="external-link">tinytable</a>}
+among others.</p>
+<p>{tabularise} uses and enhances {flextable} to nicely format various
+tables and allow to output them in HTML, LaTeX/PDF, Word or PowerPoint.
+The <code><a href="../reference/tabularise.html">tabularise()</a></code> function automatically uses the labels and
+units of variables if they are present in the data frame (note that
+<code>tabularise$&lt;type&gt;(....)</code> is a variant of
+<code>tabularise(...., type = headtail)</code>).</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/SciViews/tabularise" class="external-link">tabularise</a></span><span class="op">)</span></span>
 <span><span class="va">tabularise</span><span class="op">$</span><span class="fu">headtail</span><span class="op">(</span><span class="va">ToothGrowth</span><span class="op">)</span> </span></code></pre></div>
 <div class="tabwid">
-<style>.cl-f23ccd8e{}.cl-f235f446{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-f238adda{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-f238addb{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-f238c3ec{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f238c3f6{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f238c3f7{width:1.971in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f238c400{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f238c401{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f238c402{width:1.971in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f238c40a{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f238c40b{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f238c40c{width:1.971in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f238c40d{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f238c414{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f238c415{width:1.971in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f238c416{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f238c417{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f238c418{width:1.971in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="table cl-f23ccd8e">
+<style>.cl-eab55cb8{}.cl-eaae747a{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-eab138b8{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-eab138b9{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-eab150f0{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-eab150f1{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-eab150fa{width:1.563in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-eab150fb{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-eab150fc{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-eab15104{width:1.563in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-eab15105{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-eab15106{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-eab1510e{width:1.563in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-eab1510f{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-eab15110{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-eab15111{width:1.563in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-eab15118{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-eab15119{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-eab1511a{width:1.563in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="table cl-eab55cb8">
 <thead><tr style="overflow-wrap:break-word;">
-<th class="cl-f238c3ec"><p class="cl-f238adda"><span class="cl-f235f446">Tooth growth  [mm]</span></p></th>
-<th class="cl-f238c3f6"><p class="cl-f238addb"><span class="cl-f235f446">Supplement</span></p></th>
-<th class="cl-f238c3f7"><p class="cl-f238adda"><span class="cl-f235f446">Vitamin C dose  [mg/d]</span></p></th>
+<th class="cl-eab150f0"><p class="cl-eab138b8"><span class="cl-eaae747a">Tooth growth  [mm]</span></p></th>
+<th class="cl-eab150f1"><p class="cl-eab138b9"><span class="cl-eaae747a">Supplement</span></p></th>
+<th class="cl-eab150fa"><p class="cl-eab138b8"><span class="cl-eaae747a">Vitamin C  [mg/d]</span></p></th>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f238c400"><p class="cl-f238adda"><span class="cl-f235f446">4.2</span></p></td>
-<td class="cl-f238c401"><p class="cl-f238addb"><span class="cl-f235f446">VC</span></p></td>
-<td class="cl-f238c402"><p class="cl-f238adda"><span class="cl-f235f446">0.5</span></p></td>
+<td class="cl-eab150fb"><p class="cl-eab138b8"><span class="cl-eaae747a">4.2</span></p></td>
+<td class="cl-eab150fc"><p class="cl-eab138b9"><span class="cl-eaae747a">VC</span></p></td>
+<td class="cl-eab15104"><p class="cl-eab138b8"><span class="cl-eaae747a">0.5</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f238c400"><p class="cl-f238adda"><span class="cl-f235f446">11.5</span></p></td>
-<td class="cl-f238c401"><p class="cl-f238addb"><span class="cl-f235f446">VC</span></p></td>
-<td class="cl-f238c402"><p class="cl-f238adda"><span class="cl-f235f446">0.5</span></p></td>
+<td class="cl-eab150fb"><p class="cl-eab138b8"><span class="cl-eaae747a">11.5</span></p></td>
+<td class="cl-eab150fc"><p class="cl-eab138b9"><span class="cl-eaae747a">VC</span></p></td>
+<td class="cl-eab15104"><p class="cl-eab138b8"><span class="cl-eaae747a">0.5</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f238c400"><p class="cl-f238adda"><span class="cl-f235f446">7.3</span></p></td>
-<td class="cl-f238c401"><p class="cl-f238addb"><span class="cl-f235f446">VC</span></p></td>
-<td class="cl-f238c402"><p class="cl-f238adda"><span class="cl-f235f446">0.5</span></p></td>
+<td class="cl-eab150fb"><p class="cl-eab138b8"><span class="cl-eaae747a">7.3</span></p></td>
+<td class="cl-eab150fc"><p class="cl-eab138b9"><span class="cl-eaae747a">VC</span></p></td>
+<td class="cl-eab15104"><p class="cl-eab138b8"><span class="cl-eaae747a">0.5</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f238c400"><p class="cl-f238adda"><span class="cl-f235f446">5.8</span></p></td>
-<td class="cl-f238c401"><p class="cl-f238addb"><span class="cl-f235f446">VC</span></p></td>
-<td class="cl-f238c402"><p class="cl-f238adda"><span class="cl-f235f446">0.5</span></p></td>
+<td class="cl-eab150fb"><p class="cl-eab138b8"><span class="cl-eaae747a">5.8</span></p></td>
+<td class="cl-eab150fc"><p class="cl-eab138b9"><span class="cl-eaae747a">VC</span></p></td>
+<td class="cl-eab15104"><p class="cl-eab138b8"><span class="cl-eaae747a">0.5</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f238c400"><p class="cl-f238adda"><span class="cl-f235f446">6.4</span></p></td>
-<td class="cl-f238c401"><p class="cl-f238addb"><span class="cl-f235f446">VC</span></p></td>
-<td class="cl-f238c402"><p class="cl-f238adda"><span class="cl-f235f446">0.5</span></p></td>
+<td class="cl-eab150fb"><p class="cl-eab138b8"><span class="cl-eaae747a">6.4</span></p></td>
+<td class="cl-eab150fc"><p class="cl-eab138b9"><span class="cl-eaae747a">VC</span></p></td>
+<td class="cl-eab15104"><p class="cl-eab138b8"><span class="cl-eaae747a">0.5</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f238c40a"><p class="cl-f238adda"><span class="cl-f235f446">⋮</span></p></td>
-<td class="cl-f238c40b"><p class="cl-f238addb"><span class="cl-f235f446">⋮</span></p></td>
-<td class="cl-f238c40c"><p class="cl-f238adda"><span class="cl-f235f446">⋮</span></p></td>
+<td class="cl-eab15105"><p class="cl-eab138b8"><span class="cl-eaae747a">⋮</span></p></td>
+<td class="cl-eab15106"><p class="cl-eab138b9"><span class="cl-eaae747a">⋮</span></p></td>
+<td class="cl-eab1510e"><p class="cl-eab138b8"><span class="cl-eaae747a">⋮</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f238c400"><p class="cl-f238adda"><span class="cl-f235f446">30.9</span></p></td>
-<td class="cl-f238c401"><p class="cl-f238addb"><span class="cl-f235f446">OJ</span></p></td>
-<td class="cl-f238c402"><p class="cl-f238adda"><span class="cl-f235f446">2.0</span></p></td>
+<td class="cl-eab150fb"><p class="cl-eab138b8"><span class="cl-eaae747a">30.9</span></p></td>
+<td class="cl-eab150fc"><p class="cl-eab138b9"><span class="cl-eaae747a">OJ</span></p></td>
+<td class="cl-eab15104"><p class="cl-eab138b8"><span class="cl-eaae747a">2.0</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f238c400"><p class="cl-f238adda"><span class="cl-f235f446">26.4</span></p></td>
-<td class="cl-f238c401"><p class="cl-f238addb"><span class="cl-f235f446">OJ</span></p></td>
-<td class="cl-f238c402"><p class="cl-f238adda"><span class="cl-f235f446">2.0</span></p></td>
+<td class="cl-eab150fb"><p class="cl-eab138b8"><span class="cl-eaae747a">26.4</span></p></td>
+<td class="cl-eab150fc"><p class="cl-eab138b9"><span class="cl-eaae747a">OJ</span></p></td>
+<td class="cl-eab15104"><p class="cl-eab138b8"><span class="cl-eaae747a">2.0</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f238c400"><p class="cl-f238adda"><span class="cl-f235f446">27.3</span></p></td>
-<td class="cl-f238c401"><p class="cl-f238addb"><span class="cl-f235f446">OJ</span></p></td>
-<td class="cl-f238c402"><p class="cl-f238adda"><span class="cl-f235f446">2.0</span></p></td>
+<td class="cl-eab150fb"><p class="cl-eab138b8"><span class="cl-eaae747a">27.3</span></p></td>
+<td class="cl-eab150fc"><p class="cl-eab138b9"><span class="cl-eaae747a">OJ</span></p></td>
+<td class="cl-eab15104"><p class="cl-eab138b8"><span class="cl-eaae747a">2.0</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f238c400"><p class="cl-f238adda"><span class="cl-f235f446">29.4</span></p></td>
-<td class="cl-f238c401"><p class="cl-f238addb"><span class="cl-f235f446">OJ</span></p></td>
-<td class="cl-f238c402"><p class="cl-f238adda"><span class="cl-f235f446">2.0</span></p></td>
+<td class="cl-eab150fb"><p class="cl-eab138b8"><span class="cl-eaae747a">29.4</span></p></td>
+<td class="cl-eab150fc"><p class="cl-eab138b9"><span class="cl-eaae747a">OJ</span></p></td>
+<td class="cl-eab15104"><p class="cl-eab138b8"><span class="cl-eaae747a">2.0</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f238c40d"><p class="cl-f238adda"><span class="cl-f235f446">23.0</span></p></td>
-<td class="cl-f238c414"><p class="cl-f238addb"><span class="cl-f235f446">OJ</span></p></td>
-<td class="cl-f238c415"><p class="cl-f238adda"><span class="cl-f235f446">2.0</span></p></td>
+<td class="cl-eab1510f"><p class="cl-eab138b8"><span class="cl-eaae747a">23.0</span></p></td>
+<td class="cl-eab15110"><p class="cl-eab138b9"><span class="cl-eaae747a">OJ</span></p></td>
+<td class="cl-eab15111"><p class="cl-eab138b8"><span class="cl-eaae747a">2.0</span></p></td>
 </tr>
 </tbody>
-<tfoot><tr style="overflow-wrap:break-word;"><td colspan="3" class="cl-f238c416"><p class="cl-f238addb"><span class="cl-f235f446">First and last 5 rows of a total of 60</span></p></td></tr></tfoot>
+<tfoot><tr style="overflow-wrap:break-word;"><td colspan="3" class="cl-eab15118"><p class="cl-eab138b9"><span class="cl-eaae747a">First and last 5 rows of a total of 60</span></p></td></tr></tfoot>
 </table>
 </div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># '$&lt;type&gt;' is a variant of tabularise(ToothGrowth, type = headtail)</span></span></code></pre></div>
-<p>{tabularise} are fully customisable using the functions offered by
-{flextable}.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tabularise</span><span class="op">$</span><span class="fu">headtail</span><span class="op">(</span><span class="va">ToothGrowth</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">flextable</span><span class="fu">::</span><span class="fu"><a href="https://davidgohel.github.io/flextable/reference/add_header_lines.html" class="external-link">add_header_lines</a></span><span class="op">(</span></span>
-<span>  values <span class="op">=</span> <span class="st">"Effect of Vitamin C on Tooth Growth in Guinea Pigs"</span><span class="op">)</span></span></code></pre></div>
+<p>Of couse, as the output of <code><a href="../reference/tabularise.html">tabularise()</a></code> is a
+<strong>flextable</strong> object, you can further customize it using
+the functions provided by {flextable}.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tabularise</span><span class="op">$</span><span class="fu">headtail</span><span class="op">(</span><span class="va">ToothGrowth</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">flextable</span><span class="fu">::</span><span class="fu"><a href="https://davidgohel.github.io/flextable/reference/add_header_lines.html" class="external-link">add_header_lines</a></span><span class="op">(</span></span>
+<span>    values <span class="op">=</span> <span class="st">"Effect of Vitamin C on Tooth Growth in Guinea Pigs"</span><span class="op">)</span></span></code></pre></div>
 <div class="tabwid">
-<style>.cl-f2626846{}.cl-f25cbf72{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-f25f2564{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-f25f256e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-f25f36e4{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f25f36e5{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f25f36ee{width:1.971in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f25f36ef{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f25f36f0{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f25f36f8{width:1.971in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f25f36f9{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f25f36fa{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f25f36fb{width:1.971in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f25f3702{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f25f3703{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f25f3704{width:1.971in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f25f370c{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f25f370d{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f25f370e{width:1.971in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table data-quarto-disable-processing="true" class="table cl-f2626846">
+<style>.cl-eadbb8ea{}.cl-ead5fe3c{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ead86dac{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-ead86dad{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-ead88026{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ead88030{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ead88031{width:1.563in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ead8803a{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ead8803b{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ead88044{width:1.563in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ead88045{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ead88046{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ead88047{width:1.563in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ead8804e{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ead88058{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ead88059{width:1.563in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ead8805a{width:1.721in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ead8805b{width:1.175in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ead88062{width:1.563in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table data-quarto-disable-processing="true" class="table cl-eadbb8ea">
 <thead>
-<tr style="overflow-wrap:break-word;"><th colspan="3" class="cl-f25f36e4"><p class="cl-f25f2564"><span class="cl-f25cbf72">Effect of Vitamin C on Tooth Growth in Guinea Pigs</span></p></th></tr>
+<tr style="overflow-wrap:break-word;"><th colspan="3" class="cl-ead88026"><p class="cl-ead86dac"><span class="cl-ead5fe3c">Effect of Vitamin C on Tooth Growth in Guinea Pigs</span></p></th></tr>
 <tr style="overflow-wrap:break-word;">
-<th class="cl-f25f36e4"><p class="cl-f25f2564"><span class="cl-f25cbf72">Tooth growth  [mm]</span></p></th>
-<th class="cl-f25f36e5"><p class="cl-f25f256e"><span class="cl-f25cbf72">Supplement</span></p></th>
-<th class="cl-f25f36ee"><p class="cl-f25f2564"><span class="cl-f25cbf72">Vitamin C dose  [mg/d]</span></p></th>
+<th class="cl-ead88026"><p class="cl-ead86dac"><span class="cl-ead5fe3c">Tooth growth  [mm]</span></p></th>
+<th class="cl-ead88030"><p class="cl-ead86dad"><span class="cl-ead5fe3c">Supplement</span></p></th>
+<th class="cl-ead88031"><p class="cl-ead86dac"><span class="cl-ead5fe3c">Vitamin C  [mg/d]</span></p></th>
 </tr>
 </thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f25f36ef"><p class="cl-f25f2564"><span class="cl-f25cbf72">4.2</span></p></td>
-<td class="cl-f25f36f0"><p class="cl-f25f256e"><span class="cl-f25cbf72">VC</span></p></td>
-<td class="cl-f25f36f8"><p class="cl-f25f2564"><span class="cl-f25cbf72">0.5</span></p></td>
+<td class="cl-ead8803a"><p class="cl-ead86dac"><span class="cl-ead5fe3c">4.2</span></p></td>
+<td class="cl-ead8803b"><p class="cl-ead86dad"><span class="cl-ead5fe3c">VC</span></p></td>
+<td class="cl-ead88044"><p class="cl-ead86dac"><span class="cl-ead5fe3c">0.5</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f25f36ef"><p class="cl-f25f2564"><span class="cl-f25cbf72">11.5</span></p></td>
-<td class="cl-f25f36f0"><p class="cl-f25f256e"><span class="cl-f25cbf72">VC</span></p></td>
-<td class="cl-f25f36f8"><p class="cl-f25f2564"><span class="cl-f25cbf72">0.5</span></p></td>
+<td class="cl-ead8803a"><p class="cl-ead86dac"><span class="cl-ead5fe3c">11.5</span></p></td>
+<td class="cl-ead8803b"><p class="cl-ead86dad"><span class="cl-ead5fe3c">VC</span></p></td>
+<td class="cl-ead88044"><p class="cl-ead86dac"><span class="cl-ead5fe3c">0.5</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f25f36ef"><p class="cl-f25f2564"><span class="cl-f25cbf72">7.3</span></p></td>
-<td class="cl-f25f36f0"><p class="cl-f25f256e"><span class="cl-f25cbf72">VC</span></p></td>
-<td class="cl-f25f36f8"><p class="cl-f25f2564"><span class="cl-f25cbf72">0.5</span></p></td>
+<td class="cl-ead8803a"><p class="cl-ead86dac"><span class="cl-ead5fe3c">7.3</span></p></td>
+<td class="cl-ead8803b"><p class="cl-ead86dad"><span class="cl-ead5fe3c">VC</span></p></td>
+<td class="cl-ead88044"><p class="cl-ead86dac"><span class="cl-ead5fe3c">0.5</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f25f36ef"><p class="cl-f25f2564"><span class="cl-f25cbf72">5.8</span></p></td>
-<td class="cl-f25f36f0"><p class="cl-f25f256e"><span class="cl-f25cbf72">VC</span></p></td>
-<td class="cl-f25f36f8"><p class="cl-f25f2564"><span class="cl-f25cbf72">0.5</span></p></td>
+<td class="cl-ead8803a"><p class="cl-ead86dac"><span class="cl-ead5fe3c">5.8</span></p></td>
+<td class="cl-ead8803b"><p class="cl-ead86dad"><span class="cl-ead5fe3c">VC</span></p></td>
+<td class="cl-ead88044"><p class="cl-ead86dac"><span class="cl-ead5fe3c">0.5</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f25f36ef"><p class="cl-f25f2564"><span class="cl-f25cbf72">6.4</span></p></td>
-<td class="cl-f25f36f0"><p class="cl-f25f256e"><span class="cl-f25cbf72">VC</span></p></td>
-<td class="cl-f25f36f8"><p class="cl-f25f2564"><span class="cl-f25cbf72">0.5</span></p></td>
+<td class="cl-ead8803a"><p class="cl-ead86dac"><span class="cl-ead5fe3c">6.4</span></p></td>
+<td class="cl-ead8803b"><p class="cl-ead86dad"><span class="cl-ead5fe3c">VC</span></p></td>
+<td class="cl-ead88044"><p class="cl-ead86dac"><span class="cl-ead5fe3c">0.5</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f25f36f9"><p class="cl-f25f2564"><span class="cl-f25cbf72">⋮</span></p></td>
-<td class="cl-f25f36fa"><p class="cl-f25f256e"><span class="cl-f25cbf72">⋮</span></p></td>
-<td class="cl-f25f36fb"><p class="cl-f25f2564"><span class="cl-f25cbf72">⋮</span></p></td>
+<td class="cl-ead88045"><p class="cl-ead86dac"><span class="cl-ead5fe3c">⋮</span></p></td>
+<td class="cl-ead88046"><p class="cl-ead86dad"><span class="cl-ead5fe3c">⋮</span></p></td>
+<td class="cl-ead88047"><p class="cl-ead86dac"><span class="cl-ead5fe3c">⋮</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f25f36ef"><p class="cl-f25f2564"><span class="cl-f25cbf72">30.9</span></p></td>
-<td class="cl-f25f36f0"><p class="cl-f25f256e"><span class="cl-f25cbf72">OJ</span></p></td>
-<td class="cl-f25f36f8"><p class="cl-f25f2564"><span class="cl-f25cbf72">2.0</span></p></td>
+<td class="cl-ead8803a"><p class="cl-ead86dac"><span class="cl-ead5fe3c">30.9</span></p></td>
+<td class="cl-ead8803b"><p class="cl-ead86dad"><span class="cl-ead5fe3c">OJ</span></p></td>
+<td class="cl-ead88044"><p class="cl-ead86dac"><span class="cl-ead5fe3c">2.0</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f25f36ef"><p class="cl-f25f2564"><span class="cl-f25cbf72">26.4</span></p></td>
-<td class="cl-f25f36f0"><p class="cl-f25f256e"><span class="cl-f25cbf72">OJ</span></p></td>
-<td class="cl-f25f36f8"><p class="cl-f25f2564"><span class="cl-f25cbf72">2.0</span></p></td>
+<td class="cl-ead8803a"><p class="cl-ead86dac"><span class="cl-ead5fe3c">26.4</span></p></td>
+<td class="cl-ead8803b"><p class="cl-ead86dad"><span class="cl-ead5fe3c">OJ</span></p></td>
+<td class="cl-ead88044"><p class="cl-ead86dac"><span class="cl-ead5fe3c">2.0</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f25f36ef"><p class="cl-f25f2564"><span class="cl-f25cbf72">27.3</span></p></td>
-<td class="cl-f25f36f0"><p class="cl-f25f256e"><span class="cl-f25cbf72">OJ</span></p></td>
-<td class="cl-f25f36f8"><p class="cl-f25f2564"><span class="cl-f25cbf72">2.0</span></p></td>
+<td class="cl-ead8803a"><p class="cl-ead86dac"><span class="cl-ead5fe3c">27.3</span></p></td>
+<td class="cl-ead8803b"><p class="cl-ead86dad"><span class="cl-ead5fe3c">OJ</span></p></td>
+<td class="cl-ead88044"><p class="cl-ead86dac"><span class="cl-ead5fe3c">2.0</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f25f36ef"><p class="cl-f25f2564"><span class="cl-f25cbf72">29.4</span></p></td>
-<td class="cl-f25f36f0"><p class="cl-f25f256e"><span class="cl-f25cbf72">OJ</span></p></td>
-<td class="cl-f25f36f8"><p class="cl-f25f2564"><span class="cl-f25cbf72">2.0</span></p></td>
+<td class="cl-ead8803a"><p class="cl-ead86dac"><span class="cl-ead5fe3c">29.4</span></p></td>
+<td class="cl-ead8803b"><p class="cl-ead86dad"><span class="cl-ead5fe3c">OJ</span></p></td>
+<td class="cl-ead88044"><p class="cl-ead86dac"><span class="cl-ead5fe3c">2.0</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-f25f3702"><p class="cl-f25f2564"><span class="cl-f25cbf72">23.0</span></p></td>
-<td class="cl-f25f3703"><p class="cl-f25f256e"><span class="cl-f25cbf72">OJ</span></p></td>
-<td class="cl-f25f3704"><p class="cl-f25f2564"><span class="cl-f25cbf72">2.0</span></p></td>
+<td class="cl-ead8804e"><p class="cl-ead86dac"><span class="cl-ead5fe3c">23.0</span></p></td>
+<td class="cl-ead88058"><p class="cl-ead86dad"><span class="cl-ead5fe3c">OJ</span></p></td>
+<td class="cl-ead88059"><p class="cl-ead86dac"><span class="cl-ead5fe3c">2.0</span></p></td>
 </tr>
 </tbody>
-<tfoot><tr style="overflow-wrap:break-word;"><td colspan="3" class="cl-f25f370c"><p class="cl-f25f256e"><span class="cl-f25cbf72">First and last 5 rows of a total of 60</span></p></td></tr></tfoot>
+<tfoot><tr style="overflow-wrap:break-word;"><td colspan="3" class="cl-ead8805a"><p class="cl-ead86dad"><span class="cl-ead5fe3c">First and last 5 rows of a total of 60</span></p></td></tr></tfoot>
 </table>
 </div>
-<p>Methods are proposed to tabularise() in order to propose
-well-formatted tables with several object types such as lm, glm or nls.
-These methods can be found in various packages in the SciViews suite.
-For example,</p>
+<p>There are a couple of tables provided in {tabularise} for
+<strong>data.frame</strong>, <strong>matrix</strong>, oand
+<strong>Correlation</strong> objects. However, it coverage is
+intentionally low. Many other tables are provided in packages that
+depend or import {tabularise}, like:</p>
 <ul>
-<li>
-<a href="https://www.sciviews.org/modelit/" class="external-link">modelit</a> includes a
-set of practical functions for creating models</li>
+<li><p><a href="https://www.sciviews.org/inferit/" class="external-link">inferit</a> formats
+tables produced for <strong>htest</strong> objects from the {stats}
+package</p></li>
+<li><p><a href="https://www.sciviews.org/modelit/" class="external-link">modelit</a> includes
+a set of practical functions for formatting tables of various models in
+<strong>lm</strong>, <strong>glm</strong>, <strong>nls</strong>,
+<strong>anova</strong>; <strong>aov</strong> objects from the {stats}
+package.</p></li>
+<li><p><a href="https://www.sciviews.org/exploreit/" class="external-link">exploreit</a>
+(coming soon…)</p></li>
+<li><p>and more to come…</p></li>
 </ul>
+<p>You should explore these packages to see what they can do for you.
+For other examples of use, you can browse the <a href="https://wp.sciviews.org" class="external-link">biological data science course</a> inline
+(in French).</p>
+</div>
+<div class="section level2">
+<h2 id="equations">Equations<a class="anchor" aria-label="anchor" href="#equations"></a>
+</h2>
+<p>For several tables (like those for models in the {modelit} package),
+LaTeX equations are created and displayed in the table. {tabularise}
+provides the <code><a href="../reference/equation.html">equation()</a></code> generic function to create that
+LaTeX code. One can also provide directly a LaTeX instruction to
+<code><a href="../reference/equation.html">equation()</a></code>:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">eq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/equation.html">equation</a></span><span class="op">(</span><span class="st">"y = \\alpha + \\beta_1 \\cdot x + \\beta_2 \\cdot x^2"</span><span class="op">)</span></span>
+<span><span class="va">eq</span></span></code></pre></div>
+<p><span class="math display">\[
+y = \alpha + \beta_1 \cdot x + \beta_2 \cdot x^2
+\]</span></p>
+<p>Of course, the function is more useful when a,n equation is
+constructed for a model (using the {equatiomatic} package).</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tg_lm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">len</span> <span class="op">~</span> <span class="va">dose</span> <span class="op">*</span> <span class="va">supp</span>, data <span class="op">=</span> <span class="va">ToothGrowth</span><span class="op">)</span></span>
+<span><span class="va">tg_eq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/equation.html">equation</a></span><span class="op">(</span><span class="va">tg_lm</span>, terms_per_line <span class="op">=</span> <span class="fl">3</span>, wrap <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">tg_eq</span></span></code></pre></div>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{Tooth\ growth
+\ [mm]} &amp;= \alpha + \beta_{1}(\operatorname{Vitamin\ C
+\ [mg/d]}) + \beta_{2}(\operatorname{Supplement}_{\operatorname{VC}})\ +
+\\
+&amp;\quad \beta_{3}(\operatorname{Vitamin\ C
+\ [mg/d]} \times \operatorname{Supplement}_{\operatorname{VC}}) +
+\epsilon
+\end{aligned}
+\]</span></p>
+<p>Note that <code><a href="../reference/equation.html">equation()</a></code> also automatically uses labels and
+units, but that can be turned off by the argument
+<code>auto.labs = FALSE</code>. See <code><a href="../reference/equation.html">?tabularise::equation</a></code>
+and <code><a href="https://datalorax.github.io/equatiomatic/reference/extract_eq.html" class="external-link">?equatiomatic::extract_eq</a></code> for the various
+arguments.</p>
+<p>{tabularise} also provides <code><a href="../reference/equation.html">eq_()</a></code> and <code><a href="../reference/equation.html">eq__()</a></code>
+functions to ease the inclusion of such equations in R Markdown or
+Quarto documents. The <code><a href="../reference/equation.html">eq_()</a></code> function, when used at the R
+console in RStudio outputs a formatted version of the equation in the
+Viewer pane. This is useful to preview the final version of the equation
+from R. It is also useful to produce equations in inline R chunks like
+<span class="math inline">\(\operatorname{len} = \alpha +
+\beta_{1}(\operatorname{dose}) +
+\beta_{2}(\operatorname{supp}_{\operatorname{VC}}) +
+\beta_{3}(\operatorname{dose} \times
+\operatorname{supp}_{\operatorname{VC}}) + \epsilon\)</span>.</p>
+<p>The <code><a href="../reference/equation.html">eq__()</a></code> function is used in R Markdown or Quarto
+documents to produce the LaTeX code of the equation to be integrated in
+an equation display markdown tag like this:</p>
+<p><span class="math display">\[\begin{aligned}
+\operatorname{Tooth\ growth
+\ [mm]} &amp;= \alpha + \beta_{1}(\operatorname{Vitamin\ C
+\ [mg/d]}) + \beta_{2}(\operatorname{Supplement}_{\operatorname{VC}})\ +
+\\
+&amp;\quad \beta_{3}(\operatorname{Vitamin\ C
+\ [mg/d]} \times \operatorname{Supplement}_{\operatorname{VC}}) +
+\epsilon
+\end{aligned}\]</span></p>
+<p>These functions can be used independently of
+<code><a href="../reference/tabularise.html">tabularise()</a></code> to manage your model equations in various
+documents.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
