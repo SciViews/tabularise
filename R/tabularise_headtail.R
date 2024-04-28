@@ -25,7 +25,8 @@ tabularise_headtail <- function(data, n = 10, ..., env = env) {
 #' @export
 #' @rdname tabularise_headtail
 #' @method tabularise_headtail default
-tabularise_headtail.default <- function(data, n = 10, ..., env = env) {
+tabularise_headtail.default <- function(data, n = 10, ...,
+  env = env) {
   stop("No method for tabularise_headtail() for this object")
 }
 
@@ -34,9 +35,14 @@ tabularise_headtail.default <- function(data, n = 10, ..., env = env) {
 #'   colformat_num
 #' @rdname tabularise_headtail
 #' @param auto.labs Are labels automatically used for names of table columns?
+#' @param sep The separator between the first and last lines of a table. By
+#' default, the vertical ellipse shape is used.
+#' @param lang the natural language to use. The default value can be set with,
+#'   e.g., `options(data.io_lang = "fr")` for French.
 #' @method tabularise_headtail data.frame
-tabularise_headtail.data.frame <- function(data, n = 10,  auto.labs = TRUE,
-  ..., env = env) {
+tabularise_headtail.data.frame <- function(data, n = 10,
+  auto.labs = TRUE, sep = "\U22EE", ...,lang = getOption("data.io_lang", "en"),
+  env = env) {
   # TODO: allow using labels and units + restrict rows and cols
   if (nrow(data) <= 1.5 * n) {
     flextable(data, ...)
@@ -58,13 +64,16 @@ tabularise_headtail.data.frame <- function(data, n = 10,  auto.labs = TRUE,
         names(x) <- as.character(labels)
       }
     }
+
+    footer <- .infos_lang.ht(lang = lang)
+
     x |>
       flextable(...) |>
-      add_footer_lines(paste0("First and last ", n, " rows of a total of ",
+      add_footer_lines(paste0(footer[1], n, footer[2],
         nrow(data))) |>
       # TODO: this symbol needs xelatex
-      colformat_char(i = n + 1, na_str = "\U22EE", nan_str = "\U22EE") |>
-      colformat_num(i = n + 1, na_str = "\U22EE", nan_str = "\U22EE") |>
+      colformat_char(i = n + 1, na_str = sep, nan_str = sep) |>
+      colformat_num(i = n + 1, na_str = sep, nan_str = sep) |>
       autofit() -> res
     caption <- knitr::opts_current$get('tbl-cap')
     if (!is.null(caption))
@@ -72,3 +81,17 @@ tabularise_headtail.data.frame <- function(data, n = 10,  auto.labs = TRUE,
     res
   }
 }
+
+# Internal function : Choose the lang and the infos_lang ----
+.infos_lang.ht <- function(lang = getOption("data.io_lang", "en")) {
+  lang <- tolower(lang)
+  if (lang != "fr") lang <- "en" # Only en or fr for now
+  if (lang == "fr") {
+    .infos_fr.ht
+  } else {
+    .infos_en.ht
+  }
+}
+
+.infos_en.ht <- c("First and last ", " rows of a total of ")
+.infos_fr.ht <- c("Premi\u00e8res et derni\u00e8res ", " lignes d'un total de ")

@@ -10,7 +10,15 @@ tabularise_headtail(data, n = 10, ..., env = env)
 
 \method{tabularise_headtail}{default}(data, n = 10, ..., env = env)
 
-\method{tabularise_headtail}{data.frame}(data, n = 10, auto.labs = TRUE, ..., env = env)
+\method{tabularise_headtail}{data.frame}(
+  data,
+  n = 10,
+  auto.labs = TRUE,
+  sep = "⋮",
+  ...,
+  lang = getOption("data.io_lang", "en"),
+  env = env
+)
 }
 \arguments{
 \item{data}{An object}
@@ -23,6 +31,12 @@ tabularise_headtail(data, n = 10, ..., env = env)
 need to change the default).}
 
 \item{auto.labs}{Are labels automatically used for names of table columns?}
+
+\item{sep}{The separator between the first and last lines of a table. By
+default, the vertical ellipse shape is used.}
+
+\item{lang}{the natural language to use. The default value can be set with,
+e.g., \code{options(data.io_lang = "fr")} for French.}
 }
 \value{
 A \strong{flextable} object you can print in different form or rearrange

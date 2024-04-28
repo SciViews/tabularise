@@ -40,7 +40,7 @@ This package is not yet on CRAN because it is under development and likely to ev
 
 ## Usage
 
-Let's use the toothgrowth dataset for this example
+Let's use the ToothGrowth dataset for this example. You can directly add labels and units, or utilize the data.io::labellise() function from the {data.io} package, which is part of the SciViews universe.
 
 ```{r}
 data("ToothGrowth", package = "datasets")
