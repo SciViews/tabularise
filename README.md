@@ -20,7 +20,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 With {tabularise} you should be able to obtain publication-ready
 (rich-formatted) tabular output from different R objects. It uses and
 enhances the {flextable} package to build these tables and allow to
-output them in HTML, LaTeX/PDF, Word or PowerPoint.
+output them in HTML, LaTeX/PDF, Word or PowerPoint. See
+<https://www.sciviews.org/tabularise> for more details.
 
 ## Installation
 

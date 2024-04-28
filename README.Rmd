@@ -17,7 +17,7 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>",
 library(tabularise)
 ```
 
-With {tabularise} you should be able to obtain publication-ready (rich-formatted) tabular output from different R objects. It uses and enhances the {flextable} package to build these tables and allow to output them in HTML, LaTeX/PDF, Word or PowerPoint.
+With {tabularise} you should be able to obtain publication-ready (rich-formatted) tabular output from different R objects. It uses and enhances the {flextable} package to build these tables and allow to output them in HTML, LaTeX/PDF, Word or PowerPoint. See <https://www.sciviews.org/tabularise> for more details.
 
 ## Installation
 
