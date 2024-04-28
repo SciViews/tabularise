@@ -1,4 +1,4 @@
-Tabularise - Create Rich-formatted Tabular Outputs from R
+Tabularise - Rich-formatted Tabular Outputs from R
 <a href='https://www.sciviews.org/tabularise'><img src='man/figures/logo.png' alt='tabularise website' align='right' height='139'/></a>
 ================
 
