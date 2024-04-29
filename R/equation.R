@@ -1,9 +1,9 @@
-#' Get a LaTeX equation from a model
+#' Get a LaTeX equation from a model or from LaTeX code
 #'
 #' @description
-#' Extract or create a LaTeX equation to describe a model. All objects supported
-#' by [equatiomatic::extract_eq()] are supported by the default method
-#'  description.
+#' Extract or create a LaTeX equation to describe a model, or directly from
+#' LaTeX code. All objects supported by [equatiomatic::extract_eq()] are
+#' supported by the default method description.
 #' @param object An object with a model whose the equation is constructed. If a
 #'   **character** object is provided, it is concatenated into a single
 #'   character string and the **equation** class, otherwise non transformed (it

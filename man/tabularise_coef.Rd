@@ -7,7 +7,7 @@
 \usage{
 tabularise_coef(data, ..., env = env)
 
-\method{tabularise_coef}{default}(data, ..., env = env)
+\method{tabularise_coef}{default}(data, ..., kind = "ft", env = env)
 }
 \arguments{
 \item{data}{An object}
@@ -16,6 +16,9 @@ tabularise_coef(data, ..., env = env)
 
 \item{env}{The environment where to evaluate formulas (you probably do not
 need to change the default).}
+
+\item{kind}{The kind of table to produce: "tt" for tinytable, or "ft" for
+flextable (default).}
 }
 \value{
 A \strong{flextable} object you can print in different form or rearrange

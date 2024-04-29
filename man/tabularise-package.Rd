@@ -3,7 +3,7 @@
 \docType{package}
 \name{tabularise-package}
 \alias{tabularise-package}
-\title{Create Tabular Outputs from R (using "Flextable")}
+\title{Create Tabular Outputs from R}
 \description{
 Create rich-formatted tabular outputs from various R objects that can be
 incorporated into R Markdown/Quarto documents with correct output at least in
@@ -19,7 +19,8 @@ or better, by using the compact and easier to read \code{tabularise$type()} form
 \section{Important functions}{
 
 \itemize{
-\item \code{\link[=tabularise]{tabularise()}} constructs a \strong{flextable} object.
+\item \code{\link[=tabularise]{tabularise()}} constructs a table (\strong{flextable} object by default, or
+\strong{tinytable} object with \code{kind = "tt"}).
 \item \link{Stb} a collection of functions to manipulate and format a table (mostly
 functions from the {flextable} package.
 \item \code{\link[=colformat_sci]{colformat_sci()}} and \code{\link[=colformat_md]{colformat_md()}} are additional columns formatters for

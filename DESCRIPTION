@@ -1,7 +1,7 @@
 Package: tabularise
 Type: Package
 Version: 0.6.0
-Title: Create Tabular Outputs from R (using "Flextable")
+Title: Create Tabular Outputs from R
 Description: Create rich-formatted tabular outputs from R that can be
   incorporated into R Markdown/Quarto documents with correct output at least in
   HTML, LaTeX/PDF, Word and PowerPoint for various R objects.
@@ -39,6 +39,7 @@ Remotes:
 License: MIT + file LICENSE
 URL: https://github.com/SciViews/tabularise, https://www.sciviews.org/tabularise/
 BugReports: https://github.com/SciViews/tabularise/issues
+ByteCompile: yes
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Config/testthat/edition: 3

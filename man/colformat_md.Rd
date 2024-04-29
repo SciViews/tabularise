@@ -2,7 +2,7 @@
 % Please edit documentation in R/colformat_md.R
 \name{colformat_md}
 \alias{colformat_md}
-\title{Scientific format for columns in flextable}
+\title{Scientific format for columns in {flextable}}
 \usage{
 colformat_md(
   x,
@@ -20,7 +20,7 @@ colformat_md(
 )
 }
 \arguments{
-\item{x}{a flextable object}
+\item{x}{a \strong{flextable} object}
 
 \item{i}{rows selection}
 
@@ -45,10 +45,10 @@ colformat_md(
 \item{autolink}{are links automatically constructed when there is an URL in the text?}
 }
 \value{
-the flextable object with the selected region formatted as markdown strings.
+the \strong{flextable} object with the selected region formatted as markdown strings.
 }
 \description{
-Scientific format for columns in flextable
+Scientific format for columns in {flextable}
 }
 \examples{
 dat <- data.frame(

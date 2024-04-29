@@ -2,7 +2,7 @@
 % Please edit documentation in R/colformat_sci.R
 \name{colformat_sci}
 \alias{colformat_sci}
-\title{Scientific format for columns in flextable}
+\title{Scientific format for columns in {flextable}}
 \usage{
 colformat_sci(
   x,
@@ -17,7 +17,7 @@ colformat_sci(
 )
 }
 \arguments{
-\item{x}{a flextable object}
+\item{x}{a \strong{flextable} object}
 
 \item{i}{rows selection}
 
@@ -30,7 +30,7 @@ or scientific notation (generally use 0 or -1)}
 
 \item{lod}{value indicating the limit of detection, for which we should
 display something like '< lod_value' instead of the actual value; useful
-for p values (R often uses 2e-16 in that case), chemical measurements, ...}
+for p values (R often uses 2e-16 in that case), chemical measurements ...}
 
 \item{lod_str}{the string to use, by default, it is \verb{< lod_value}.}
 
@@ -40,10 +40,10 @@ like 1.34e-5 (\code{FALSE}).}
 \item{op}{the operator character to use in fancy scientific notation}
 }
 \value{
-the flextable object with the selected region formatted as scientific numbers.
+the \strong{flextable} object with the selected region formatted as scientific numbers.
 }
 \description{
-Scientific format for columns in flextable
+Scientific format for columns in {flextable}
 }
 \examples{
 summ <- summary(lm(Volume ~ Girth + Height, data = trees))

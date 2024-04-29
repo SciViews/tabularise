@@ -7,7 +7,7 @@
 \alias{eq__}
 \alias{eq_}
 \alias{print.inline_equation}
-\title{Get a LaTeX equation from a model}
+\title{Get a LaTeX equation from a model or from LaTeX code}
 \usage{
 equation(object, ...)
 
@@ -60,9 +60,9 @@ or next integer should be super) or subscript in the equation.}
 An object of class \code{c("equation", "character")}.
 }
 \description{
-Extract or create a LaTeX equation to describe a model. All objects supported
-by \code{\link[equatiomatic:extract_eq]{equatiomatic::extract_eq()}} are supported by the default method
-description.
+Extract or create a LaTeX equation to describe a model, or directly from
+LaTeX code. All objects supported by \code{\link[equatiomatic:extract_eq]{equatiomatic::extract_eq()}} are
+supported by the default method description.
 }
 \details{
 There are slight differences between \code{equation()}, \code{eq_()} and \code{eq__()}:

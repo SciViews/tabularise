@@ -2,7 +2,10 @@
 title: "Create rich-formatted tables with {tabularise}"
 author: "Philippe Grosjean & Guyliann Engels"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output:
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 3
 vignette: >
   %\VignetteIndexEntry{Create rich-formatted tables with tabularise}
   %\VignetteEngine{knitr::rmarkdown}
@@ -10,23 +13,13 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(collapse = TRUE, comment = "#>",
-  warning = FALSE, message = FALSE)
+```{r, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 ```
 
-## Installation
+The {tabularise} package aims to provide quick and easy tabular outputs for various R objects. The tables are well formatted and can be output in different formats like HTML, LaTeX/PDF or Word.
 
-You will need {tabularise}, {equatags} and {data.io} packages from the SciViews R-Universe:
-
-```{r, eval=FALSE}
-install.packages(c('tabularise', 'equatags', 'data.io'),
-  repos = c('https://sciviews.r-universe.dev', 'https://cloud.r-project.org'))
-```
-
-The {tabularise} package is not yet on CRAN because it is under development and likely to evolve in a way that is not compatible with CRAN. It will be submitted to CRAN when its API becomes more stable.
-
-## Usage
+## Example table
 
 Let's use the `ToothGrowth` from {datasets} for this example. You can directly add labels and units, or use `data.io::labellise()` (optional step):
 

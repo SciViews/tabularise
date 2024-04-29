@@ -5,9 +5,9 @@
 \alias{tabularize}
 \title{Tabularise an object (arrange or enter in tabular form)}
 \usage{
-tabularise(data, ..., type = "default", env = parent.frame())
+tabularise(data, ..., type = "default", kind = "ft", env = parent.frame())
 
-tabularize(data, ..., type = "default", env = parent.frame())
+tabularize(data, ..., type = "default", kind = "ft", env = parent.frame())
 }
 \arguments{
 \item{data}{An object}
@@ -15,6 +15,9 @@ tabularize(data, ..., type = "default", env = parent.frame())
 \item{...}{Further arguments (depending on the object class and on \verb{type=}).}
 
 \item{type}{The type of table to produce.}
+
+\item{kind}{The kind of table to produce: "tt" for tinytable, or "ft" for
+flextable (default).}
 
 \item{env}{The environment where to evaluate formulas (you probably do not
 need to change the default).}

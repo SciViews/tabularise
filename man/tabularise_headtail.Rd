@@ -6,9 +6,9 @@
 \alias{tabularise_headtail.data.frame}
 \title{Head and tail type tabularise generic (tabularise$headtail)}
 \usage{
-tabularise_headtail(data, n = 10, ..., env = env, kind = "ft")
+tabularise_headtail(data, n = 10, ..., kind = "ft", env = env)
 
-\method{tabularise_headtail}{default}(data, n = 10, ..., env = env, kind = "ft")
+\method{tabularise_headtail}{default}(data, n = 10, ..., kind = "ft", env = env)
 
 \method{tabularise_headtail}{data.frame}(
   data,
@@ -17,8 +17,8 @@ tabularise_headtail(data, n = 10, ..., env = env, kind = "ft")
   sep = "⋮",
   ...,
   lang = getOption("data.io_lang", "en"),
-  env = env,
-  kind = "ft"
+  kind = "ft",
+  env = env
 )
 }
 \arguments{
@@ -28,11 +28,11 @@ tabularise_headtail(data, n = 10, ..., env = env, kind = "ft")
 
 \item{...}{Further arguments (depending on the object class).}
 
+\item{kind}{The kind of table to produce: "tt" for tinytable, or "ft" for
+flextable (default).}
+
 \item{env}{The environment where to evaluate formulas (you probably do not
 need to change the default).}
-
-\item{kind}{The kind of table to produce: "tt" for tinytable, "ft" for
-flextable, or "gt" for gt.}
 
 \item{auto.labs}{Are labels automatically used for names of table columns?}
 
