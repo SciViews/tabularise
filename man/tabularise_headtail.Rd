@@ -14,7 +14,7 @@ tabularise_headtail(data, n = 10, ..., kind = "ft", env = env)
   data,
   n = 10,
   auto.labs = TRUE,
-  sep = "⋮",
+  sep = "...",
   ...,
   lang = getOption("data.io_lang", "en"),
   kind = "ft",

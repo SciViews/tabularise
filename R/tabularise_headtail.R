@@ -44,7 +44,7 @@ tabularise_headtail.default <- function(data, n = 10, ...,
 #'   e.g., `options(data.io_lang = "fr")` for French.
 #' @method tabularise_headtail data.frame
 tabularise_headtail.data.frame <- function(data, n = 10,
-    auto.labs = TRUE, sep = "\U22EE", ...,
+    auto.labs = TRUE, sep = "...", ..., # sep = "\U22EE" makes problems in LaTeX
     lang = getOption("data.io_lang", "en"), kind = "ft", env = env) {
   # TODO: allow using labels and units + restrict rows and cols
   if (nrow(data) <= 1.5 * n) {
