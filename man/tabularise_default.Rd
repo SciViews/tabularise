@@ -57,7 +57,7 @@ tabularise_default(data, ..., env = parent.frame())
 \item{env}{The environment where to evaluate formulas (you probably do not
 need to change the default).}
 
-\item{formula}{A formula to create a table using the {tables} syntax}
+\item{formula}{A formula to create a table using the \{tables\} syntax}
 
 \item{col_keys}{The names/keys to use for the table columns}
 

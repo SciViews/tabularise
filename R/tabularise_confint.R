@@ -17,7 +17,7 @@
 #' need to change the default).
 #'
 #' @return A **flextable** object you can print in different form or rearrange
-#' with the {flextable} functions from set Stb$verb().
+#' with the \{flextable\} functions from set Stb$verb().
 #' @export
 #' @importFrom stats confint
 #' @seealso [tabularise()], [stats::confint()]

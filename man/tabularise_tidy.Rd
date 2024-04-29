@@ -22,7 +22,7 @@ flextable (default).}
 }
 \value{
 A \strong{flextable} object you can print in different form or rearrange
-with the {flextable} functions from set Stb$verb().
+with the \{flextable\} functions from set Stb$verb().
 }
 \description{
 The "tidy" type of \code{\link[=tabularise]{tabularise()}} presents a tidy version of an object, as

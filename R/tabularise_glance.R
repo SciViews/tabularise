@@ -18,7 +18,7 @@
 #' need to change the default).
 #'
 #' @return A **flextable** object you can print in different form or rearrange
-#' with the {flextable} functions from set Stb$verb().
+#' with the \{flextable\} functions from set Stb$verb().
 #' @export
 #' @importFrom generics glance
 #' @seealso [tabularise()], [generics::glance()]

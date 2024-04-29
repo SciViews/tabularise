@@ -38,7 +38,7 @@ tabularise_default.default <- function(data, ..., env = parent.frame()) {
 #' @export
 #' @importFrom flextable add_footer_lines as_paragraph as_i autofit
 #' @rdname tabularise_default
-#' @param formula A formula to create a table using the {tables} syntax
+#' @param formula A formula to create a table using the \{tables\} syntax
 #' @param col_keys The names/keys to use for the table columns
 #' @param cwidth Initial width for cell sizes in inches
 #' @param cheight Initial height for cell sizes in inches
