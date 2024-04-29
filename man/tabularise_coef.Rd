@@ -30,7 +30,7 @@ coefficients from an object, similar to \code{\link[stats:coef]{stats::coef()}} 
 object, but in a rich-formatted form.
 }
 \details{
-No useful method for this type is defined in the {tabularise} package, but
+No useful method for this type is defined in the \{tabularise\} package, but
 additional packages might define some.
 }
 \seealso{

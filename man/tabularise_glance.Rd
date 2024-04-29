@@ -33,7 +33,7 @@ The nicely formatted table obtained here is (almost) publication-ready (good
 for informal reports, notebooks, etc).
 }
 \details{
-#' No useful method for this type is defined in the {tabularise} package, but
+#' No useful method for this type is defined in the \{tabularise\} package, but
 additional packages might define some.
 }
 \seealso{

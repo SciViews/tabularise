@@ -15,6 +15,6 @@ theme_tt_sciviews(x, ...)
 A \strong{tinytable} object with the default SciViews theme applied
 }
 \description{
-This theme is applied by default to {tinytable} output. One can use a
+This theme is applied by default to \{tinytable\} output. One can use a
 different one with \code{\link[tinytable:theme_tt]{tinytable::theme_tt()}}.
 }

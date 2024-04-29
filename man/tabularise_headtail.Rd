@@ -44,7 +44,7 @@ e.g., \code{options(data.io_lang = "fr")} for French.}
 }
 \value{
 A \strong{flextable} object you can print in different form or rearrange
-with the {flextable} functions from set Stb$verb().
+with the \{flextable\} functions from set Stb$verb().
 }
 \description{
 The "headtail" type for tabularise presents the first (head) and last (tail)

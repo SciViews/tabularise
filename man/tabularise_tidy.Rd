@@ -32,7 +32,7 @@ formatted as an (almost) publication-ready form (good for informal reports,
 notebooks, etc).
 }
 \details{
-No useful method for this type is defined in the {tabularise} package, but
+No useful method for this type is defined in the \{tabularise\} package, but
 additional packages might define some.
 }
 \seealso{

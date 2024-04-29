@@ -2,7 +2,7 @@
 % Please edit documentation in R/colformat_sci.R
 \name{colformat_sci}
 \alias{colformat_sci}
-\title{Scientific format for columns in {flextable}}
+\title{Scientific format for columns in \{flextable\}}
 \usage{
 colformat_sci(
   x,
@@ -43,7 +43,7 @@ like 1.34e-5 (\code{FALSE}).}
 the \strong{flextable} object with the selected region formatted as scientific numbers.
 }
 \description{
-Scientific format for columns in {flextable}
+Scientific format for columns in \{flextable\}
 }
 \examples{
 summ <- summary(lm(Volume ~ Girth + Height, data = trees))

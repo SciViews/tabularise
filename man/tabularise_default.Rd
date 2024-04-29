@@ -86,7 +86,7 @@ e.g., \code{options(data.io_lang = "fr")} for French.}
 }
 \value{
 A \strong{flextable} object you can print in different form or rearrange
-with the {flextable} functions from set Stb$verb().
+with the \{flextable\} functions from set Stb$verb().
 }
 \description{
 The "default" type is the most obvious tabular representation for an object.

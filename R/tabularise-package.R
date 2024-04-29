@@ -16,7 +16,7 @@
 #'   **tinytable** object with `kind = "tt"`).
 #'
 #'- [Stb] a collection of functions to manipulate and format a table (mostly
-#'  functions from the {flextable} package.
+#'  functions from the \{flextable\} package.
 #'
 #'- [colformat_sci()] and [colformat_md()] are additional columns formatters for
 #'   **flextable** objects, respectively, scientific and markdown formats.

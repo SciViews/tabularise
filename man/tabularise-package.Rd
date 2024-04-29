@@ -22,11 +22,11 @@ or better, by using the compact and easier to read \code{tabularise$type()} form
 \item \code{\link[=tabularise]{tabularise()}} constructs a table (\strong{flextable} object by default, or
 \strong{tinytable} object with \code{kind = "tt"}).
 \item \link{Stb} a collection of functions to manipulate and format a table (mostly
-functions from the {flextable} package.
+functions from the \{flextable\} package.
 \item \code{\link[=colformat_sci]{colformat_sci()}} and \code{\link[=colformat_md]{colformat_md()}} are additional columns formatters for
 \strong{flextable} objects, respectively, scientific and markdown formats.
-\item \code{\link[=para_md]{para_md()}} creates {flextable} paragraphs with rich-formatting by
-converting Markdown strings into such {flextable} paragraphs.
+\item \code{\link[=para_md]{para_md()}} creates \{flextable\} paragraphs with rich-formatting by
+converting Markdown strings into such \{flextable\} paragraphs.
 }
 }
 

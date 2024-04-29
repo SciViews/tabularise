@@ -2,7 +2,7 @@
 % Please edit documentation in R/colformat_md.R
 \name{colformat_md}
 \alias{colformat_md}
-\title{Scientific format for columns in {flextable}}
+\title{Scientific format for columns in \{flextable\}}
 \usage{
 colformat_md(
   x,
@@ -48,7 +48,7 @@ colformat_md(
 the \strong{flextable} object with the selected region formatted as markdown strings.
 }
 \description{
-Scientific format for columns in {flextable}
+Scientific format for columns in \{flextable\}
 }
 \examples{
 dat <- data.frame(
