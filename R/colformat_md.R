@@ -9,7 +9,7 @@
     autolink = autolink)
 }
 
-#' Scientific format for columns in {flextable}
+#' Scientific format for columns in \{flextable\}
 #'
 #' @param x a **flextable** object
 #' @param i rows selection

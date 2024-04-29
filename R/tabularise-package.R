@@ -21,8 +21,8 @@
 #'- [colformat_sci()] and [colformat_md()] are additional columns formatters for
 #'   **flextable** objects, respectively, scientific and markdown formats.
 #'
-#' - [para_md()] creates {flextable} paragraphs with rich-formatting by
-#'   converting Markdown strings into such {flextable} paragraphs.
+#' - [para_md()] creates \{flextable\} paragraphs with rich-formatting by
+#'   converting Markdown strings into such \{flextable\} paragraphs.
 #'
 #' @docType package
 #' @name tabularise-package

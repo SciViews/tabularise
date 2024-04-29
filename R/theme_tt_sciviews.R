@@ -1,6 +1,6 @@
 #' Default SciViews theme for tinytables
 #'
-#' This theme is applied by default to {tinytable} output. One can use a
+#' This theme is applied by default to \{tinytable\} output. One can use a
 #' different one with [tinytable::theme_tt()].
 #'
 #' @param x A **tinytable** object

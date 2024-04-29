@@ -23,7 +23,7 @@ lod_str = paste("<", lod), fancy = TRUE, op = c("\U00B7", "\U00D7", "*", "x")) {
 }
 
 
-#' Scientific format for columns in {flextable}
+#' Scientific format for columns in \{flextable\}
 #'
 #' @param x a **flextable** object
 #' @param i rows selection

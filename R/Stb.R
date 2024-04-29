@@ -87,10 +87,10 @@
 #   x[sel]
 # }
 
-#' Tabularise set of function (mainly from {flextable})
+#' Tabularise set of function (mainly from \{flextable\})
 #'
 #' This set provides all the functions you can use to manipulate `tabularise()`
-#' tables. They mostly contain the {flextable} API. You are supposed to
+#' tables. They mostly contain the \{flextable\} API. You are supposed to
 #' use it like `Stb$verb(....)` where `verb` is one of the objects contained in
 #' the collection. Use `Stb` to list all objects in the set.
 #'

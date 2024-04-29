@@ -4,7 +4,7 @@
 #' coefficients from an object, similar to [stats::coef()] applied to the same
 #' object, but in a rich-formatted form.
 #'
-#' No useful method for this type is defined in the {tabularise} package, but
+#' No useful method for this type is defined in the \{tabularise\} package, but
 #' additional packages might define some.
 #'
 #' @param data An object
