@@ -1,5 +1,5 @@
 ---
-title: "Create rich-formatted tables with {tabularise}"
+title: "Create rich-formatted tables with tabularise"
 author: "Philippe Grosjean & Guyliann Engels"
 date: "`r Sys.Date()`"
 output:
