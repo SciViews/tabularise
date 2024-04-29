@@ -1,4 +1,4 @@
-#' Create Tabular Outputs from R (using "Flextable")
+#' Create Tabular Outputs from R
 #'
 #' Create rich-formatted tabular outputs from various R objects that can be
 #' incorporated into R Markdown/Quarto documents with correct output at least in
@@ -12,7 +12,8 @@
 #'
 #' @section Important functions:
 #'
-#'- [tabularise()] constructs a **flextable** object.
+#'- [tabularise()] constructs a table (**flextable** object by default, or
+#'   **tinytable** object with `kind = "tt"`).
 #'
 #'- [Stb] a collection of functions to manipulate and format a table (mostly
 #'  functions from the {flextable} package.
@@ -35,7 +36,7 @@
 NULL
 
 .onLoad <- function(libname, pkgname){
-  # Define default themes for tables
+  # Define default themes for tables (both tinytable and flextable)
   options(tinytable_tt_theme = theme_tt_sciviews)
   flextable::set_flextable_defaults(big.mark = "\u00a0",
     font.family = "Arial", font.size = 12)

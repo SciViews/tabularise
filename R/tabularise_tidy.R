@@ -11,6 +11,8 @@
 #'
 #' @param data An object
 #' @param ... Further arguments (depending on the object class).
+#' @param kind The kind of table to produce: "tt" for tinytable, or "ft" for
+#' flextable (default).
 #' @param env The environment where to evaluate formulas (you probably do not
 #' need to change the default).
 #'
@@ -26,6 +28,6 @@ tabularise_tidy <- function(data, ..., env = env) {
 #' @export
 #' @rdname tabularise_tidy
 #' @method tabularise_tidy default
-tabularise_tidy.default <- function(data, ..., env = env) {
+tabularise_tidy.default <- function(data, ..., kind = "ft", env = env) {
   stop("No method for tabularise_tidy() for this object")
 }

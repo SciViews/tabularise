@@ -8,10 +8,10 @@
 #' @param data An object
 #' @param n The number of lines to display in the (truncated) table.
 #' @param ... Further arguments (depending on the object class).
+#' @param kind The kind of table to produce: "tt" for tinytable, or "ft" for
+#' flextable (default).
 #' @param env The environment where to evaluate formulas (you probably do not
 #' need to change the default).
-#' @param kind The kind of table to produce: "tt" for tinytable, "ft" for
-#' flextable, or "gt" for gt.
 #'
 #' @return A **flextable** object you can print in different form or rearrange
 #' with the {flextable} functions from set Stb$verb().
@@ -20,7 +20,7 @@
 #'
 #' @examples
 #' tabularise$headtail(iris)
-tabularise_headtail <- function(data, n = 10, ..., env = env, kind = "ft") {
+tabularise_headtail <- function(data, n = 10, ..., kind = "ft", env = env) {
   UseMethod("tabularise_headtail")
 }
 
@@ -28,7 +28,7 @@ tabularise_headtail <- function(data, n = 10, ..., env = env, kind = "ft") {
 #' @rdname tabularise_headtail
 #' @method tabularise_headtail default
 tabularise_headtail.default <- function(data, n = 10, ...,
-  env = env, kind = "ft") {
+  kind = "ft", env = env) {
   stop("No method for tabularise_headtail() for this object")
 }
 
@@ -44,8 +44,8 @@ tabularise_headtail.default <- function(data, n = 10, ...,
 #'   e.g., `options(data.io_lang = "fr")` for French.
 #' @method tabularise_headtail data.frame
 tabularise_headtail.data.frame <- function(data, n = 10,
-  auto.labs = TRUE, sep = "\U22EE", ...,lang = getOption("data.io_lang", "en"),
-  env = env, kind = "ft") {
+    auto.labs = TRUE, sep = "\U22EE", ...,
+    lang = getOption("data.io_lang", "en"), kind = "ft", env = env) {
   # TODO: allow using labels and units + restrict rows and cols
   if (nrow(data) <= 1.5 * n) {
     switch(kind,

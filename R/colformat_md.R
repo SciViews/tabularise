@@ -9,9 +9,9 @@
     autolink = autolink)
 }
 
-#' Scientific format for columns in flextable
+#' Scientific format for columns in {flextable}
 #'
-#' @param x a flextable object
+#' @param x a **flextable** object
 #' @param i rows selection
 #' @param j columns selection
 #' @param h.sizes font sizes for titles
@@ -24,7 +24,7 @@
 #' @param link.underline are URL links underlined?
 #' @param autolink are links automatically constructed when there is an URL in the text?
 #'
-#' @return the flextable object with the selected region formatted as markdown strings.
+#' @return the **flextable** object with the selected region formatted as markdown strings.
 #' @export
 #'
 #' @examples

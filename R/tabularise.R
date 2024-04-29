@@ -11,6 +11,8 @@
 #' @param data An object
 #' @param ... Further arguments (depending on the object class and on `type=`).
 #' @param type The type of table to produce.
+#' @param kind The kind of table to produce: "tt" for tinytable, or "ft" for
+#' flextable (default).
 #' @param env The environment where to evaluate formulas (you probably do not
 #' need to change the default).
 #'
@@ -25,8 +27,8 @@
 #' @examples
 #' tabularise(iris)
 tabularise <- structure(
-  function(data, ..., type = "default", env = parent.frame()) {
-    tb <- get_type("tabularise", type = type)(data, ..., env = env)
+  function(data, ..., type = "default", kind = "ft", env = parent.frame()) {
+    tb <- get_type("tabularise", type = type)(data, ..., kind = kind, env = env)
     # Solve different problems related to table captions in R Markdown or Quarto
     opts_current <- knitr::opts_current
     lbl <- opts_current$get('label')

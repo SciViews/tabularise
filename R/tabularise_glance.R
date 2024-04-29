@@ -12,6 +12,8 @@
 #'
 #' @param data An object
 #' @param ... Further arguments (depending on the object class).
+#' @param kind The kind of table to produce: "tt" for tinytable, or "ft" for
+#' flextable (default).
 #' @param env The environment where to evaluate formulas (you probably do not
 #' need to change the default).
 #'
@@ -27,6 +29,6 @@ tabularise_glance <- function(data, ..., env = env) {
 #' @export
 #' @rdname tabularise_glance
 #' @method tabularise_glance default
-tabularise_glance.default <- function(data, ..., env = env) {
+tabularise_glance.default <- function(data, ..., kind = "ft", env = env) {
   stop("No method for tabularise_glance() for this object")
 }

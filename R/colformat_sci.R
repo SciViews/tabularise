@@ -23,9 +23,9 @@ lod_str = paste("<", lod), fancy = TRUE, op = c("\U00B7", "\U00D7", "*", "x")) {
 }
 
 
-#' Scientific format for columns in flextable
+#' Scientific format for columns in {flextable}
 #'
-#' @param x a flextable object
+#' @param x a **flextable** object
 #' @param i rows selection
 #' @param j columns selection
 #' @param digits number of digits to display
@@ -33,13 +33,13 @@ lod_str = paste("<", lod), fancy = TRUE, op = c("\U00B7", "\U00D7", "*", "x")) {
 #'   or scientific notation (generally use 0 or -1)
 #' @param lod value indicating the limit of detection, for which we should
 #'   display something like '< lod_value' instead of the actual value; useful
-#'   for p values (R often uses 2e-16 in that case), chemical measurements, ...
+#'   for p values (R often uses 2e-16 in that case), chemical measurements ...
 #' @param lod_str the string to use, by default, it is `< lod_value`.
 #' @param fancy use a perfect scientific notation (`TRUE`) or a simplified one
 #'   like 1.34e-5 (`FALSE`).
 #' @param op the operator character to use in fancy scientific notation
 #'
-#' @return the flextable object with the selected region formatted as scientific numbers.
+#' @return the **flextable** object with the selected region formatted as scientific numbers.
 #' @export
 #'
 #' @examples
