@@ -21,7 +21,7 @@
 #' @export
 #' @importFrom generics tidy
 #' @seealso [tabularise()], [generics::tidy()]
-tabularise_tidy <- function(data, ..., env = env) {
+tabularise_tidy <- function(data, ..., kind = "ft", env = env) {
   UseMethod("tabularise_tidy")
 }
 

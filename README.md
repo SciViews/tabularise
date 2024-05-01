@@ -10,6 +10,8 @@ Create Tabular Outputs from R
 coverage](https://codecov.io/gh/SciViews/tabularise/branch/main/graph/badge.svg)](https://app.codecov.io/gh/SciViews/tabularise?branch=main)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/tabularise)](https://CRAN.R-project.org/package=tabularise)
+[![r-universe
+status](https://sciviews.r-universe.dev/badges/tabularise)](https://sciviews.r-universe.dev/tabularise)
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Lifecycle:
@@ -27,13 +29,14 @@ output them in HTML, LaTeX/PDF, Word or PowerPoint. See
 
 {tabularise} is not available from CRAN yet. You should install it from
 the [SciViews R-Universe](https://sciviews.r-universe.dev). The
-{equatags} package is an optional dependency of {flextable} to manage
-LaTeX equations in tables. The {data.io} package is useful too because
-it manages labels and units that {chart} uses. To install those three
+{equatags} and {equatiomatic} packages are optional, but they are useful
+to display equations, both inline in R Markdown/Quarto documents and in
+{tabularise} tables. The {data.io} package is useful too because it
+manages labels and units that {chart} uses. To install those three
 packages and their dependencies, run the following command in R:
 
 ``` r
-install.packages(c('tabularise', 'equatags', 'data.io'),
+install.packages(c('tabularise', 'equatags', 'equatiomatic', 'data.io'),
   repos = c('https://sciviews.r-universe.dev', 'https://cloud.r-project.org'))
 ```
 

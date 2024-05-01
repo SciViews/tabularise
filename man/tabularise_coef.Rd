@@ -5,7 +5,7 @@
 \alias{tabularise_coef.default}
 \title{"Coef" type tabularise generic (tabularise$coef)}
 \usage{
-tabularise_coef(data, ..., env = env)
+tabularise_coef(data, ..., kind = "ft", env = env)
 
 \method{tabularise_coef}{default}(data, ..., kind = "ft", env = env)
 }
@@ -14,11 +14,11 @@ tabularise_coef(data, ..., env = env)
 
 \item{...}{Further arguments (depending on the object class).}
 
-\item{env}{The environment where to evaluate formulas (you probably do not
-need to change the default).}
-
 \item{kind}{The kind of table to produce: "tt" for tinytable, or "ft" for
 flextable (default).}
+
+\item{env}{The environment where to evaluate formulas (you probably do not
+need to change the default).}
 }
 \value{
 A \strong{flextable} object you can print in different form or rearrange

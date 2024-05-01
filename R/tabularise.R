@@ -28,7 +28,7 @@
 #' tabularise(iris)
 tabularise <- structure(
   function(data, ..., type = "default", kind = "ft", env = parent.frame()) {
-    tb <- get_type("tabularise", type = type)(data, ..., kind = kind, env = env)
+    tb <- get_type("tabularise", type = type)(data, ..., kind = "ft", env = env)
     # Solve different problems related to table captions in R Markdown or Quarto
     opts_current <- knitr::opts_current
     lbl <- opts_current$get('label')

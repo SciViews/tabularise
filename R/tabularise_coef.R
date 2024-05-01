@@ -19,7 +19,7 @@
 #' @export
 #' @importFrom stats coef
 #' @seealso [tabularise()], [stats::coef()]
-tabularise_coef <- function(data, ..., env = env) {
+tabularise_coef <- function(data, ..., kind = "ft", env = env) {
   UseMethod("tabularise_coef")
 }
 

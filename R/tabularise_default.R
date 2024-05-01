@@ -8,6 +8,8 @@
 #'
 #' @param data An object
 #' @param ... Further arguments (depending on the object class).
+#' @param kind The kind of table to produce: "tt" for tinytable, or "ft" for
+#' flextable (default).
 #' @param env The environment where to evaluate formulas (you probably do not
 #' need to change the default).
 #'
@@ -20,14 +22,14 @@
 #' tabularise$default(iris)
 #' # Same as simply:
 #' tabularise(iris)
-tabularise_default <- function(data, ..., env = parent.frame()) {
+tabularise_default <- function(data, ..., kind = "ft", env = parent.frame()) {
   UseMethod("tabularise_default")
 }
 
 #' @export
 #' @rdname tabularise_default
 #' @method tabularise_default default
-tabularise_default.default <- function(data, ..., env = parent.frame()) {
+tabularise_default.default <- function(data, ..., kind = "ft", env = parent.frame()) {
   res <- try(as_flextable(data, ...), silent = TRUE)
   if (inherits(res, "try-error"))
     stop("I don't know how to tabularise an object of class '",

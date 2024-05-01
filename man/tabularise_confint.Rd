@@ -5,7 +5,7 @@
 \alias{tabularise_confint.default}
 \title{"Confint" type" tabularise generic (tabularise$confint)}
 \usage{
-tabularise_confint(data, ..., env = env)
+tabularise_confint(data, ..., kind = "ft", env = env)
 
 \method{tabularise_confint}{default}(data, ..., kind = "ft", env = env)
 }
@@ -14,11 +14,11 @@ tabularise_confint(data, ..., env = env)
 
 \item{...}{Further arguments (depending on the object class).}
 
-\item{env}{The environment where to evaluate formulas (you probably do not
-need to change the default).}
-
 \item{kind}{The kind of table to produce: "tt" for tinytable, or "ft" for
 flextable (default).}
+
+\item{env}{The environment where to evaluate formulas (you probably do not
+need to change the default).}
 }
 \value{
 A \strong{flextable} object you can print in different form or rearrange

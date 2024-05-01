@@ -22,7 +22,7 @@
 #' @export
 #' @importFrom generics glance
 #' @seealso [tabularise()], [generics::glance()]
-tabularise_glance <- function(data, ..., env = env) {
+tabularise_glance <- function(data, ..., kind = "ft", env = env) {
   UseMethod("tabularise_glance")
 }
 

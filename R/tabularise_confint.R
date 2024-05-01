@@ -21,7 +21,7 @@
 #' @export
 #' @importFrom stats confint
 #' @seealso [tabularise()], [stats::confint()]
-tabularise_confint <- function(data, ..., env = env) {
+tabularise_confint <- function(data, ..., kind = "ft", env = env) {
   UseMethod("tabularise_confint")
 }
 

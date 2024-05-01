@@ -1,20 +1,21 @@
 ---
-title: "Create rich-formatted tables with tabularise"
+title: " rich-formatted tables with tabularise"
 author: "Philippe Grosjean & Guyliann Engels"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
     toc: true
     toc_depth: 3
+    fig_caption: yes
 vignette: >
   %\VignetteIndexEntry{Create rich-formatted tables with tabularise}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-  \usepackage[utf8]{inputenc}
 ---
 
-```{r, include=FALSE}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(tabularise)
 ```
 
 The {tabularise} package aims to provide quick and easy tabular outputs for various R objects. The tables are well formatted and can be output in different formats like HTML, LaTeX/PDF or Word.

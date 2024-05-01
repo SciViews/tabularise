@@ -8,9 +8,9 @@
 \alias{tabularise_default.Correlation}
 \title{Default type tabularise generic (tabularise$default)}
 \usage{
-tabularise_default(data, ..., env = parent.frame())
+tabularise_default(data, ..., kind = "ft", env = parent.frame())
 
-\method{tabularise_default}{default}(data, ..., env = parent.frame())
+\method{tabularise_default}{default}(data, ..., kind = "ft", env = parent.frame())
 
 \method{tabularise_default}{data.frame}(
   data,
@@ -53,6 +53,9 @@ tabularise_default(data, ..., env = parent.frame())
 \item{data}{An object}
 
 \item{...}{Further arguments (depending on the object class).}
+
+\item{kind}{The kind of table to produce: "tt" for tinytable, or "ft" for
+flextable (default).}
 
 \item{env}{The environment where to evaluate formulas (you probably do not
 need to change the default).}
