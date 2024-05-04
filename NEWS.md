@@ -1,3 +1,7 @@
+# tabularise 0.6.1
+
+-   Remotes SciViews/equatiomatic instead of datalorax/equatiomatic for correct compilation on R-Universe (no remote dependency required to yonicd/texPreview).
+
 # tabularise 0.6.0
 
 -   Add {tinytable} table generation for {tabularise} tables as an alternative to {flextable}. Argument `kind =` allows for selecting the table engine to use.
