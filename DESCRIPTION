@@ -34,8 +34,6 @@ Suggests:
     spelling (>= 2.2.1),
     testthat (>= 3.0.0)
 Remotes:
-  ardata-fr/equatags,
-  SciViews/equatiomatic,
   SciViews/data.io,
   SciViews/svMisc
 License: MIT + file LICENSE
