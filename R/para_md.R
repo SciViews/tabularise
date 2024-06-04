@@ -393,9 +393,10 @@ print.paragraph <- function(x, ...) {
   # We still have to protect LaTeX equations inside $...$ from any markdown
   # interpretation. Since we know code between `...` is never interpreted, but
   # we may have still single, or double back ticks inside the equation, we use
-  # ````\n$$$...$$$\n```` as a temporary replacement of $...$ before transforming the
-  # whole text in HTML. We will restore $...$ later on in the process.
-  gsub('\\$([^$]+)\\$', '````\n$$$\\1$$$\n````', txt)
+  # \n````\n$$$...$$$\n````\n as a temporary replacement of $...$ before
+  # transforming the whole text in HTML. We will restore $...$ later on in the
+  # process.
+  gsub('\\$([^$]+)\\$', '````$$$\\1$$$````', txt)
 }
 
 # Reverse .escape_chars, but without the leading backslash \ (see above)
@@ -439,7 +440,7 @@ print.paragraph <- function(x, ...) {
   # (only inline eq for now but we use double $$ to maximally avoid clashes)
   # Note that $ is not allowed anyway in equations by katex
   # Replace <code>$$$...$$$<\code> by <eq>...</eq>
-  html <- gsub("<code>\\$\\$\\$(.+)\\$\\$\\$\n+</code>", "<eq>\\1</eq>",
+  html <- gsub("<code>\\$\\$\\$([^$]+)\\$\\$\\$\n*</code>", "<eq>\\1</eq>",
     html)
 
   # Eliminate all single tags, like <br /> that we don't use

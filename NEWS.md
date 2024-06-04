@@ -1,3 +1,7 @@
+# tabularise 0.6.2
+
+-   A bug in `para_md()` when equations are inline in a paragraph is fixed.
+
 # tabularise 0.6.1
 
 -   Remotes SciViews/equatiomatic instead of datalorax/equatiomatic for correct compilation on R-Universe (no remote dependency required to yonicd/texPreview).
