@@ -186,15 +186,15 @@ print.inline_equation <- function(x, ...) {
     labels[labels == ""] <- names(x)[labels == ""]
     # Specific case for I() using in a formula
     for (i in seq_along(labels)) {
-      # check names
+      # check if I() includes an exponent.
       if (grepl("^I\\(.*\\^.*\\)$", names(labels)[i])) {
-        # Extraire la sous-chaîne
-        sous_chaine <- sub("^I\\(.*(\\^.*)\\).*", "\\1", names(labels)[i])
-        # Injecter la sous-chaîne dans la valeur
+        # extract the exponent of I()
+        vec <- sub("^I\\(.*(\\^.*)\\).*", "\\1", names(labels)[i])
+
         if(isTRUE(units)) {
           # vec[i] <- sub(" \\n", paste0(sous_chaine, "\\\n"), vec[i])
           labels[i] <- gsub("(.*)(\\n \\[)(.*)(\\])",
-            paste0("\\1", sous_chaine, "\\2", "\\3", sous_chaine,"\\4"), labels[i])
+            paste0("\\1", vec, "\\2", "\\3", vec,"\\4"), labels[i])
         } else {
           labels[i] <- paste0(labels[i], sous_chaine)
         }
