@@ -196,7 +196,7 @@ print.inline_equation <- function(x, ...) {
           labels[i] <- gsub("(.*)(\\n \\[)(.*)(\\])",
             paste0("\\1", vec, "\\2", "\\3", vec,"\\4"), labels[i])
         } else {
-          labels[i] <- paste0(labels[i], sous_chaine)
+          labels[i] <- paste0(labels[i], vec)
         }
       }
     }

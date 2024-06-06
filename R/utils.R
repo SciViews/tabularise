@@ -238,3 +238,39 @@ args_type <- function(fun, method = NULL, type) {
 # 3. Do the same but select "fun", now you got the arguments for the fun type
 # 4. Just write a new `.head2_<type>` function and <type> is automatically
 #    integrated!
+
+# This function handles duplicates in a vector of labels. It either replaces
+# duplicates with their names or adds a number to the end of each duplicate
+# element. If replace_with_name is TRUE (default), duplicates are replaced with
+# their names.
+
+.handle_duplicate_labels <- function(x, replace_with_name = TRUE) {
+  # Check for duplicates
+  #duplicates  <- collapse::fduplicated(x)
+  duplicates <- duplicated(x) | duplicated(x, fromLast = TRUE)
+
+  if(any(duplicates)) {
+    warning(
+      "Warning: There are duplicate elements in the labels.
+      Tip: Use data.io::labelise() to replace your duplicate labels.")
+
+    if(replace_with_name) {
+      # Replace duplicates with their names
+      x[duplicates] <- names(x)[duplicates]
+    } else {
+      # Count occurrences of each element
+      counts <- table(x)
+
+      # Find duplicate elements
+      duplicates <- names(counts[counts > 1])
+
+      # For each duplicate element, add a number at the end
+      for (name in duplicates) {
+        index <- which(x == name)
+        x[index] <- paste(x[index], "(", seq_along(index), ")", sep = "")
+      }
+    }
+  }
+
+  return(x)
+}

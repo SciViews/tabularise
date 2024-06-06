@@ -65,6 +65,7 @@ tabularise_default.data.frame <- function(data, formula = NULL,
       # Use a \n before the units
       labels <- sub(" +\\[([^]]+)\\]$", "\n[\\1]", labels)
       labels[labels == ""] <- names(data)[labels == ""] # set names if empty
+      labels <- .handle_duplicate_labels(labels,replace_with_name = TRUE)
       names(data) <- as.character(labels)
       # Also rework col_keys accordingly
       keys <- as.character(labels[col_keys])
