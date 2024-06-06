@@ -156,6 +156,25 @@ print.inline_equation <- function(x, ...) {
 
 # TODO: this is duplicated in modelit -> export from here and reuse there!
 # Extract labels and units
+# .labels <- function(x, units = TRUE, ...) {
+#   labels <- sapply(x, data.io::label, units = units)
+#
+#   if (any(labels != "")) {
+#     # Use a \n before labels and the units
+#     if (isTRUE(units))
+#       labels <- sub(" +\\[([^]]+)\\]$", "\n [\\1]", labels)
+#     # set names if empty
+#     labels[labels == ""] <- names(x)[labels == ""]
+#     # Specific case for I() using in a formula
+#     labels[grepl("^I\\(.*\\)$", names(labels))] <- names(labels)[grepl("^I\\(.*\\)$", names(labels))]
+#   }
+#
+#   if (all(labels == ""))
+#     labels <- NULL
+#
+#   labels
+# }
+
 .labels <- function(x, units = TRUE, ...) {
   labels <- sapply(x, data.io::label, units = units)
 
@@ -166,7 +185,23 @@ print.inline_equation <- function(x, ...) {
     # set names if empty
     labels[labels == ""] <- names(x)[labels == ""]
     # Specific case for I() using in a formula
-    labels[grepl("^I\\(.*\\)$", names(labels))] <- names(labels)[grepl("^I\\(.*\\)$", names(labels))]
+    for (i in seq_along(labels)) {
+      # check names
+      if (grepl("^I\\(.*\\^.*\\)$", names(labels)[i])) {
+        # Extraire la sous-chaîne
+        sous_chaine <- sub("^I\\(.*(\\^.*)\\).*", "\\1", names(labels)[i])
+        # Injecter la sous-chaîne dans la valeur
+        if(isTRUE(units)) {
+          # vec[i] <- sub(" \\n", paste0(sous_chaine, "\\\n"), vec[i])
+          labels[i] <- gsub("(.*)(\\n \\[)(.*)(\\])",
+            paste0("\\1", sous_chaine, "\\2", "\\3", sous_chaine,"\\4"), labels[i])
+        } else {
+          labels[i] <- paste0(labels[i], sous_chaine)
+        }
+      }
+    }
+    labels[grepl("^I\\(([^\\^]*)\\)$", names(labels))] <- names(labels)[
+      grepl("^I\\(([^\\^]*)\\)$", names(labels))]
   }
 
   if (all(labels == ""))
