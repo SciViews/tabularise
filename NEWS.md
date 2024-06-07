@@ -1,3 +1,7 @@
+# tabularise 0.6.3
+
+-   Improvement in label management when identical labels are assigned to different columns within the same dataframe.
+
 # tabularise 0.6.2
 
 -   A bug in `para_md()` when equations are inline in a paragraph is fixed.
@@ -18,7 +22,7 @@
 
 -   Now, `equation.default()` swaps variables labels like `tabularise()` does.
 
--   `equation.default()` now allows for super- or subscripts in labels using ^ or _, and the change affects next character, or if it is a integer (possibly with leading minus sign), the whole integer.
+-   `equation.default()` now allows for super- or subscripts in labels using \^ or \_, and the change affects next character, or if it is a integer (possibly with leading minus sign), the whole integer.
 
 -   If a there is a beta_1 term, but no beta_0 or beta_2 term i, `equation.default()`, then, the term is just renamed beta.
 

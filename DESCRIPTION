@@ -1,6 +1,6 @@
 Package: tabularise
 Type: Package
-Version: 0.6.2
+Version: 0.6.3
 Title: Create Tabular Outputs from R
 Description: Create rich-formatted tabular outputs from R that can be
   incorporated into R Markdown/Quarto documents with correct output at least in
