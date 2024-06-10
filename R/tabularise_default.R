@@ -103,10 +103,11 @@ tabularise_default.data.frame <- function(data, formula = NULL,
   if (isTRUE(auto.labs)) {
     align(res, align = "center", part = "header") |>
       valign(valign = "bottom", part = "header") |>
-      autofit()
+      autofit() -> res
   } else {
-    autofit(res)
+    res <- autofit(res)
   }
+  colformat_sci(res)
 }
 
 #' @export
