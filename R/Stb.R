@@ -87,6 +87,11 @@
 #   x[sel]
 # }
 
+# In R 4.6.0, it is not possible to put a comment on a primitive function and
+# dim() is one
+dim <- function(x)
+  base::dim(x)
+
 #' Tabularise set of function (mainly from \{flextable\})
 #'
 #' This set provides all the functions you can use to manipulate `tabularise()`
@@ -205,7 +210,7 @@ Stb <- #structure(
     ncol_keys                 = aka(flextable::ncol_keys),
     nrow_part                 = aka(flextable::nrow_part),
     flextable_dim             = aka(flextable::flextable_dim),
-    dim                       = aka(base::dim), # dim.flextable method
+    dim                       = aka(dim, alias = "base::dim"), # dim.flextable method
     dim_pretty                = aka(flextable::dim_pretty),
     autofit                   = aka(flextable::autofit), # autofit_size
     empty_blanks              = aka(flextable::empty_blanks),
