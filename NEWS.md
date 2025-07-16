@@ -1,10 +1,10 @@
 # tabularise 0.6.4
 
--   `Stb` now does not `aka()` to the builtin `dim(x)` (because not accepted in R >= 4.6.0)
+-   `Stb` now does not `aka()` to the builtin `dim(x)` (because not accepted in R >= 4.6.0).
 
--    No bootstrap: 5 in _pkgdown.yml
+-    No bootstrap: 5 in _pkgdown.yml.
 
--    tabularise-package.R and CITATION updated to new format
+-    tabularise-package.R and CITATION updated to new format.
 
 # tabularise 0.6.3
 
