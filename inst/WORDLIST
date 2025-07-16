@@ -25,6 +25,7 @@ lod
 modelit
 nls
 ORCID
+pkgdown
 README
 RStudio
 SciViews
@@ -34,4 +35,5 @@ tbl
 texPreview
 tinytable
 tt
+yml
 yonicd

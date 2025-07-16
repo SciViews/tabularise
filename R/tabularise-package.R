@@ -24,16 +24,13 @@
 #' - [para_md()] creates \{flextable\} paragraphs with rich-formatting by
 #'   converting Markdown strings into such \{flextable\} paragraphs.
 #'
-#' @docType package
-#' @name tabularise-package
-
 ## usethis namespace: start
 #' @importFrom svMisc aka section
 #' @importFrom rlang %||% is_interactive f_rhs get_expr new_function pairlist2 quo
 #' @importFrom utils apropos head tail
 #' @importFrom stats terms coef
 ## usethis namespace: end
-NULL
+"_PACKAGE"
 
 .onLoad <- function(libname, pkgname){
   # Define default themes for tables (both tinytable and flextable)

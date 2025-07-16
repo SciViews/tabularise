@@ -30,3 +30,21 @@ converting Markdown strings into such \{flextable\} paragraphs.
 }
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/SciViews/tabularise}
+  \item \url{https://www.sciviews.org/tabularise/}
+  \item Report bugs at \url{https://github.com/SciViews/tabularise/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Philippe Grosjean \email{phgrosjean@sciviews.org} (\href{https://orcid.org/0000-0002-2694-9471}{ORCID})
+
+Authors:
+\itemize{
+  \item Guyliann Engels \email{guyliann.engels@umons.ac.be} (\href{https://orcid.org/0000-0001-9514-1014}{ORCID})
+}
+
+}

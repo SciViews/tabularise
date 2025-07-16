@@ -1,4 +1,4 @@
-url: https://www.sciviews.org/chart
+url: https://www.sciviews.org/tabularise
 
 destination: docs
 
@@ -7,7 +7,6 @@ development:
 
 template:
   package: svPkgdown
-  bootstrap: 5
   params:
     bootswatch: spacelab
     mathjax: true
