@@ -1,78 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.sciviews.org/chart/404.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/TODO.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/articles/tabularise.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/index.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/Stb.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/colformat_md.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/colformat_sci.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/equation.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/para_md.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/tabularise-package.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/tabularise.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/tabularise_coef.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/tabularise_confint.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/tabularise_default.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/tabularise_glance.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/tabularise_headtail.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/tabularise_tidy.html</loc>
-  </url>
-  <url>
-    <loc>https://www.sciviews.org/chart/reference/theme_tt_sciviews.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://www.sciviews.org/tabularise/404.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/LICENSE-text.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/LICENSE.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/TODO.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/articles/index.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/articles/tabularise.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/authors.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/index.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/news/index.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/reference/Stb.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/reference/colformat_md.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/reference/colformat_sci.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/reference/equation.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/reference/index.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/reference/para_md.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/reference/tabularise-package.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/reference/tabularise.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/reference/tabularise_coef.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/reference/tabularise_confint.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/reference/tabularise_default.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/reference/tabularise_glance.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/reference/tabularise_headtail.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/reference/tabularise_tidy.html</loc></url>
+<url><loc>https://www.sciviews.org/tabularise/reference/theme_tt_sciviews.html</loc></url>
 </urlset>
+
