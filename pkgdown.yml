@@ -3,7 +3,7 @@ pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   tabularise: tabularise.html
-last_built: 2025-07-16T09:46Z
+last_built: 2025-07-23T13:11Z
 urls:
   reference: https://www.sciviews.org/tabularise/reference
   article: https://www.sciviews.org/tabularise/articles
