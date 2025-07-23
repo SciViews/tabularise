@@ -1,3 +1,6 @@
+# Note: all this code is now moved to {equatiomatic}. Please, remove from here
+# and import from there in the next version of {tabularise}
+
 #' Get a LaTeX equation from a model or from LaTeX code
 #'
 #' @description
