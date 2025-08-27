@@ -57,7 +57,7 @@
   </a>
 </li>
       </ul><div class="navbar-title">
-        <a class="navbar-brand" href="../index.html"><p class="h2">tabularise <small>v0.6.4</small></p></a>
+        <a class="navbar-brand" href="../index.html"><p class="h2">tabularise <small>v0.7.0</small></p></a>
       </div>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -74,6 +74,15 @@
       <small>Source: <a href="https://github.com/SciViews/tabularise/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.7.0" id="tabularise-070">tabularise 0.7.0<a class="anchor" aria-label="anchor" href="#tabularise-070"></a></h2>
+<ul><li>Made compatible with svBase (&gt;= 1.7.0). Dependencies to data.io and svMisc eliminated.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.6.5" id="tabularise-065">tabularise 0.6.5<a class="anchor" aria-label="anchor" href="#tabularise-065"></a></h2>
+<ul><li><p><code>equation()</code>, <code>eq_()</code> and <code>eq__()</code> are moved to {equatiomatic} (&gt;= 0.4.4).</p></li>
+<li><p>functions for subsettable type (<code>fun$type()</code>) are moved to svBase (&gt;= 1.7.0).</p></li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.6.4" id="tabularise-064">tabularise 0.6.4<a class="anchor" aria-label="anchor" href="#tabularise-064"></a></h2>
 <ul><li><p><code>Stb</code> now does not <code>aka()</code> to the builtin <code>dim(x)</code> (because not accepted in R &gt;= 4.6.0).</p></li>
@@ -102,15 +111,15 @@
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.5.0" id="tabularise-050">tabularise 0.5.0<a class="anchor" aria-label="anchor" href="#tabularise-050"></a></h2>
-<ul><li><p>Now, <code><a href="../reference/equation.html">equation.default()</a></code> swaps variables labels like <code><a href="../reference/tabularise.html">tabularise()</a></code> does.</p></li>
-<li><p><code><a href="../reference/equation.html">equation.default()</a></code> now allows for super- or subscripts in labels using ^ or _, and the change affects next character, or if it is a integer (possibly with leading minus sign), the whole integer.</p></li>
-<li><p>If a there is a beta_1 term, but no beta_0 or beta_2 term i, <code><a href="../reference/equation.html">equation.default()</a></code>, then, the term is just renamed beta.</p></li>
+<ul><li><p>Now, <code>equation.default()</code> swaps variables labels like <code><a href="../reference/tabularise.html">tabularise()</a></code> does.</p></li>
+<li><p><code>equation.default()</code> now allows for super- or subscripts in labels using ^ or _, and the change affects next character, or if it is a integer (possibly with leading minus sign), the whole integer.</p></li>
+<li><p>If a there is a beta_1 term, but no beta_0 or beta_2 term i, <code>equation.default()</code>, then, the term is just renamed beta.</p></li>
 <li><p>An error was thrown when <code>tabularise$headtail()</code> is applied to a <strong>data.table</strong> with a <strong>Date</strong> column (and probably other “exotic” objects). Solved.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.0" id="tabularise-040">tabularise 0.4.0<a class="anchor" aria-label="anchor" href="#tabularise-040"></a></h2>
-<ul><li><p><code><a href="../reference/equation.html">equation()</a></code>, <code><a href="../reference/equation.html">equation.default()</a></code> and <code>equation_character()</code> added to extract equations from several objects.</p></li>
-<li><p><code><a href="../reference/equation.html">eq_()</a></code> and <code><a href="../reference/equation.html">eq__()</a></code> added to ease the inclusion of R-computed equations into R Markdown and Quarto documents. <code><a href="../reference/equation.html">eq_()</a></code> also allows to preview the equation in the RStudio viewer pane, or in a web browser.</p></li>
+<ul><li><p><code>equation()</code>, <code>equation.default()</code> and <code>equation_character()</code> added to extract equations from several objects.</p></li>
+<li><p><code>eq_()</code> and <code>eq__()</code> added to ease the inclusion of R-computed equations into R Markdown and Quarto documents. <code>eq_()</code> also allows to preview the equation in the RStudio viewer pane, or in a web browser.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.0" id="tabularise-030">tabularise 0.3.0<a class="anchor" aria-label="anchor" href="#tabularise-030"></a></h2>
