@@ -1,3 +1,13 @@
+# tabularise 0.7.0
+
+-   Made compatible with svBase (>= 1.7.0). Dependencies to data.io and svMisc eliminated.
+
+# tabularise 0.6.5
+
+-   `equation()`, `eq_()` and `eq__()` are moved to {equatiomatic} (>= 0.4.4).
+
+-   functions for subsettable type (`fun$type()`) are moved to svBase (>= 1.7.0).
+
 # tabularise 0.6.4
 
 -   `Stb` now does not `aka()` to the builtin `dim(x)` (because not accepted in R >= 4.6.0).

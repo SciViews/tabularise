@@ -41,11 +41,11 @@ tabularise_headtail.default <- function(data, n = 10, ...,
 #' @param sep The separator between the first and last lines of a table. By
 #' default, the vertical ellipse shape is used.
 #' @param lang the natural language to use. The default value can be set with,
-#'   e.g., `options(data.io_lang = "fr")` for French.
+#'   e.g., `options(SciViews_lang = "fr")` for French.
 #' @method tabularise_headtail data.frame
 tabularise_headtail.data.frame <- function(data, n = 10,
     auto.labs = TRUE, sep = "...", ..., # sep = "\U22EE" makes problems in LaTeX
-    lang = getOption("data.io_lang", "en"), kind = "ft", env = env) {
+    lang = getOption("SciViews_lang", "en"), kind = "ft", env = env) {
   # TODO: allow using labels and units + restrict rows and cols
   if (nrow(data) <= 1.5 * n) {
     switch(kind,
@@ -66,7 +66,7 @@ tabularise_headtail.data.frame <- function(data, n = 10,
 
     # Use labels and units in the header, if available
     if (isTRUE(auto.labs)) {
-      labels <- sapply(data, data.io::label, units = TRUE)
+      labels <- sapply(data, svBase::label, units = TRUE)
       if (any(labels != "")) {
         labels[labels == ""] <- names(data)[labels == ""] # set names if empty
         names(x) <- as.character(labels)
@@ -100,7 +100,7 @@ tabularise_headtail.data.frame <- function(data, n = 10,
 }
 
 # Internal function : Choose the lang and the infos_lang ----
-.infos_lang.ht <- function(lang = getOption("data.io_lang", "en")) {
+.infos_lang.ht <- function(lang = getOption("SciViews_lang", "en")) {
   lang <- tolower(lang)
   if (lang != "fr") lang <- "en" # Only en or fr for now
   if (lang == "fr") {

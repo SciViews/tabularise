@@ -35,6 +35,7 @@ Useful links:
 \itemize{
   \item \url{https://github.com/SciViews/tabularise}
   \item \url{https://www.sciviews.org/tabularise/}
+  \item \url{https://sciviews.r-universe.dev/tabularise}
   \item Report bugs at \url{https://github.com/SciViews/tabularise/issues}
 }
 

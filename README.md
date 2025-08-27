@@ -1,13 +1,12 @@
-Create Tabular Outputs from R
-<a href='https://www.sciviews.org/tabularise'><img src='man/figures/logo.png' alt='tabularise website' align='right' height='139'/></a>
-================
 
-<!-- Do not edit the README.md file directly. It is generated from README.Rmd. -->
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# ‘SciViews::R’ - Create Tabular Outputs from R <a href='https://www.sciviews.org/tabularise'><img src='man/figures/logo.png' alt='tabularise website' align='right' height='138'/></a>
+
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/SciViews/tabularise/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SciViews/tabularise/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/SciViews/tabularise/branch/main/graph/badge.svg)](https://app.codecov.io/gh/SciViews/tabularise?branch=main)
+[![coverage](https://codecov.io/gh/SciViews/tabularise/branch/main/graph/badge.svg)](https://app.codecov.io/gh/SciViews/tabularise?branch=main)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/tabularise)](https://CRAN.R-project.org/package=tabularise)
 [![r-universe
@@ -16,7 +15,6 @@ status](https://sciviews.r-universe.dev/badges/tabularise)](https://sciviews.r-u
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-
 <!-- badges: end -->
 
 With {tabularise} you should be able to obtain publication-ready
@@ -31,12 +29,12 @@ output them in HTML, LaTeX/PDF, Word or PowerPoint. See
 the [SciViews R-Universe](https://sciviews.r-universe.dev). The
 {equatags} and {equatiomatic} packages are optional, but they are useful
 to display equations, both inline in R Markdown/Quarto documents and in
-{tabularise} tables. The {data.io} package is useful too because it
+{tabularise} tables. The {svBase} package is useful too because it
 manages labels and units that {chart} uses. To install those three
 packages and their dependencies, run the following command in R:
 
 ``` r
-install.packages(c('tabularise', 'equatags', 'equatiomatic', 'data.io'),
+install.packages(c('tabularise', 'equatags', 'equatiomatic', 'svBase'),
   repos = c('https://sciviews.r-universe.dev', 'https://cloud.r-project.org'))
 ```
 
@@ -57,7 +55,7 @@ units.
 data("iris")
 
 # Add labels and units
-iris <- data.io::labelise(iris,
+iris <- svBase::labelise(iris,
   label = list(
     Sepal.Length = "Sepal length", Sepal.Width = "Sepal width",
     Petal.Length  = "Petal length", Petal.Width = "Petal width", 
@@ -65,9 +63,6 @@ iris <- data.io::labelise(iris,
   units = list(
     Sepal.Length = "cm", Sepal.Width = "cm",
     Petal.Length  = "cm", Petal.Width = "cm"))
-#> Registered S3 method overwritten by 'data.io':
-#>   method             from  
-#>   $.subsettable_type svMisc
 ```
 
 Once the labels and units have been added to our data frame, the

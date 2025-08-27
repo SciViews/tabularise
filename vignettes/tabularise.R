@@ -1,11 +1,12 @@
 ## ----setup, include=FALSE-----------------------------------------------------
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 library(tabularise)
+library(equatiomatic)
 
 ## -----------------------------------------------------------------------------
 data("ToothGrowth", package = "datasets")
 # Add labels and units
-ToothGrowth <- data.io::labelise(ToothGrowth,
+ToothGrowth <- svBase::labelise(ToothGrowth,
   label = list(len = "Tooth growth", supp = "Supplement", dose = "Vitamin C"),
   units = list(len = "mm", dose = "mg/d"))
 

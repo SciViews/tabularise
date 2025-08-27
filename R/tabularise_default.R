@@ -60,7 +60,7 @@ tabularise_default.data.frame <- function(data, formula = NULL,
   }
   # Use labels and units in the header, if available
   if (isTRUE(auto.labs)) {
-    labels <- sapply(data, data.io::label, units = TRUE)
+    labels <- sapply(data, svBase::label, units = TRUE)
     if (any(labels != "")) {
       # Use a \n before the units
       labels <- sub(" +\\[([^]]+)\\]$", "\n[\\1]", labels)
@@ -145,11 +145,11 @@ rownames = " ", cwidth = 0.75, cheight = 0.25, ..., env = parent.frame()) {
 #' @param title do we add a title?
 #' @param footer do we add a footer?
 #' @param lang the natural language to use. The default value can be set with,
-#'   e.g., `options(data.io_lang = "fr")` for French.
+#'   e.g., `options(SciViews_lang = "fr")` for French.
 #' @method tabularise_default Correlation
 tabularise_default.Correlation <- function(data, col_keys = colnames(data),
 rownames = " ", header = TRUE, title = header, footer = TRUE,
-cwidth = 0.75, cheight = 0.25, lang = getOption("data.io_lang", "en"),  ...,
+cwidth = 0.75, cheight = 0.25, lang = getOption("SciViews_lang", "en"),  ...,
 env = parent.frame()) {
   # TODO: allow using labels with origdata= here?
   # row names should be the same as col_keys
@@ -181,7 +181,7 @@ env = parent.frame()) {
 }
 
 # Internal function : Choose the lang and the infos_lang ----
-.infos_lang.tb <- function(lang = getOption("data.io_lang", "en")) {
+.infos_lang.tb <- function(lang = getOption("SciViews_lang", "en")) {
   lang <- tolower(lang)
   if (lang != "fr") lang <- "en" # Only en or fr for now
   if (lang == "fr") {

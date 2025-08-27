@@ -16,7 +16,7 @@ tabularise_headtail(data, n = 10, ..., kind = "ft", env = env)
   auto.labs = TRUE,
   sep = "...",
   ...,
-  lang = getOption("data.io_lang", "en"),
+  lang = getOption("SciViews_lang", "en"),
   kind = "ft",
   env = env
 )
@@ -40,7 +40,7 @@ need to change the default).}
 default, the vertical ellipse shape is used.}
 
 \item{lang}{the natural language to use. The default value can be set with,
-e.g., \code{options(data.io_lang = "fr")} for French.}
+e.g., \code{options(SciViews_lang = "fr")} for French.}
 }
 \value{
 A \strong{flextable} object you can print in different form or rearrange

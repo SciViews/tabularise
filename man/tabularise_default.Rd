@@ -44,7 +44,7 @@ tabularise_default(data, ..., kind = "ft", env = parent.frame())
   footer = TRUE,
   cwidth = 0.75,
   cheight = 0.25,
-  lang = getOption("data.io_lang", "en"),
+  lang = getOption("SciViews_lang", "en"),
   ...,
   env = parent.frame()
 )
@@ -85,7 +85,7 @@ as label}
 \item{footer}{do we add a footer?}
 
 \item{lang}{the natural language to use. The default value can be set with,
-e.g., \code{options(data.io_lang = "fr")} for French.}
+e.g., \code{options(SciViews_lang = "fr")} for French.}
 }
 \value{
 A \strong{flextable} object you can print in different form or rearrange

@@ -27,7 +27,7 @@
 # align_h = align, align_v = valign,
 # autofit_size = autofit, set_col_labels = labelizor, set_col_blank = void,
 # compose_chunks = compose, as_color = colorize
-aka <- svMisc::aka
+aka <- svBase::aka
 
 # For now, we do not rename flextable functions
 #set_style <- aka(flextable::style)

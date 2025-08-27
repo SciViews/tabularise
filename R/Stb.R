@@ -15,7 +15,7 @@
 
 
 # aka <- function(...) {
-#   res <- svMisc::aka(...)
+#   res <- svBase::aka(...)
 #   if (is.function(res))
 #     class(res) <- c("aka", "function")
 #   res
@@ -102,7 +102,7 @@ dim <- function(x)
 #' @return When printing `Stb` alone, a list of all verbs and other objects
 #' provided in the set are returned.
 #' @export
-#' @importFrom svMisc aka section
+#' @importFrom svBase aka section
 #' @importFrom flextable flextable as_flextable as_chunk
 #' @importFrom officer fp_border fp_text fp_par fp_cell
 #'

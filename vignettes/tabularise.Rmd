@@ -1,5 +1,5 @@
 ---
-title: " Rich-formatted Tables with Tabularise"
+title: "'SciViews::R' - Create Tabular Outputs from R"
 author: "Philippe Grosjean & Guyliann Engels"
 date: "`r Sys.Date()`"
 output:
@@ -8,7 +8,7 @@ output:
     toc_depth: 3
     fig_caption: yes
 vignette: >
-  %\VignetteIndexEntry{Create rich-formatted tables with tabularise}
+  %\VignetteIndexEntry{'SciViews::R' - Create Tabular Outputs from R}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,18 +16,19 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 library(tabularise)
+library(equatiomatic)
 ```
 
 The {tabularise} package aims to provide quick and easy tabular outputs for various R objects. The tables are well formatted and can be output in different formats like HTML, LaTeX/PDF or Word.
 
 ## Example table
 
-Let's use the `ToothGrowth` from {datasets} for this example. You can directly add labels and units, or use `data.io::labellise()` (optional step):
+Let's use the `ToothGrowth` from {datasets} for this example. You can directly add labels and units, or use `svBase::labelise()` (optional step):
 
 ```{r}
 data("ToothGrowth", package = "datasets")
 # Add labels and units
-ToothGrowth <- data.io::labelise(ToothGrowth,
+ToothGrowth <- svBase::labelise(ToothGrowth,
   label = list(len = "Tooth growth", supp = "Supplement", dose = "Vitamin C"),
   units = list(len = "mm", dose = "mg/d"))
 ```

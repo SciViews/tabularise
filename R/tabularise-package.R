@@ -25,16 +25,12 @@
 #'   converting Markdown strings into such \{flextable\} paragraphs.
 #'
 ## usethis namespace: start
-#' @importFrom svMisc aka section
+#' @importFrom svBase aka args_type get_type list_types name_function_type section
 #' @importFrom rlang %||% is_interactive f_rhs get_expr new_function pairlist2 quo
 #' @importFrom utils apropos head tail
 #' @importFrom stats terms coef
+#' @importFrom flextable as_equation as_paragraph
+#' @importFrom equatiomatic equation eq_ eq__ extract_eq
+#' @importFrom equatags transform_mathjax
 ## usethis namespace: end
 "_PACKAGE"
-
-.onLoad <- function(libname, pkgname){
-  # Define default themes for tables (both tinytable and flextable)
-  options(tinytable_tt_theme = theme_tt_sciviews)
-  flextable::set_flextable_defaults(big.mark = "\u00a0",
-    font.family = "Arial", font.size = 12)
-}
