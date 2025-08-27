@@ -1,4 +1,4 @@
-#' Create Tabular Outputs from R
+#' 'SciViews::R' - Create Tabular Outputs from R
 #'
 #' Create rich-formatted tabular outputs from various R objects that can be
 #' incorporated into R Markdown/Quarto documents with correct output at least in
