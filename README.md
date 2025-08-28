@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/SciViews/tabularise/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SciViews/tabularise/actions/workflows/R-CMD-check.yaml)
-[![coverage](https://codecov.io/gh/SciViews/tabularise/branch/main/graph/badge.svg)](https://app.codecov.io/gh/SciViews/tabularise?branch=main)
+[![coverage](https://codecov.io/gh/SciViews/tabularise/branch/main/graph/badge.svg?token=6FYPRdhoFJ)](https://app.codecov.io/gh/SciViews/tabularise?branch=main)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/tabularise)](https://CRAN.R-project.org/package=tabularise)
 [![r-universe
