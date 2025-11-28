@@ -73,6 +73,8 @@ tabularise_default.data.frame <- function(data, formula = NULL,
       col_keys <- keys
     }
   }
+  # Remove the labels
+  data <- svBase::unlabelise(data)
   # Restrict table to max.rows and max.cols
   note <- ""
   n <- nrow(data)

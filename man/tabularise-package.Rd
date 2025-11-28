@@ -3,7 +3,7 @@
 \docType{package}
 \name{tabularise-package}
 \alias{tabularise-package}
-\title{Create Tabular Outputs from R}
+\title{'SciViews::R' - Create Tabular Outputs from R}
 \description{
 Create rich-formatted tabular outputs from various R objects that can be
 incorporated into R Markdown/Quarto documents with correct output at least in

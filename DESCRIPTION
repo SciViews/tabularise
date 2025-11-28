@@ -1,6 +1,6 @@
 Package: tabularise
 Type: Package
-Version: 0.7.0
+Version: 0.7.1
 Title: 'SciViews::R' - Create Tabular Outputs from R
 Description: Create rich-formatted tabular outputs from R that can be
   incorporated into R Markdown/Quarto documents with correct output at least in

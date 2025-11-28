@@ -25,7 +25,7 @@
 #'   converting Markdown strings into such \{flextable\} paragraphs.
 #'
 ## usethis namespace: start
-#' @importFrom svBase aka args_type get_type list_types name_function_type section
+#' @importFrom svBase aka args_type get_type list_types name_function_type section unlabelise
 #' @importFrom rlang %||% is_interactive f_rhs get_expr new_function pairlist2 quo
 #' @importFrom utils apropos head tail
 #' @importFrom stats terms coef

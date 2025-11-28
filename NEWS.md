@@ -1,3 +1,7 @@
+# tabularise 0.7.1
+
+-   Made compatible with data.trame (>= 0.9.0). 
+
 # tabularise 0.7.0
 
 -   Made compatible with svBase (>= 1.7.0). Dependencies to data.io and svMisc eliminated.
